@@ -65,10 +65,13 @@
   .cart-item{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
   .cart-total{display:flex;justify-content:space-between;padding-top:10px;font-weight:700}
 
-  /* Social buttons */
+  /* Social buttons + brand colours */
   .sbtn{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:10px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none}
-  .sbtn:hover{background:#f7eede}
+  .sbtn:hover{filter:brightness(0.96)}
   .sbtn svg{width:18px;height:18px}
+  .sbtn.ig{background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);color:#fff;border:none}
+  .sbtn.fb{background:#1877F2;color:#fff;border:none}
+  .sbtn.x{background:#111;color:#fff;border:none}
 
   footer{text-align:center;color:#6b5b4b;padding:24px}
 
@@ -163,26 +166,36 @@
         <p>Email: <a href="mailto:bookings@westivy.example">bookings@westivy.example</a></p>
         <p><a class="btn ghost" href="https://maps.google.com/?q=West+Ivy+Bury" target="_blank" rel="noopener">Open in Maps</a></p>
       </div>
+
+      <!-- *** REPLACED SOCIALS BLOCK WITH BRAND-COLOURED BUTTONS *** -->
       <div class="card" style="margin:0">
         <p><strong>Follow West Ivy</strong></p>
         <div class="flex">
           <!-- Instagram -->
-          <a class="sbtn" href="https://www.instagram.com/westivyrestaurant/" target="_blank" rel="noopener" title="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+          <a class="sbtn ig" href="https://www.instagram.com/westivyrestaurant/" target="_blank" rel="noopener" title="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+            </svg>
             Instagram
           </a>
+
           <!-- Facebook -->
-          <a class="sbtn" href="https://www.facebook.com/westivybury/" target="_blank" rel="noopener" title="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 3h4a1 1 0 0 1 1 1v4h-3a2 2 0 0 0-2 2v3h5l-1 4h-4v7h-4v-7H6v-4h3V9a5 5 0 0 1 5-5z"/></svg>
+          <a class="sbtn fb" href="https://www.facebook.com/westivybury/" target="_blank" rel="noopener" title="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M13 3h4a1 1 0 0 1 1 1v4h-3a2 2 0 0 0-2 2v3h5l-1 4h-4v7h-4v-7H6v-4h3V9a5 5 0 0 1 5-5z"/>
+            </svg>
             Facebook
           </a>
-          <!-- X/Twitter -->
-          <a class="sbtn" href="https://twitter.com/westivyrestaurant" target="_blank" rel="noopener" title="X (Twitter)">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3l7.4 9.2L4.6 21H8l5.2-6.7L18.8 21H22l-7.7-9.6L21 3h-3.4l-4.6 6L8 3H4z"/></svg>
+
+          <!-- X / Twitter (optional – leave if you want) -->
+          <a class="sbtn x" href="https://x.com/WestIvyBury" target="_blank" rel="noopener" title="X (Twitter)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M4 3l7.4 9.2L4.6 21H8l5.2-6.7L18.8 21H22l-7.7-9.6L21 3h-3.4l-4.6 6L8 3H4z"/>
+            </svg>
             X (Twitter)
           </a>
         </div>
-        <p class="muted" style="margin-top:6px">Official: Instagram profile and Facebook page used here. Website links go to westivy.co.uk.</p>
+        <p class="muted" style="margin-top:6px">Official pages linked above (Instagram & Facebook). Website button goes to westivy.co.uk.</p>
       </div>
     </div>
   </section>
@@ -296,7 +309,7 @@
     <p>
       <strong>Business Context:</strong> states goals and anchors the page to the CTO brief.  
       <strong>Menu & Cart:</strong> filters, search, and quick add improve discovery and decision speed.  
-      <strong>Contact & Socials:</strong> clear ways to call, email, map, and follow West Ivy’s <em>real</em> pages.  
+      <strong>Contact & Socials:</strong> clear ways to call, email, map, and follow West Ivy’s real pages.  
       <strong>Interactive Form:</strong> mailto flow captures structured inputs without a database.  
       <strong>Opening Status & Hours:</strong> live “Open now” indicator plus day-by-day hours increases trust.  
       <strong>UX:</strong> responsive layout, accessible controls, and optional Dark Mode for comfort and readability.
