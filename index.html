@@ -10,6 +10,7 @@
       font-family: Arial, sans-serif;
       background-color: #f5e9d5;
       color: #4a3f35;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -20,71 +21,76 @@
     }
 
     nav a {
-      margin: 0 10px;
+      margin: 0 15px;
       text-decoration: none;
-      color: #444;
+      color: #4a3f35;
       font-weight: bold;
+      font-size: 16px;
     }
 
     nav a:hover {
-      color: #000;
+      text-decoration: underline;
     }
 
-    .section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
+    .section-card {
       background-color: #fff8ef;
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 900px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border: 1px solid #d1bfa5;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    h2 {
-      margin-top: 0;
-    }
-
-    .gold-glow:hover {
-      box-shadow: 0 0 20px rgba(212,175,55,0.7);
+    .section-card:hover {
       transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(212,175,55,0.6);
     }
 
-    /* Interactive Manchester United Logo */
+    .section-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
     #muLogo {
+      width: 170px;
       cursor: pointer;
-      max-width: 180px;
-      transition: 0.3s ease;
+      margin: 15px auto;
       display: block;
-      margin: 20px auto;
+      transition: 0.3s ease;
     }
 
     #muLogo:hover {
       transform: scale(1.1);
-      filter: drop-shadow(0 0 6px #d4af37);
+      filter: drop-shadow(0 0 8px #d4af37);
     }
 
-    /* Dark mode */
-    body.dark-mode {
+    .dark-mode {
       background-color: #2b2b2b;
-      color: white;
+      color: #fff;
     }
 
-    body.dark-mode header {
+    .dark-mode header {
       background-color: #3a3a3a;
     }
 
-    body.dark-mode .section {
+    .dark-mode .section-card {
       background-color: #4a4a4a;
-      color: white;
+      color: #fff;
+      border-color: #777;
     }
 
     button {
       padding: 10px 20px;
-      background-color: black;
-      color: white;
       border: none;
       border-radius: 6px;
+      background-color: #b69377;
+      color: #fff;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 15px;
+      transition: 0.3s ease;
     }
 
     button:hover {
@@ -106,55 +112,54 @@
   </nav>
 </header>
 
-<div style="text-align:center;padding:10px;">
-  <button onclick="toggleDarkMode()" id="darkModeBtn">Enable Dark Mode</button>
+<div style="text-align:center; padding:15px;">
+  <button onclick="toggleDarkMode()" id="darkToggle">Enable Dark Mode</button>
 </div>
 
-<section class="section gold-glow">
+<section id="summary" class="section-card">
   <h2>Professional Summary</h2>
   <p>
-    I am a dedicated Business Management with Innovation and Technology student, aspiring to become a project manager in the digital world. I am passionate about helping businesses modernise through digital transformation, structured planning, and innovative technological solutions.
+    I am a dedicated Business Management with Innovation and Technology student with a strong interest in digital transformation and project planning. I enjoy working with technology, solving problems and improving customer experiences. My experience working at Clarks helped me develop confidence, communication and responsibility. I regularly interacted with customers, supported children when fitting shoes and handled money accurately during busy periods. This role taught me teamwork, patience and how to stay calm under pressure. These skills have helped shape my ambition to work in the digital world, where I want to support businesses in improving processes and developing modern solutions.
   </p>
-  <p>
-    My experience at Clarks allowed me to develop strong communication, customer service and problem-solving abilities. I worked closely with children and families, supported footwear fittings, and handled money transactions responsibly.
-  </p>
-
-  <img src="https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg" style="width:100%;border-radius:10px;" />
+  <img class="section-image" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="IT Project Management" />
 </section>
 
-<section class="section gold-glow">
+<section id="interests" class="section-card">
   <h2>Interests</h2>
   <p>
-    I enjoy travelling and exploring different cultures. I have visited over 20 countries and spent 10 years living in Spain, which helped me become confident, adaptable, and fluent in Spanish. I enjoy learning about technology, helping others and following digital trends.
-  </p>
-  <p>
-    I am a passionate Manchester United supporter and enjoy following football because it keeps me motivated and teaches me patience, teamwork and resilience.
+    I enjoy travelling and exploring different cultures. I have visited over 20 countries and spent 10 years living in Spain, which helped me become confident, adaptable and fluent in Spanish. Travelling has allowed me to experience new environments and build independence at a young age. I am a passionate Manchester United supporter and enjoy following football because it keeps me motivated and teaches me teamwork, patience and resilience. I enjoy learning about technology, helping others and staying updated with digital trends.
   </p>
 
-  <div style="text-align:center;">
-    <img id="muLogo" src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United Logo" onclick="unitedCheer()" />
-    <p style="text-align:center;font-weight:bold;color:#7a0000;">Click the badge for a surprise!</p>
-  </div>
+  <img id="muLogo" src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United Logo" onclick="unitedCheer()">
+  <p style="text-align:center; font-weight:bold; color:#7a0000;">Click the badge for a surprise!</p>
 </section>
 
-<section class="section gold-glow">
+<section id="goals" class="section-card">
   <h2>Future Goals</h2>
   <p>
-    My long-term ambition is to become a successful project manager leading digital transformation projects. I want to help organisations improve efficiency, adopt modern technology, and enhance user experience.
+    My goal is to become a successful project manager in the technology industry. I want to lead digital transformation projects that help businesses modernise their systems, improve customer experiences and make processes more efficient. I am working towards building strong leadership, communication and technical skills so I can guide teams effectively and make confident decisions. In the future, I want to manage large-scale digital projects, work internationally and contribute to innovative solutions that support business growth and digital development.
   </p>
-  <p>
-    I aim to develop strong project leadership skills, become fully certified in project methodologies, and work internationally in the digital consulting sector.
-  </p>
+  <img class="section-image" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Career goals" />
+</section>
+
+<section class="section-card">
+  <h2>Fun Fact</h2>
+  <p id="funFact" style="display:none; font-weight:bold;">I lived in Spain for 10 years and speak both English and Spanish!</p>
+  <button onclick="showFunFact()">Reveal Fun Fact</button>
 </section>
 
 <script>
 function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
-  document.getElementById("darkModeBtn").textContent = document.body.classList.contains('dark-mode') ? "Disable Dark Mode" : "Enable Dark Mode";
+  document.getElementById("darkToggle").textContent = document.body.classList.contains('dark-mode') ? "Disable Dark Mode" : "Enable Dark Mode";
 }
 
 function unitedCheer() {
   alert("Glory Glory Man United! 🔴⚽");
+}
+
+function showFunFact() {
+  document.getElementById("funFact").style.display = "block";
 }
 </script>
 
