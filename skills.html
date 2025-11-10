@@ -33,7 +33,8 @@
     /* Table */
     table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden}
     th,td{border:1px solid var(--line);padding:10px 12px;text-align:left}
-    th{background:#f1e2cf}
+    th{background:#f1e2cf;cursor:pointer;user-select:none}
+    tbody tr:hover{background:#f7eede}
 
     /* Timeline */
     .timeline{display:grid;gap:12px}
@@ -47,23 +48,51 @@
     .skill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
     .bar{height:8px;background:#ead8c0;border-radius:6px;overflow:hidden;margin-top:8px}
     .bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#f4d66b);transition:width 1s ease}
+    .pulse{animation:pulse 1s ease-in-out 3}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03);box-shadow:0 0 12px rgba(212,175,55,.6)}}
 
     /* Filters + buttons */
-    .filter{display:flex;gap:10px;align-items:center;margin-top:8px}
+    .filter{display:flex;gap:10px;align-items:center;margin:10px 0 0}
     .filter input{padding:8px 10px;border:1px solid var(--line);border-radius:8px;flex:1}
     .controls{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 6px}
     .btn,.btn:link,.btn:visited{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 12px;cursor:pointer;text-decoration:none;display:inline-block}
     .btn:hover{background:var(--accent-2)}
     .ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 
+    .grid-edu{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:center}
+    .grid-edu img{width:100%;border-radius:12px;border:1px solid var(--line)}
+
     .hidden{display:none}
     .muted{opacity:.85}
 
     footer{text-align:center;color:#6b5b4b;padding:24px}
-    @media (max-width:640px){ th,td{font-size:14px} }
+
+    /* Back-to-top */
+    #toTop{position:fixed;right:18px;bottom:18px;display:none;padding:10px 12px;border-radius:10px;z-index:50}
+
+    @media (max-width:700px){
+      .grid-edu{grid-template-columns:1fr}
+      th,td{font-size:14px}
+    }
+
+    /* Confetti */
+    .confetti{position:fixed;top:-10px;left:0;width:100%;pointer-events:none;z-index:9999}
+    .confetti i{position:absolute;width:8px;height:14px;opacity:.9}
+    @keyframes fall{
+      to{transform:translateY(110vh) rotate(360deg);}
+    }
+
+    /* --------- DARK MODE ---------- */
+    body.dark{ --bg:#222; --card:#333; --ink:#f1f1f1; --line:#4b4b4b; --accent:#7c5f49; --accent-2:#6a503e; }
+    body.dark header{ background:#2d2d2d; border-color:#444; }
+    body.dark nav a{ color:#eee; }
+    body.dark .job{ background:#2b2b2b; border-color:#444; }
+    body.dark th{ background:#3a3a3a; }
+    body.dark tbody tr:hover{ background:#2f2f2f; }
+    body.dark .grid-edu img{ border-color:#555; }
   </style>
 </head>
-<body>
+<body id="top">
 <header>
   <h1>Skills</h1>
   <nav>
@@ -73,6 +102,9 @@
     <a href="problem-solving.html">Problem Solving</a>
     <a href="contact.html">Contact</a>
   </nav>
+  <div style="margin-top:10px;">
+    <button id="darkToggle" class="btn ghost" onclick="toggleDark()">Enable Dark Mode</button>
+  </div>
 </header>
 
 <main class="wrap">
@@ -86,55 +118,91 @@
       <button class="btn" onclick="toggleSection('tech')">Technical Skills</button>
       <button class="btn ghost" onclick="expandAll()">Expand all</button>
       <button class="btn ghost" onclick="collapseAll()">Collapse all</button>
+      <button class="btn ghost" onclick="highlightStrong()">Highlight strengths</button>
     </div>
   </div>
 
   <!-- Certificates & Diplomas -->
   <section id="certs" class="card">
     <h2>🎓 Certificates & Diplomas <span class="tag">easy to scan</span></h2>
-    <table aria-label="Certificates and Diplomas">
+
+    <div class="filter">
+      <input id="qualSearch" type="text" placeholder="Search qualifications… (press F to focus)" oninput="filterQuals()" aria-label="Search qualifications" />
+      <button class="btn ghost" onclick="toggleDistinctions()">Show Distinctions only</button>
+    </div>
+
+    <table id="qualsTable" aria-label="Certificates and Diplomas">
       <thead>
         <tr>
-          <th>Qualification</th>
-          <th>Institution</th>
-          <th>Year</th>
+          <th data-col="0">Qualification</th>
+          <th data-col="1">Institution</th>
+          <th data-col="2">Year</th>
+          <th data-col="3">Grade</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Diploma in Business Management with Innovation & Technology</td>
+          <td>Diploma in Business Management with Innovation &amp; Technology</td>
           <td>University of Salford</td>
-          <td>2027 (Expected)</td>
+          <td>2024–2027 (Expected)</td>
+          <td>1:1 (Predicted)</td>
         </tr>
         <tr>
           <td>BTEC IT</td>
           <td>Holy Cross College</td>
+          <td>2017–2024</td>
           <td>Distinction</td>
         </tr>
         <tr>
           <td>BTEC Law</td>
           <td>Holy Cross College</td>
+          <td>2017–2024</td>
           <td>Distinction</td>
         </tr>
         <tr>
           <td>A-Level Criminology</td>
           <td>Holy Cross College</td>
-          <td>A</td>
+          <td>2017–2024</td>
+          <td>C</td>
         </tr>
         <tr>
           <td>Professional Footwear Fitting Qualification</td>
           <td>Clarks Training Centre</td>
+          <td>2023</td>
           <td>Completed</td>
         </tr>
       </tbody>
     </table>
+    <p class="muted" style="margin-top:6px;">Tip: click a column header to sort by that column.</p>
   </section>
 
   <!-- Education -->
   <section id="education" class="card">
     <h2>🏫 Education</h2>
-    <p><strong>University of Salford</strong> — Business Management with Innovation & Technology (2024–2027, Expected)</p>
-    <p class="muted">Relevant modules: Digital Transformation, Project Management, Business Analytics, UX Principles, Innovation Strategy.</p>
+
+    <div class="grid-edu" style="margin-bottom:14px;">
+      <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=600&auto=format&fit=crop" alt="University campus (illustrative)">
+      <div>
+        <p><strong>University of Salford</strong> — Business Management with Innovation &amp; Technology (2024–2027, Expected). Predicted grade: <strong>1:1</strong>.</p>
+        <p class="muted">Modules: Digital Transformation, Project Management, Business Analytics, UX Principles, Innovation Strategy.</p>
+        <a class="btn" href="https://www.salford.ac.uk" target="_blank" rel="noopener">Visit Salford University</a>
+      </div>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--line);margin:14px 0">
+
+    <div class="grid-edu">
+      <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=600&auto=format&fit=crop" alt="College building (illustrative)">
+      <div>
+        <p><strong>Holy Cross College</strong> — Sixth Form (2017–2024).</p>
+        <ul class="muted">
+          <li>A-Level Criminology — <strong>C</strong></li>
+          <li>BTEC Law — <strong>Distinction</strong></li>
+          <li>BTEC IT — <strong>Distinction</strong></li>
+        </ul>
+        <a class="btn" href="https://www.holycross.ac.uk" target="_blank" rel="noopener">Visit Holy Cross College</a>
+      </div>
+    </div>
   </section>
 
   <!-- Work Experience -->
@@ -142,7 +210,7 @@
     <h2>💼 Work Experience</h2>
     <div class="timeline">
       <article class="job">
-        <h3>Retail Assistant — Clarks</h3>
+        <h3>Retail Assistant — Clarks (2023)</h3>
         <ul>
           <li>Assisted customers with fittings, product selection and purchases; completed professional shoe-fitting certification.</li>
           <li>Handled transactions accurately; maintained visual standards and organised stock.</li>
@@ -154,7 +222,7 @@
         <ul>
           <li>Delivered excellent customer service and resolved enquiries professionally.</li>
           <li>Helped train new staff; assisted with inventory checks and loss-prevention tasks.</li>
-          <li>Proposed a simple loyalty idea that increased repeat visits.</li>
+          <li>Proposed a loyalty idea that increased repeat visits.</li>
         </ul>
       </article>
       <article class="job">
@@ -170,21 +238,21 @@
 
   <!-- Technical Skills with search + progress bars -->
   <section id="tech" class="card">
-    <h2>🛠️ Technical & Professional Skills</h2>
+    <h2>🛠️ Technical &amp; Professional Skills</h2>
     <div class="filter">
-      <input id="skillSearch" type="text" placeholder="Search skills…" oninput="filterSkills()" aria-label="Search skills" />
+      <input id="skillSearch" type="text" placeholder="Search skills… (press F to focus)" oninput="filterSkills()" aria-label="Search skills" />
       <button class="btn" onclick="clearSearch()">Clear</button>
     </div>
     <div class="skills-grid" id="skillsGrid">
-      <div class="skill" data-skill="customer service communication">
+      <div class="skill strong" data-skill="customer service communication">
         <strong>Customer Service</strong>
         <div class="bar"><span style="--to:90%"></span></div>
       </div>
-      <div class="skill" data-skill="communication teamwork">
+      <div class="skill strong" data-skill="communication teamwork">
         <strong>Communication</strong>
         <div class="bar"><span style="--to:88%"></span></div>
       </div>
-      <div class="skill" data-skill="teamwork leadership">
+      <div class="skill strong" data-skill="teamwork leadership">
         <strong>Teamwork</strong>
         <div class="bar"><span style="--to:85%"></span></div>
       </div>
@@ -220,7 +288,7 @@
     <h2>📄 Download CV</h2>
     <p>You can download my CV as a PDF below.</p>
     <div class="controls">
-      <a class="btn" href="assets/Fidak-Abbas-Batool-CV.pdf" download>Download CV (PDF)</a>
+      <a class="btn" id="downloadBtn" href="assets/Fidak-Abbas-Batool-CV.pdf" download>Download CV (PDF)</a>
       <button class="btn ghost" onclick="window.print()">Print this page</button>
     </div>
     <p class="muted">If the download doesn’t start, right-click the button and choose “Save link as…”.</p>
@@ -231,17 +299,67 @@
   © <span id="year"></span> Fidak Abbas Batool
 </footer>
 
+<button id="toTop" class="btn ghost" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+
+<!-- Confetti container -->
+<div id="confetti" class="confetti" aria-hidden="true"></div>
+
 <script>
   // Year stamp
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Show/Hide helpers
-  function toggleSection(id){
-    const el = document.getElementById(id);
-    el.classList.toggle('hidden');
+  // Dark mode
+  function toggleDark(){
+    document.body.classList.toggle('dark');
+    const t = document.getElementById('darkToggle');
+    t.textContent = document.body.classList.contains('dark') ? 'Disable Dark Mode' : 'Enable Dark Mode';
   }
+
+  // Show/Hide helpers
+  function toggleSection(id){ document.getElementById(id).classList.toggle('hidden'); }
   function expandAll(){['certs','education','experience','tech','download'].forEach(id=>document.getElementById(id).classList.remove('hidden'));}
   function collapseAll(){['certs','education','experience','tech','download'].forEach(id=>document.getElementById(id).classList.add('hidden'));}
+
+  // Keyboard shortcut: F focuses the skills search
+  document.addEventListener('keydown', e => { if(e.key.toLowerCase()==='f'){ const s=document.getElementById('skillSearch'); if(s){ s.focus(); s.select(); e.preventDefault(); }} });
+
+  // Table filter by text + distinctions
+  let showOnlyDistinctions = false;
+  function filterQuals(){
+    const q = document.getElementById('qualSearch').value.toLowerCase().trim();
+    Array.from(document.querySelectorAll('#qualsTable tbody tr')).forEach(tr=>{
+      const rowText = tr.textContent.toLowerCase();
+      const isDistinction = tr.children[3].textContent.toLowerCase().includes('distinction');
+      const match = rowText.includes(q) && (!showOnlyDistinctions || isDistinction);
+      tr.style.display = match ? '' : 'none';
+    });
+  }
+  function toggleDistinctions(){ showOnlyDistinctions = !showOnlyDistinctions; filterQuals(); }
+
+  // Click-to-sort table
+  (()=> {
+    const table = document.getElementById('qualsTable');
+    const headers = table.querySelectorAll('th');
+    let sortDir = 1, lastCol = -1;
+    headers.forEach((th, idx)=>{
+      th.addEventListener('click', ()=>{
+        const tbody = table.tBodies[0];
+        const rows = Array.from(tbody.querySelectorAll('tr')).filter(r=>r.style.display!=='none');
+        if(lastCol === idx) sortDir *= -1; else { sortDir = 1; lastCol = idx; }
+        rows.sort((a,b)=>{
+          const A = a.children[idx].textContent.trim().toLowerCase();
+          const B = b.children[idx].textContent.trim().toLowerCase();
+          if(idx === 2){ // YEAR
+            const numA = parseInt(A.replace(/[^0-9]/g,'')) || 0;
+            const numB = parseInt(B.replace(/[^0-9]/g,'')) || 0;
+            return (numA - numB) * sortDir;
+          }
+          return A.localeCompare(B) * sortDir;
+        });
+        rows.forEach(r=>tbody.appendChild(r));
+      });
+    });
+  })();
 
   // Skill search filter
   function filterSkills(){
@@ -252,10 +370,7 @@
       item.style.display = text.includes(q) ? '' : 'none';
     });
   }
-  function clearSearch(){
-    document.getElementById('skillSearch').value='';
-    filterSkills();
-  }
+  function clearSearch(){ document.getElementById('skillSearch').value=''; filterSkills(); }
 
   // Progress bar animation on load and on scroll
   function animateBars(){
@@ -271,6 +386,34 @@
   }
   window.addEventListener('scroll', animateBars);
   window.addEventListener('load', animateBars);
+
+  // Highlight strongest skills (bars marked .strong)
+  function highlightStrong(){ document.querySelectorAll('.skill.strong').forEach(s => s.classList.add('pulse')); setTimeout(()=>{document.querySelectorAll('.skill.strong').forEach(s=>s.classList.remove('pulse'));}, 3200); }
+
+  // Back-to-top visibility
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => { toTop.style.display = window.scrollY > 500 ? 'block' : 'none'; });
+
+  // CONFETTI (top burst) when clicking Download CV
+  const confettiWrap = document.getElementById('confetti');
+  function launchConfetti(){
+    const colors = ['#d4af37','#f4d66b','#ff7f50','#ffd27f','#c9a0dc'];
+    const pieces = 120;
+    for(let i=0;i<pieces;i++){
+      const p = document.createElement('i');
+      const size = 6 + Math.random()*8;
+      p.style.left = Math.random()*100 + '%';
+      p.style.background = colors[Math.floor(Math.random()*colors.length)];
+      p.style.transform = `translateY(-20px) rotate(${Math.random()*360}deg)`;
+      p.style.width = size + 'px';
+      p.style.height = (size+4) + 'px';
+      p.style.animation = `fall ${2 + Math.random()*1.8}s ease-out forwards`;
+      confettiWrap.appendChild(p);
+      setTimeout(()=>p.remove(), 4000);
+    }
+    setTimeout(()=>{ confettiWrap.innerHTML=''; }, 4200);
+  }
+  document.getElementById('downloadBtn').addEventListener('click', launchConfetti);
 </script>
 </body>
 </html>
