@@ -12,7 +12,7 @@
       --line:#d1bfa5;        /* borders */
       --accent:#b69377;      /* buttons */
       --accent-2:#8c6f5a;    /* hover */
-      --gold: #d4af37;       /* cute gold accent */
+      --gold:#d4af37;        /* cute gold accent */
     }
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
@@ -30,12 +30,6 @@
     .card h2{margin:6px 0 12px;display:flex;align-items:center;gap:10px}
     .tag{display:inline-block;background:#f1e2cf;border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:12px;margin-left:auto}
 
-    /* Buttons */
-    .controls{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 6px}
-    .btn,.btn:link,.btn:visited{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 12px;cursor:pointer}
-    .btn:hover{background:var(--accent-2)}
-    .ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-
     /* Table */
     table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden}
     th,td{border:1px solid var(--line);padding:10px 12px;text-align:left}
@@ -48,17 +42,22 @@
     .job ul{margin:6px 0 0 18px}
     .job li{margin:4px 0}
 
-    /* Cute skill pills + progress */
+    /* Skills grid + progress */
     .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px}
     .skill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
     .bar{height:8px;background:#ead8c0;border-radius:6px;overflow:hidden;margin-top:8px}
     .bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#f4d66b);transition:width 1s ease}
 
-    /* Filters */
+    /* Filters + buttons */
     .filter{display:flex;gap:10px;align-items:center;margin-top:8px}
     .filter input{padding:8px 10px;border:1px solid var(--line);border-radius:8px;flex:1}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 6px}
+    .btn,.btn:link,.btn:visited{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 12px;cursor:pointer;text-decoration:none;display:inline-block}
+    .btn:hover{background:var(--accent-2)}
+    .ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 
     .hidden{display:none}
+    .muted{opacity:.85}
 
     footer{text-align:center;color:#6b5b4b;padding:24px}
     @media (max-width:640px){ th,td{font-size:14px} }
@@ -92,7 +91,7 @@
 
   <!-- Certificates & Diplomas -->
   <section id="certs" class="card">
-    <h2>🎓 Certificates & Diplomas <span class="tag">easy to read</span></h2>
+    <h2>🎓 Certificates & Diplomas <span class="tag">easy to scan</span></h2>
     <table aria-label="Certificates and Diplomas">
       <thead>
         <tr>
@@ -118,7 +117,7 @@
           <td>Distinction</td>
         </tr>
         <tr>
-          <td>A‑Level Criminology</td>
+          <td>A-Level Criminology</td>
           <td>Holy Cross College</td>
           <td>A</td>
         </tr>
@@ -145,7 +144,7 @@
       <article class="job">
         <h3>Retail Assistant — Clarks</h3>
         <ul>
-          <li>Assisted customers with fittings, product selection and purchases; completed professional shoe‑fitting certification.</li>
+          <li>Assisted customers with fittings, product selection and purchases; completed professional shoe-fitting certification.</li>
           <li>Handled transactions accurately; maintained visual standards and organised stock.</li>
           <li>Supported team sales targets and explained product benefits with confidence.</li>
         </ul>
@@ -154,14 +153,14 @@
         <h3>Retail Assistant — Bury Market</h3>
         <ul>
           <li>Delivered excellent customer service and resolved enquiries professionally.</li>
-          <li>Helped train new staff; assisted with inventory checks and loss‑prevention tasks.</li>
+          <li>Helped train new staff; assisted with inventory checks and loss-prevention tasks.</li>
           <li>Proposed a simple loyalty idea that increased repeat visits.</li>
         </ul>
       </article>
       <article class="job">
         <h3>Front of House — Roccos Dessert</h3>
         <ul>
-          <li>Worked in a fast‑paced environment; coordinated multiple orders and requests.</li>
+          <li>Worked in a fast-paced environment; coordinated multiple orders and requests.</li>
           <li>Maintained hygiene standards and collaborated with kitchen to ensure accuracy and speed.</li>
           <li>Resolved customer issues and upsold through strong menu knowledge.</li>
         </ul>
@@ -215,6 +214,7 @@
       </div>
     </div>
   </section>
+
   <!-- Download CV -->
   <section id="download" class="card">
     <h2>📄 Download CV</h2>
@@ -223,7 +223,7 @@
       <a class="btn" href="assets/Fidak-Abbas-Batool-CV.pdf" download>Download CV (PDF)</a>
       <button class="btn ghost" onclick="window.print()">Print this page</button>
     </div>
-    <p class="muted">If the download doesn’t start, right‑click the button and choose “Save link as…”.</p>
+    <p class="muted">If the download doesn’t start, right-click the button and choose “Save link as…”.</p>
   </section>
 </main>
 
@@ -240,8 +240,8 @@
     const el = document.getElementById(id);
     el.classList.toggle('hidden');
   }
-  function expandAll(){['certs','education','experience','tech'].forEach(id=>document.getElementById(id).classList.remove('hidden'));}
-  function collapseAll(){['certs','education','experience','tech'].forEach(id=>document.getElementById(id).classList.add('hidden'));}
+  function expandAll(){['certs','education','experience','tech','download'].forEach(id=>document.getElementById(id).classList.remove('hidden'));}
+  function collapseAll(){['certs','education','experience','tech','download'].forEach(id=>document.getElementById(id).classList.add('hidden'));}
 
   // Skill search filter
   function filterSkills(){
@@ -274,3 +274,4 @@
 </script>
 </body>
 </html>
+
