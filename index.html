@@ -1,249 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fidak Abbas Batool | Home</title>
-  <link rel="stylesheet" href="assets/style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5e9d5;
-      color: #4a3f35;
-    }
-
-    header {
-      background-color: #f2dbc4;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #d1bfa5;
-    }
-
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #444;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #000;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .hero img {
-      max-width: 200px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .section {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .card {
-      background-color: #fff8efs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .card {
-      background-color: #fff8ef;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .interactive-button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-
-    .interactive-button:hover {
-      background-color: #444;
-    }
-    /* Gold glow effect on cards */
-  .card {
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
-  .card:hover {
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-      transform: scale(1.02);
-  }
-
-  /* Gold glow on buttons */
-  button:hover {
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
-  }
-
-  </style>
-
-    <style>
-        /* Dark Mode Styling */
-        body.dark-mode {
-            background-color: #2b2b2b;
-            color: #ffffff;
-        }
-
-        body.dark-mode header {
-            background-color: #3a3a3a;
-            color: #fff;
-        }
-
-        body.dark-mode .card {
-            background-color: #4a4a4a;
-            border-color: #666;
-        }
-
-        /* Hover effect animations */
-        .card:hover {
-            transform: scale(1.02);
-            transition: 0.3s ease;
-            box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
-        }
-
-        button:hover {
-            transform: scale(1.05);
-            transition: 0.2s ease;
-        }
-
-        /* Smooth fade-in animations for each section */
-        section {
-            opacity: 0;
-            animation: fadein 1s forwards;
-        }
-
-        @keyframes fadein {
-            from {opacity: 0; transform: translateY(20px);} 
-            to {opacity: 1; transform: translateY(0);} 
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fidak Abbas Batool | Home</title>
+<link rel="stylesheet" href="assets/style.css" />
+<style>
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5e9d5;
+    color: #4a3f35;
+}
+header {
+    background-color: #f2dbc4;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #d1bfa5;
+}
+nav a {
+    margin: 0 10px;
+    color: #4a3f35;
+    font-weight: bold;
+    text-decoration: none;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+.section-card {
+    background-color: #fff8ef;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 900px;
+    border-radius: 10px;
+    border: 1px solid #d1bfa5;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.section-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+.section-image {
+    width: 100%;
+    border-radius: 8px;
+}
+.small-image {
+    width: 150px;
+    display: block;
+    margin: 15px auto;
+}
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #b69377;
+    color: #fff;
+    cursor: pointer;
+}
+button:hover {
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+body.dark-mode {
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+body.dark-mode .section-card {
+    background-color: #4a4a4a;
+    border-color: #777;
+}
+</style>
 </head>
+
 <body>
-  <header>
+
+<header>
     <h1>Fidak Abbas Batool</h1>
+    <p id="type-text"></p>
+
     <nav>
-      <a href="index.html">Home</a>
-      <a href="skills.html">Skills</a>
-      <a href="showcase.html">Business Showcase</a>
-      <a href="problem-solving.html">Problem Solving</a>
-      <a href="contact.html">Contact</a>
+        <a href="#summary">Home</a>
+        <a href="#interests">Interests</a>
+        <a href="#goals">Goals</a>
+        <a href="skills.html">Skills</a>
+        <a href="business.html">Business Showcase</a>
+        <a href="problem.html">Problem Solving</a>
+        <a href="contact.html">Contact</a>
     </nav>
-  </header>
 
-    <!-- Dark Mode Toggle -->
-    <div style="text-align:center; padding:10px;">
-        <button id="darkToggle" onclick="toggleDarkMode()">Enable Dark Mode</button>
-    </div>
+    <button id="darkToggle" onclick="toggleDarkMode()">Enable Dark Mode</button>
+</header>
 
-  <section class="hero">
-    <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United Logo" />
-    <h2>Dedicated Business Management Student with a Passion for Innovation & Technology</h2>
+<section id="summary" class="section-card">
+    <h2>Professional Summary</h2>
     <p>
-      I am a dedicated Business Management with Innovation and Technology student, aspiring to become a project manager in the digital world. I am driven by the desire to help businesses transform through strategic planning, digital tools, and efficient project execution. My academic journey has allowed me to understand modern business models, agile methodologies and user‑centred problem‑solving.
+        I am a dedicated Business Management with Innovation and Technology student with a passion for digital transformation, strategic thinking and modern business development. My experience at Clarks allowed me to develop valuable customer service skills, handle financial transactions confidently, and work efficiently with children and families. These experiences strengthened my communication, teamwork, and problem-solving skills.
     </p>
+    <img class="section-image" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="IT Project Management" />
+</section>
+
+<section id="interests" class="section-card">
+    <h2>Interests</h2>
     <p>
-      My long‑term ambition is to lead digital transformation projects that make organisations more connected, efficient, and customer‑focused.
+        I’m a huge football fan and proudly support Manchester United. I love travelling, exploring new cultures, and learning how global businesses operate. I enjoy helping others and contributing positively to the people around me.
     </p>
-    <button class="interactive-button" onclick="showMessage()">Click Me!</button>
-    <p id="message"></p>
-  </section>
+    <img class="small-image" src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United Logo" />
+</section>
 
-  <section class="section">
-    <h2>Career Background</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Customer Service Experience at Clarks</h3>
-        <p>
-          Working at Clarks strengthened my communication skills and taught me the importance of customer care. I regularly assisted families and young children, ensuring they had a comfortable and positive shopping experience. Through measuring children’s feet, helping them choose the right sizes and styles, and addressing their needs calmly, I learned patience and professionalism.
-        </p>
-        <p>
-          I also handled payments, refunds, and store transactions, which built my confidence in money handling, accuracy, and responsibility. This experience helped shape my ability to solve problems quickly and deal with high‑pressure situations.
-        </p>
-      </div>
+<section id="goals" class="section-card">
+    <h2>Future Goals</h2>
+    <p>
+        My long-term ambition is to become a digital project manager, leading innovative technology-based transformation projects that help organisations become more efficient, customer-focused, and future-ready.
+    </p>
+    <img class="section-image" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Career goals" />
+</section>
 
-      <div class="card">
-        <h3>Interests & Hobbies</h3>
-        <p>
-          Outside academics, I enjoy staying active and keeping my mind refreshed through sports. As a proud Manchester United supporter, following matches and analysing team strategies has helped me understand teamwork, leadership, and performance improvement.
-        </p>
-        <p>
-          I love travelling and experiencing new cultures, as well as helping others — both of which inspire me to stay open‑minded and empathetic, qualities that are essential in modern project management.
-        </p>
-      </div>
-    </div>
-  </section>
+<section class="section-card">
+    <h2>Interactive Feature</h2>
+    <p>Click to reveal a fun fact!</p>
+    <button onclick="showFact()">Click Me!</button>
+    <p id="fact-text" style="display:none; font-weight:bold;">I once attended a Manchester United match at Old Trafford!</p>
+</section>
 
-  <footer style="text-align:center; padding:20px; color:#555;">
-    © 2024 Fidak Abbas Batool. All rights reserved.
-  </footer>
+<script>
+function showFact() {
+    document.getElementById("fact-text").style.display = "block";
+}
 
-  <script>
-    function showMessage() {
-      document.getElementById("message").textContent = "Thank you for visiting my page! 🚀";
-    }
-  function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const btn = document.getElementById('darkToggle');
-            btn.textContent = document.body.classList.contains('dark-mode') ? 'Disable Dark Mode' : 'Enable Dark Mode';
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    const btn = document.getElementById("darkToggle");
+    btn.textContent = document.body.classList.contains("dark-mode") ? "Disable Dark Mode" : "Enable Dark Mode";
+}
+
+const clickSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_14a7e8afbf.mp3?filename=click-124467.mp3");
+document.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => clickSound.play());
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const text = "Business Management with Innovation & Technology Student";
+    const target = document.getElementById("type-text");
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            target.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, 50);
         }
-
-        // Typing Effect for Header
-        document.addEventListener('DOMContentLoaded', function() {
-            const text = 'Business Management with Innovation & Technology Student';
-            const header = document.querySelector('header p');
-            header.textContent = '';
-            let index = 0;
-            function type() {
-                if (index < text.length) {
-                    header.textContent += text.charAt(index);
-                    index++;
-                    setTimeout(type, 50);
-                }
-            }
-            type();
-        });
-        /* Smooth Scroll */
-    document.documentElement.style.scrollBehavior = 'smooth';
-
-    /* Subtle button click sound */
-    const clickSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_14a7e8afbf.mp3?filename=click-124467.mp3');
-
-    document.querySelectorAll('button').forEach(btn => {
-        btn.addEventListener('click', () => clickSound.play());
-    });
-
-    /* Floating decorative icon */
-    const icon = document.createElement('div');
-    icon.textContent = '⚙️';
-    icon.style.position = 'fixed';
-    icon.style.bottom = '20px';
-    icon.style.right = '20px';
-    icon.style.opacity = '0.2';
-    icon.style.fontSize = '40px';
-    icon.style.pointerEvents = 'none';
-    document.body.appendChild(icon);
-
-</
+    }
+    type();
+});
+</script>
 
 </body>
 </html>
-
