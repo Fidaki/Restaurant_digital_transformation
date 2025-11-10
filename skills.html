@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills • Fidak Abbas Batool</title>
+  <style>
+    :root{
+      --bg:#f5e9d5;          /* beige background */
+      --card:#fff8ef;        /* light card */
+      --ink:#4a3f35;         /* text */
+      --line:#d1bfa5;        /* borders */
+      --accent:#b69377;      /* buttons */
+      --accent-2:#8c6f5a;    /* hover */
+      --gold: #d4af37;       /* cute gold accent */
+    }
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+
+    /* Header + Nav */
+    header{background:#f2dbc4;border-bottom:1px solid var(--line);text-align:center;padding:18px}
+    header h1{margin:6px 0 10px}
+    nav a{color:var(--ink);text-decoration:none;font-weight:700;margin:0 12px}
+    nav a:hover{text-decoration:underline}
+
+    /* Layout */
+    .wrap{max-width:1100px;margin:28px auto;padding:0 16px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 20px 16px;box-shadow:0 6px 16px rgba(0,0,0,.06);margin-bottom:18px;transition:.2s ease}
+    .card:hover{box-shadow:0 10px 22px rgba(0,0,0,.08)}
+    .card h2{margin:6px 0 12px;display:flex;align-items:center;gap:10px}
+    .tag{display:inline-block;background:#f1e2cf;border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:12px;margin-left:auto}
+
+    /* Buttons */
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 6px}
+    .btn,.btn:link,.btn:visited{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 12px;cursor:pointer}
+    .btn:hover{background:var(--accent-2)}
+    .ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+
+    /* Table */
+    table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden}
+    th,td{border:1px solid var(--line);padding:10px 12px;text-align:left}
+    th{background:#f1e2cf}
+
+    /* Timeline */
+    .timeline{display:grid;gap:12px}
+    .job{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+    .job h3{margin:0 0 6px}
+    .job ul{margin:6px 0 0 18px}
+    .job li{margin:4px 0}
+
+    /* Cute skill pills + progress */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px}
+    .skill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
+    .bar{height:8px;background:#ead8c0;border-radius:6px;overflow:hidden;margin-top:8px}
+    .bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#f4d66b);transition:width 1s ease}
+
+    /* Filters */
+    .filter{display:flex;gap:10px;align-items:center;margin-top:8px}
+    .filter input{padding:8px 10px;border:1px solid var(--line);border-radius:8px;flex:1}
+
+    .hidden{display:none}
+
+    footer{text-align:center;color:#6b5b4b;padding:24px}
+    @media (max-width:640px){ th,td{font-size:14px} }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Skills</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="showcase.html">Business Showcase</a>
+    <a href="problem-solving.html">Problem Solving</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <!-- Quick Controls -->
+  <div class="card">
+    <strong>Quick View</strong>
+    <div class="controls">
+      <button class="btn" onclick="toggleSection('certs')">Certificates</button>
+      <button class="btn" onclick="toggleSection('education')">Education</button>
+      <button class="btn" onclick="toggleSection('experience')">Work Experience</button>
+      <button class="btn" onclick="toggleSection('tech')">Technical Skills</button>
+      <button class="btn ghost" onclick="expandAll()">Expand all</button>
+      <button class="btn ghost" onclick="collapseAll()">Collapse all</button>
+    </div>
+  </div>
+
+  <!-- Certificates & Diplomas -->
+  <section id="certs" class="card">
+    <h2>🎓 Certificates & Diplomas <span class="tag">easy to read</span></h2>
+    <table aria-label="Certificates and Diplomas">
+      <thead>
+        <tr>
+          <th>Qualification</th>
+          <th>Institution</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Diploma in Business Management with Innovation & Technology</td>
+          <td>University of Salford</td>
+          <td>2027 (Expected)</td>
+        </tr>
+        <tr>
+          <td>BTEC IT</td>
+          <td>Holy Cross College</td>
+          <td>Distinction</td>
+        </tr>
+        <tr>
+          <td>BTEC Law</td>
+          <td>Holy Cross College</td>
+          <td>Distinction</td>
+        </tr>
+        <tr>
+          <td>A‑Level Criminology</td>
+          <td>Holy Cross College</td>
+          <td>A</td>
+        </tr>
+        <tr>
+          <td>Professional Footwear Fitting Qualification</td>
+          <td>Clarks Training Centre</td>
+          <td>Completed</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="card">
+    <h2>🏫 Education</h2>
+    <p><strong>University of Salford</strong> — Business Management with Innovation & Technology (2024–2027, Expected)</p>
+    <p class="muted">Relevant modules: Digital Transformation, Project Management, Business Analytics, UX Principles, Innovation Strategy.</p>
+  </section>
+
+  <!-- Work Experience -->
+  <section id="experience" class="card">
+    <h2>💼 Work Experience</h2>
+    <div class="timeline">
+      <article class="job">
+        <h3>Retail Assistant — Clarks</h3>
+        <ul>
+          <li>Assisted customers with fittings, product selection and purchases; completed professional shoe‑fitting certification.</li>
+          <li>Handled transactions accurately; maintained visual standards and organised stock.</li>
+          <li>Supported team sales targets and explained product benefits with confidence.</li>
+        </ul>
+      </article>
+      <article class="job">
+        <h3>Retail Assistant — Bury Market</h3>
+        <ul>
+          <li>Delivered excellent customer service and resolved enquiries professionally.</li>
+          <li>Helped train new staff; assisted with inventory checks and loss‑prevention tasks.</li>
+          <li>Proposed a simple loyalty idea that increased repeat visits.</li>
+        </ul>
+      </article>
+      <article class="job">
+        <h3>Front of House — Roccos Dessert</h3>
+        <ul>
+          <li>Worked in a fast‑paced environment; coordinated multiple orders and requests.</li>
+          <li>Maintained hygiene standards and collaborated with kitchen to ensure accuracy and speed.</li>
+          <li>Resolved customer issues and upsold through strong menu knowledge.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Technical Skills with search + progress bars -->
+  <section id="tech" class="card">
+    <h2>🛠️ Technical & Professional Skills</h2>
+    <div class="filter">
+      <input id="skillSearch" type="text" placeholder="Search skills…" oninput="filterSkills()" aria-label="Search skills" />
+      <button class="btn" onclick="clearSearch()">Clear</button>
+    </div>
+    <div class="skills-grid" id="skillsGrid">
+      <div class="skill" data-skill="customer service communication">
+        <strong>Customer Service</strong>
+        <div class="bar"><span style="--to:90%"></span></div>
+      </div>
+      <div class="skill" data-skill="communication teamwork">
+        <strong>Communication</strong>
+        <div class="bar"><span style="--to:88%"></span></div>
+      </div>
+      <div class="skill" data-skill="teamwork leadership">
+        <strong>Teamwork</strong>
+        <div class="bar"><span style="--to:85%"></span></div>
+      </div>
+      <div class="skill" data-skill="time management multitasking">
+        <strong>Time Management</strong>
+        <div class="bar"><span style="--to:82%"></span></div>
+      </div>
+      <div class="skill" data-skill="it digital microsoft">
+        <strong>IT Skills</strong>
+        <div class="bar"><span style="--to:80%"></span></div>
+      </div>
+      <div class="skill" data-skill="cash handling accuracy retail">
+        <strong>Cash Handling</strong>
+        <div class="bar"><span style="--to:84%"></span></div>
+      </div>
+      <div class="skill" data-skill="problem solving analysis">
+        <strong>Problem Solving</strong>
+        <div class="bar"><span style="--to:83%"></span></div>
+      </div>
+      <div class="skill" data-skill="leadership initiative">
+        <strong>Leadership</strong>
+        <div class="bar"><span style="--to:78%"></span></div>
+      </div>
+      <div class="skill" data-skill="inventory stock management retail">
+        <strong>Inventory Management</strong>
+        <div class="bar"><span style="--to:76%"></span></div>
+      </div>
+    </div>
+  </section>
+  <!-- Download CV -->
+  <section id="download" class="card">
+    <h2>📄 Download CV</h2>
+    <p>You can download my CV as a PDF below.</p>
+    <div class="controls">
+      <a class="btn" href="assets/Fidak-Abbas-Batool-CV.pdf" download>Download CV (PDF)</a>
+      <button class="btn ghost" onclick="window.print()">Print this page</button>
+    </div>
+    <p class="muted">If the download doesn’t start, right‑click the button and choose “Save link as…”.</p>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Fidak Abbas Batool
+</footer>
+
+<script>
+  // Year stamp
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Show/Hide helpers
+  function toggleSection(id){
+    const el = document.getElementById(id);
+    el.classList.toggle('hidden');
+  }
+  function expandAll(){['certs','education','experience','tech'].forEach(id=>document.getElementById(id).classList.remove('hidden'));}
+  function collapseAll(){['certs','education','experience','tech'].forEach(id=>document.getElementById(id).classList.add('hidden'));}
+
+  // Skill search filter
+  function filterSkills(){
+    const q = document.getElementById('skillSearch').value.toLowerCase().trim();
+    const items = document.querySelectorAll('#skillsGrid .skill');
+    items.forEach(item=>{
+      const text = (item.textContent + ' ' + item.getAttribute('data-skill')).toLowerCase();
+      item.style.display = text.includes(q) ? '' : 'none';
+    });
+  }
+  function clearSearch(){
+    document.getElementById('skillSearch').value='';
+    filterSkills();
+  }
+
+  // Progress bar animation on load and on scroll
+  function animateBars(){
+    const bars = document.querySelectorAll('.bar>span');
+    bars.forEach(span=>{
+      const rect = span.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if(inView && !span.dataset.done){
+        span.style.width = span.style.getPropertyValue('--to') || '80%';
+        span.dataset.done = '1';
+      }
+    });
+  }
+  window.addEventListener('scroll', animateBars);
+  window.addEventListener('load', animateBars);
+</script>
+</body>
+</html>
