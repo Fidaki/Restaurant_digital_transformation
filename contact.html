@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact | Fidak Abbas Batool</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5e9d5;
+        color: #4a3f35;
+    }
+
+    header {
+        background-color: #f2dbc4;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 1px solid #d1bfa5;
+    }
+
+    nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #444;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #000;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .card {
+        background: #fff8ef;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        transition: 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 18px rgba(212, 175, 55, 0.6);
+    }
+
+    .details-group p {
+        font-size: 18px;
+        margin: 12px 0;
+    }
+
+    .details-group img {
+        width: 22px;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 13px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: 1px solid #c9b7a3;
+        background: #fff;
+    }
+
+    .contact-form textarea {
+        height: 120px;
+        resize: none;
+    }
+
+    .contact-form button {
+        padding: 12px 25px;
+        background: #000;
+        color: #fff;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .contact-form button:hover {
+        box-shadow: 0 0 14px rgba(212, 175, 55, 0.6);
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+        background-color: #2b2b2b;
+        color: #ffffff;
+    }
+    body.dark-mode header {
+        background-color: #3a3a3a;
+    }
+    body.dark-mode .card {
+        background: #4a4a4a;
+        color: #fff;
+    }
+    body.dark-mode input,
+    body.dark-mode textarea {
+        background: #555;
+        color: #fff;
+        border: 1px solid #777;
+    }
+
+    /* AI Chatbot Button */
+    #chatbot-btn {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #4a3f35;
+        color: white;
+        padding: 12px;
+        border-radius: 50%;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        transition: 0.3s;
+    }
+    #chatbot-btn:hover {
+        transform: scale(1.05);
+    }
+
+    /* Chat Window */
+    #chat-window {
+        display: none;
+        position: fixed;
+        bottom: 90px;
+        right: 25px;
+        width: 320px;
+        height: 380px;
+        background: #fff8ef;
+        border-radius: 14px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        padding: 15px;
+        overflow-y: auto;
+    }
+
+    #chat-window.dark {
+        background: #333;
+        color: #fff;
+    }
+
+    #chat-input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #c9b7a3;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Contact Me</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="showcase.html">Business Showcase</a>
+      <a href="problem-solving.html">Problem Solving</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<div style="text-align:center; padding:10px;">
+    <button onclick="toggleDarkMode()">Enable Dark Mode</button>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>📞 Contact Details</h2>
+        <div class="details-group">
+            <p><img src="https://cdn-icons-png.flaticon.com/512/724/724664.png"> Phone: 07543678654</p>
+            <p><img src="https://cdn-icons-png.flaticon.com/512/542/542638.png"> Email: <strong>f.b@gmail.com</strong></p>
+            <p><img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"> 
+                LinkedIn:
+                <a href="https://www.linkedin.com/in/fidak-batool-1365a8293" target="_blank">
+                    Visit Profile
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📬 Contact Form</h2>
+        <form class="contact-form" onsubmit="generateEmail(event)">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" id="address" placeholder="Your Address" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="text" id="phone" placeholder="Your Phone Number" required>
+            <textarea id="enquiry" placeholder="Enter your enquiry here..." required></textarea>
+            <button type="submit">Send Enquiry</button>
+        </form>
+
+        <p id="email-output"></p>
+    </div>
+
+</div>
+
+<!-- Chatbot -->
+<div id="chatbot-btn" onclick="toggleChat()">💬</div>
+
+<div id="chat-window">
+    <h3>AI Assistant</h3>
+    <div id="chat-log">Hello! How can I assist you today? 😊</div>
+    <input type="text" id="chat-input" placeholder="Type here..." onkeypress="handleChat(event)">
+</div>
+
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    document.getElementById("chat-window").classList.toggle("dark");
+}
+
+function generateEmail(event) {
+    event.preventDefault();
+    let name = document.getElementById("name").value;
+    let address = document.getElementById("address").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let enquiry = document.getElementById("enquiry").value;
+
+    let message = `
+Email preview generated ✅
+
+Name: ${name}
+Address: ${address}
+Email: ${email}
+Phone: ${phone}
+
+Enquiry:
+${enquiry}
+    `;
+
+    alert("Your enquiry has been generated successfully!");
+    document.getElementById("email-output").innerText = message;
+}
+
+function toggleChat() {
+    let chat = document.getElementById("chat-window");
+    chat.style.display = chat.style.display === "block" ? "none" : "block";
+}
+
+function handleChat(event) {
+    if (event.key === "Enter") {
+        let userMsg = event.target.value;
+        if (userMsg.trim() === "") return;
+
+        let log = document.getElementById("chat-log");
+        log.innerHTML += `<br><strong>You:</strong> ${userMsg}`;
+
+        // Simple AI response simulation
+        setTimeout(() => {
+            log.innerHTML += `<br><strong>AI:</strong> I have received: "${userMsg}". How else can I help?`;
+        }, 600);
+
+        event.target.value = "";
+    }
+}
+</script>
+
+</body>
+</html>
