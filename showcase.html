@@ -56,7 +56,6 @@
       box-shadow:0 10px 24px rgba(0,0,0,.12);
     }
 
-    /* floating sparkle */
     .sparkle{
       position:absolute;
       top:10px;
@@ -130,7 +129,6 @@
       }
     }
 
-    /* collapsible details */
     .project-details{
       max-height:0;
       overflow:hidden;
@@ -176,7 +174,6 @@
       background:#f7ebd7;
     }
 
-    /* Project 2 mockup wireframe effect */
     .mockup{
       position:relative;
       overflow:hidden;
@@ -198,7 +195,6 @@
       border-radius:999px;
     }
 
-    /* Project 3 stats */
     .stats{
       display:flex;
       flex-wrap:wrap;
@@ -227,7 +223,6 @@
       font-size:13px;
     }
 
-    /* progress bars */
     .progress-wrap{
       margin-top:12px;
     }
@@ -253,7 +248,6 @@
       transition:width .6s ease;
     }
 
-    /* scroll reveal */
     .reveal{
       opacity:0;
       transform:translateY(20px);
@@ -264,7 +258,6 @@
       transform:translateY(0);
     }
 
-    /* AI helper tooltip */
     .ai-icon{
       width:18px;
       height:18px;
@@ -296,7 +289,6 @@
       display:block;
     }
 
-    /* timeline */
     .timeline{
       position:relative;
       padding-left:24px;
@@ -328,7 +320,6 @@
       background:var(--accent);
     }
 
-    /* lightbox */
     #lightbox{
       position:fixed;
       inset:0;
@@ -353,7 +344,6 @@
       cursor:pointer;
     }
 
-    /* Dark mode */
     body.dark{
       --bg:#222;
       --card:#333;
@@ -372,6 +362,7 @@
     body.dark .ai-tip{background:#333;border-color:#555}
   </style>
 </head>
+
 <body>
 <header>
   <h1>Business Showcase</h1>
@@ -390,7 +381,6 @@
 
 <main class="wrap">
 
-  <!-- Intro -->
   <section class="card reveal">
     <div class="sparkle">✨</div>
     <h2 class="section-title">
@@ -398,300 +388,171 @@
       <span class="pill">Three key projects</span>
       <span class="ai-icon">?
         <span class="ai-tip">
-          This page is designed to show how I approach real projects, from research to outcome, and how I apply digital thinking.
+          This page shows how I approach research, digital work and real customer-focused projects.
         </span>
       </span>
     </h2>
     <p>
-      This page showcases three projects that relate to digital business and problem solving. 
-      Each project explains my role, the problem that was addressed and the final outcome. 
-      The third project links directly to the design of my Problem Solving page for West Ivy in Bury.
+      This page includes three digital-focused projects I have completed in work, college and web development.  
+      Each one explains the problem, my role and the outcome.  
+      My final project also explains the design choices behind my Problem-Solving Page.
     </p>
   </section>
 
-  <!-- Project 1: Roccos Dessert -->
+  <!-- Project 1 -->
   <section class="card reveal" id="project1">
     <div class="sparkle">🍰</div>
     <div class="section-title">
       <h2 style="margin:0;">Roccos Dessert vegan and allergy friendly menu</h2>
       <span class="pill">Hospitality and customer experience</span>
-      <span class="ai-icon">?
-        <span class="ai-tip">
-          Focus on customers with allergies and preferences. This project shows how I used research to design a safer menu.
-        </span>
-      </span>
     </div>
+
     <div class="project-layout">
       <div>
         <p>
-          At Roccos Dessert I contributed to a project that focused on designing a new vegan and plant based menu 
-          for customers with allergies and specific dietary preferences. 
-          The main aim was to create desserts that were nut free, dairy free and fully vegan 
-          without losing the indulgent feeling that Roccos is known for.
+          At Roccos Dessert I helped develop a new vegan and allergy-friendly dessert menu.  
+          The goal was to create desserts that were nut-free, dairy-free and suitable for people with allergies  
+          while still tasting like classic Roccos desserts.
         </p>
 
         <button class="btn ghost read-more" data-target="details1">Read more</button>
 
         <div id="details1" class="project-details">
           <p>
-            My role focused on research and feasibility. I gathered informal feedback from regular customers, 
-            reviewed common allergy requests and looked at trends in plant based desserts. 
-            I compared ingredients such as oat based cream, coconut milk, dairy free chocolate and gluten free bases 
-            and discussed with the kitchen which options were realistic for production and storage.
+            I researched allergy trends, vegan options and customer feedback.  
+            I tested dairy-free alternatives like oat cream, coconut milk and vegan chocolate  
+            and shared findings with the kitchen team.
           </p>
           <p>
-            Working with the team, I helped refine a small but focused menu that made the choice clear for customers with dietary needs. 
-            The result was a dedicated vegan and allergy friendly section that increased choice and made the menu feel more inclusive. 
-            Staff found it easier to recommend safe options and customers with allergies felt more confident when ordering.
+            The outcome was a separate menu section that made ordering easier and safer  
+            for customers with specific dietary needs.
           </p>
 
-          <h3 style="margin-top:12px;">Example mini menu</h3>
+          <h3>Example mini menu</h3>
           <table>
             <thead>
-              <tr>
-                <th>Dessert</th>
-                <th>Description</th>
-                <th>Suitable for</th>
-              </tr>
+              <tr><th>Dessert</th><th>Description</th><th>Suitable for</th></tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Coconut Cream Brownie</td>
-                <td>Rich dark chocolate brownie served warm with whipped coconut cream.</td>
-                <td>Vegan, dairy free</td>
-              </tr>
-              <tr>
-                <td>Plant Based Lotus Cheesecake</td>
-                <td>Lotus biscuit base with a smooth oat based cheesecake layer.</td>
-                <td>Vegan, egg free</td>
-              </tr>
-              <tr>
-                <td>Nut Free Fudge Sundae</td>
-                <td>Layers of chocolate ice cream, vegan fudge sauce and cookie crumble with no nuts.</td>
-                <td>Nut free, vegetarian</td>
-              </tr>
-              <tr>
-                <td>Berry Chia Pot</td>
-                <td>Chia seed pudding with berry compote and fresh fruit.</td>
-                <td>Vegan, dairy free, gluten free</td>
-              </tr>
+              <tr><td>Coconut Cream Brownie</td><td>Warm brownie with coconut cream</td><td>Vegan, dairy-free</td></tr>
+              <tr><td>Plant-Based Lotus Cheesecake</td><td>Oat-based cream cheese filling</td><td>Vegan</td></tr>
+              <tr><td>Nut-Free Fudge Sundae</td><td>Chocolate fudge with cookie crumble</td><td>Nut-free</td></tr>
+              <tr><td>Berry Chia Pot</td><td>Chia pudding + berry compote</td><td>Vegan, gluten-free</td></tr>
             </tbody>
           </table>
 
           <div class="progress-wrap">
             <div class="progress-row">
-              <span>Research depth</span>
-              <div class="bar"><div class="bar-fill" data-width="90"></div></div>
+              <span>Research depth</span><div class="bar"><div class="bar-fill" data-width="90"></div></div>
             </div>
             <div class="progress-row">
-              <span>Customer impact</span>
-              <div class="bar"><div class="bar-fill" data-width="85"></div></div>
+              <span>Customer impact</span><div class="bar"><div class="bar-fill" data-width="85"></div></div>
             </div>
-            <div class="progress-row">
-              <span>Menu innovation</span>
-              <div class="bar"><div class="bar-fill" data-width="80"></div></div>
-            </div>
-          </div>
-
-          <div class="tag-row">
-            <span class="tag">Allergy awareness</span>
-            <span class="tag">Menu design</span>
-            <span class="tag">Customer research</span>
           </div>
         </div>
       </div>
 
       <div class="project-image">
-        <img 
-          src="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?q=80&w=900&auto=format&fit=crop" 
-          alt="Vegan dessert plate at Roccos Dessert"
-          class="lightbox-img"
-        >
+        <img src="assets/dessert.jpg" class="lightbox-img" alt="Roccos dessert vegan options">
       </div>
     </div>
   </section>
 
-  <!-- Project 2: College App Project -->
+  <!-- Project 2 -->
   <section class="card reveal" id="project2">
     <div class="sparkle">📱</div>
     <div class="section-title">
       <h2 style="margin:0;">Student wellbeing and timetable app prototype</h2>
       <span class="pill">College digital project</span>
-      <span class="ai-icon">?
-        <span class="ai-tip">
-          This project shows how I combined user research, wireframing and group work to design a digital solution for students.
-        </span>
-      </span>
     </div>
+
     <div class="project-layout">
       <div>
         <p>
-          While studying at Holy Cross College I worked in a small group to design a mobile app prototype 
-          that would help students manage their academic deadlines, part time work and wellbeing habits in one place. 
-          I took on the role of project coordinator and user experience research lead.
+          At Holy Cross College, I worked in a group to create a wellbeing and timetable mobile app prototype.  
+          It helped students manage deadlines, shifts and wellbeing all in one place.
         </p>
 
         <button class="btn ghost read-more" data-target="details2">Read more</button>
 
         <div id="details2" class="project-details">
           <p>
-            I started by creating short surveys and quick interviews with students to understand common issues. 
-            Many mentioned feeling overwhelmed by different systems for homework, shift rotas and personal tasks. 
-            From this, I helped define the core features of the prototype which included a smart timetable, wellbeing check ins 
-            and a reminder system that adjusted to preferred study times.
+            I created surveys and interviews to understand students’ struggles.  
+            Many found it hard to manage multiple apps and wanted everything in one platform.
           </p>
           <p>
-            I produced initial sketches on paper and then translated these into low fidelity wireframes 
-            before working with my group to build a click through prototype. 
-            We presented the final version to tutors, explaining the problem, our research and the final design choices. 
-            The project strengthened my skills in planning, communication and presenting a digital solution.
+            I designed wireframes and helped build a click-through prototype.  
+            We presented the final design to tutors, explaining our research and decisions.
           </p>
 
           <div class="progress-wrap">
             <div class="progress-row">
-              <span>Teamwork</span>
-              <div class="bar"><div class="bar-fill" data-width="88"></div></div>
+              <span>Teamwork</span><div class="bar"><div class="bar-fill" data-width="88"></div></div>
             </div>
             <div class="progress-row">
-              <span>UX focus</span>
-              <div class="bar"><div class="bar-fill" data-width="92"></div></div>
-            </div>
-            <div class="progress-row">
-              <span>Presentation confidence</span>
-              <div class="bar"><div class="bar-fill" data-width="84"></div></div>
+              <span>UX focus</span><div class="bar"><div class="bar-fill" data-width="92"></div></div>
             </div>
           </div>
-
-          <div class="tag-row">
-            <span class="tag">UX research</span>
-            <span class="tag">Wireframing</span>
-            <span class="tag">Team coordination</span>
-          </div>
-
-          <button class="btn" id="wireframeToggle" style="margin-top:10px;">Toggle wireframe view</button>
-          <p class="muted" style="margin-top:4px;">
-            This button simulates viewing the app in a simple wireframe style to focus on layout instead of colours.
-          </p>
         </div>
       </div>
 
       <div class="project-image">
         <div class="mockup" id="mockupBox">
-          <img 
-            src="https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?q=80&w=900&auto=format&fit=crop" 
-            alt="Mobile app design on phone and laptop"
-            class="lightbox-img"
-          >
+          <img src="assets/student.jpg" class="lightbox-img" alt="Student digital app prototype">
           <span class="mockup-label">Prototype view</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Project 3: Problem Solving Page -->
+  <!-- Project 3 -->
   <section class="card reveal" id="project3">
     <div class="sparkle">🧠</div>
     <div class="section-title">
       <h2 style="margin:0;">West Ivy problem solving page</h2>
       <span class="pill">Digital transformation for a restaurant</span>
-      <span class="ai-icon">?
-        <span class="ai-tip">
-          This project is directly linked to the West Ivy problem solving page and shows how I applied design and coding choices.
-        </span>
-      </span>
     </div>
+
     <div class="project-layout">
       <div>
         <p>
-          For my third project I created the problem solving page for West Ivy in Bury as part of a restaurant 
-          digital transformation scenario. In this project I treated myself as the chief technology officer 
-          and designed a page that would feel realistic for customers who are engaging with the restaurant online.
+          My final project is the creation of the West Ivy Problem-Solving page.  
+          I designed the layout, interactive features and digital elements  
+          to represent a real restaurant transformation scenario.
         </p>
 
         <button class="btn ghost read-more" data-target="details3">Read more</button>
 
         <div id="details3" class="project-details">
           <p>
-            I used a soft beige theme so that it matches the rest of the site and gives a calm, modern feel. 
-            The page is organised into clear sections such as business context, gallery, map, menu, contact area and booking form 
-            to keep the journey simple for the user.
+            The design uses a beige colour system to match the rest of my website and keep the style consistent.  
+            The page includes galleries, opening status indicators, a booking form and contact features.
           </p>
           <p>
-            The design includes interactive elements like live opening status, a sliding gallery, 
-            a searchable menu with filters, a simple demo cart and real social media links. 
-            There is also a booking and feedback form that automatically generates an email which allows customers 
-            to contact the restaurant using a structured format without the need for a database.
-          </p>
-          <p>
-            This project shows how user experience design, layout decisions and front end coding can work together 
-            to support a digital transformation goal in a hospitality setting.
+            I added live interaction such as filters, toggles and a feedback form  
+            to show realistic customer features without needing a database.
           </p>
 
           <div class="stats">
-            <div class="stat-box">
-              <strong>6+</strong><br>Interactive elements
-            </div>
-            <div class="stat-box">
-              <strong>3</strong><br>Main goals covered
-            </div>
-            <div class="stat-box">
-              <strong>1</strong><br>Consistent design system
-            </div>
+            <div class="stat-box"><strong>6+</strong><br>Interactive elements</div>
+            <div class="stat-box"><strong>3</strong><br>Main goals covered</div>
+            <div class="stat-box"><strong>1</strong><br>Consistent design system</div>
           </div>
 
           <div class="progress-wrap">
             <div class="progress-row">
-              <span>Technical complexity</span>
-              <div class="bar"><div class="bar-fill" data-width="90"></div></div>
-            </div>
-            <div class="progress-row">
-              <span>Business focus</span>
-              <div class="bar"><div class="bar-fill" data-width="88"></div></div>
-            </div>
-            <div class="progress-row">
-              <span>User experience</span>
-              <div class="bar"><div class="bar-fill" data-width="92"></div></div>
+              <span>Technical complexity</span><div class="bar"><div class="bar-fill" data-width="90"></div></div>
             </div>
           </div>
 
           <div style="margin-top:10px;">
-            <a href="problem-solving.html" class="btn" style="text-decoration:none;">View live problem solving page</a>
+            <a class="btn" href="problem-solving.html">View live problem solving page</a>
           </div>
         </div>
       </div>
 
       <div class="project-image">
-        <img 
-          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=900&auto=format&fit=crop" 
-          alt="Team collaborating on a digital project"
-          class="lightbox-img"
-        >
-      </div>
-    </div>
-  </section>
-
-  <!-- Project timeline -->
-  <section class="card reveal">
-    <div class="sparkle">📊</div>
-    <h2 class="section-title">
-      Project journey
-      <span class="pill">Timeline</span>
-    </h2>
-    <p class="muted">
-      A simple view of how these projects build on each other from customer facing work to college projects and a full digital prototype.
-    </p>
-    <div class="timeline">
-      <div class="tl-item">
-        <strong>Roccos Dessert menu work</strong><br>
-        Built awareness of customer needs, allergies and how menu design links to the overall experience.
-      </div>
-      <div class="tl-item">
-        <strong>Student app prototype at Holy Cross</strong><br>
-        Strengthened research, teamwork and presentation skills in a digital context.
-      </div>
-      <div class="tl-item">
-        <strong>West Ivy problem solving page</strong><br>
-        Brought together business thinking and coding skills into one practical web solution.
+        <img src="assets/businessmeeting.jpg" class="lightbox-img" alt="Team digital transformation meeting">
       </div>
     </div>
   </section>
@@ -702,17 +563,14 @@
   © <span id="year"></span> Fidak Abbas Batool • Business Showcase
 </footer>
 
-<!-- Lightbox for images -->
 <div id="lightbox">
   <span id="lightboxClose">✕</span>
-  <img src="" alt="Expanded project image" id="lightboxImg">
+  <img id="lightboxImg" src="" alt="">
 </div>
 
 <script>
-  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Dark mode
   const toggle = document.getElementById('darkToggle');
   toggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
@@ -721,75 +579,53 @@
       : 'Enable Dark Mode';
   });
 
-  // Read more toggles
   document.querySelectorAll('.read-more').forEach(btn => {
     btn.addEventListener('click', () => {
-      const targetId = btn.getAttribute('data-target');
+      const targetId = btn.dataset.target;
       const details = document.getElementById(targetId);
-      const isOpen = details.classList.contains('open');
-      // close all
+      const opened = details.classList.contains('open');
       document.querySelectorAll('.project-details').forEach(d => d.classList.remove('open'));
-      // reset buttons
       document.querySelectorAll('.read-more').forEach(b => b.textContent = 'Read more');
-      if (!isOpen) {
+      if (!opened) {
         details.classList.add('open');
         btn.textContent = 'Hide details';
       }
     });
   });
 
-  // Project 2 wireframe toggle
   const mockupBox = document.getElementById('mockupBox');
-  const wireframeToggle = document.getElementById('wireframeToggle');
-  if (wireframeToggle) {
-    wireframeToggle.addEventListener('click', () => {
+  const wireframeBtn = document.getElementById('wireframeToggle');
+  if (wireframeBtn) {
+    wireframeBtn.addEventListener('click', () => {
       mockupBox.classList.toggle('wireframe');
-      wireframeToggle.textContent = mockupBox.classList.contains('wireframe')
-        ? 'Show full colour view'
-        : 'Toggle wireframe view';
     });
   }
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // animate progress bars in this section
-        const fills = entry.target.querySelectorAll('.bar-fill');
-        fills.forEach(f => {
-          const w = f.getAttribute('data-width');
-          if (w) { f.style.width = w + '%'; }
+        entry.target.querySelectorAll('.bar-fill').forEach(b => {
+          const w = b.dataset.width;
+          b.style.width = w + "%";
         });
       }
     });
-  }, {threshold:0.15});
+  }, { threshold: 0.2 });
   reveals.forEach(r => observer.observe(r));
 
-  // Lightbox logic
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxClose = document.getElementById('lightboxClose');
-
   document.querySelectorAll('.lightbox-img').forEach(img => {
     img.addEventListener('click', () => {
       lightboxImg.src = img.src;
       lightbox.style.display = 'flex';
     });
   });
-
-  lightboxClose.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-    lightboxImg.src = '';
-  });
-
-  lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-    }
-  });
+  document.getElementById('lightboxClose').onclick = () => lightbox.style.display = 'none';
+  lightbox.onclick = e => { if (e.target === lightbox) lightbox.style.display = 'none'; };
 </script>
+
 </body>
 </html>
