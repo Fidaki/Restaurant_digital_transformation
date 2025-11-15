@@ -21,6 +21,9 @@
       border-bottom:1px solid var(--line);
       text-align:center;
       padding:18px;
+      position:sticky;
+      top:0;
+      z-index:5;
     }
     header h1{margin:6px 0 4px}
     header p{margin:4px 0 0;font-size:14px;opacity:.9}
@@ -45,11 +48,30 @@
       box-shadow:0 6px 16px rgba(0,0,0,.06);
       margin-bottom:18px;
       transition:.3s;
+      position:relative;
+      transform-style:preserve-3d;
     }
     .card:hover{
-      transform:translateY(-2px);
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      transform:translateY(-3px) rotateX(1deg);
+      box-shadow:0 10px 24px rgba(0,0,0,.12);
     }
+
+    /* floating sparkle */
+    .sparkle{
+      position:absolute;
+      top:10px;
+      right:18px;
+      font-size:18px;
+      opacity:.45;
+      animation:floatSparkle 3s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes floatSparkle{
+      0%{transform:translateY(0);}
+      50%{transform:translateY(-6px);}
+      100%{transform:translateY(0);}
+    }
+
     .section-title{
       margin:0 0 10px;
       display:flex;
@@ -93,7 +115,13 @@
       width:100%;
       border-radius:12px;
       object-fit:cover;
-      max-height:220px;
+      max-height:230px;
+      cursor:pointer;
+      transition:.3s;
+    }
+    .project-image img:hover{
+      transform:scale(1.02);
+      box-shadow:0 6px 18px rgba(0,0,0,.18);
     }
 
     @media (max-width:780px){
@@ -102,12 +130,18 @@
       }
     }
 
+    /* collapsible details */
     .project-details{
-      margin-top:10px;
-      display:none;
+      max-height:0;
+      overflow:hidden;
+      opacity:0;
+      transition:max-height .4s ease,opacity .4s ease,margin-top .4s ease;
+      margin-top:0;
     }
     .project-details.open{
-      display:block;
+      max-height:900px;
+      opacity:1;
+      margin-top:10px;
     }
 
     table{
@@ -142,7 +176,7 @@
       background:#f7ebd7;
     }
 
-    /* Project 2 mockup effect */
+    /* Project 2 mockup wireframe effect */
     .mockup{
       position:relative;
       overflow:hidden;
@@ -151,7 +185,7 @@
       transition:.3s;
     }
     .mockup.wireframe img{
-      filter:grayscale(1) contrast(1.2);
+      filter:grayscale(1) contrast(1.15);
     }
     .mockup-label{
       position:absolute;
@@ -193,6 +227,132 @@
       font-size:13px;
     }
 
+    /* progress bars */
+    .progress-wrap{
+      margin-top:12px;
+    }
+    .progress-row{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:6px;
+      font-size:13px;
+    }
+    .bar{
+      flex:1;
+      height:8px;
+      border-radius:999px;
+      background:#e5d4bd;
+      overflow:hidden;
+    }
+    .bar-fill{
+      height:100%;
+      width:0;
+      background:linear-gradient(90deg,var(--accent),var(--gold));
+      border-radius:999px;
+      transition:width .6s ease;
+    }
+
+    /* scroll reveal */
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .6s ease,transform .6s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* AI helper tooltip */
+    .ai-icon{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:11px;
+      cursor:pointer;
+      position:relative;
+      background:#fffaf3;
+    }
+    .ai-tip{
+      position:absolute;
+      top:24px;
+      right:0;
+      max-width:220px;
+      font-size:11px;
+      background:#fffaf3;
+      border:1px solid var(--line);
+      padding:6px 8px;
+      border-radius:8px;
+      box-shadow:0 4px 10px rgba(0,0,0,.12);
+      display:none;
+      z-index:3;
+    }
+    .ai-icon:hover .ai-tip{
+      display:block;
+    }
+
+    /* timeline */
+    .timeline{
+      position:relative;
+      padding-left:24px;
+      margin-top:6px;
+    }
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:10px;
+      top:0;
+      bottom:0;
+      width:2px;
+      background:var(--line);
+    }
+    .tl-item{
+      position:relative;
+      margin:10px 0;
+      padding-left:10px;
+      font-size:13px;
+    }
+    .tl-item::before{
+      content:"";
+      position:absolute;
+      left:-14px;
+      top:4px;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+    }
+
+    /* lightbox */
+    #lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.7);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:20;
+    }
+    #lightbox img{
+      max-width:90%;
+      max-height:80vh;
+      border-radius:12px;
+      box-shadow:0 12px 32px rgba(0,0,0,.5);
+    }
+    #lightbox span{
+      position:absolute;
+      top:20px;
+      right:26px;
+      color:#fff;
+      font-size:26px;
+      cursor:pointer;
+    }
+
     /* Dark mode */
     body.dark{
       --bg:#222;
@@ -209,7 +369,7 @@
     body.dark tr:hover{background:#3a3a3a}
     body.dark .tag{background:#3a3a3a}
     body.dark .stat-box{background:#3a3a3a}
-
+    body.dark .ai-tip{background:#333;border-color:#555}
   </style>
 </head>
 <body>
@@ -231,10 +391,16 @@
 <main class="wrap">
 
   <!-- Intro -->
-  <section class="card">
+  <section class="card reveal">
+    <div class="sparkle">✨</div>
     <h2 class="section-title">
       Project Highlights
-      <span class="pill">3 key projects</span>
+      <span class="pill">Three key projects</span>
+      <span class="ai-icon">?
+        <span class="ai-tip">
+          This page is designed to show how I approach real projects, from research to outcome, and how I apply digital thinking.
+        </span>
+      </span>
     </h2>
     <p>
       This page showcases three projects that relate to digital business and problem solving. 
@@ -244,10 +410,16 @@
   </section>
 
   <!-- Project 1: Roccos Dessert -->
-  <section class="card" id="project1">
+  <section class="card reveal" id="project1">
+    <div class="sparkle">🍰</div>
     <div class="section-title">
-      <h2 style="margin:0;">Roccos Dessert Vegan and Allergy Friendly Menu</h2>
+      <h2 style="margin:0;">Roccos Dessert vegan and allergy friendly menu</h2>
       <span class="pill">Hospitality and customer experience</span>
+      <span class="ai-icon">?
+        <span class="ai-tip">
+          Focus on customers with allergies and preferences. This project shows how I used research to design a safer menu.
+        </span>
+      </span>
     </div>
     <div class="project-layout">
       <div>
@@ -269,7 +441,7 @@
           </p>
           <p>
             Working with the team, I helped refine a small but focused menu that made the choice clear for customers with dietary needs. 
-            The result was a dedicated Vegan and Allergy Friendly section that increased choice and made the menu feel more inclusive. 
+            The result was a dedicated vegan and allergy friendly section that increased choice and made the menu feel more inclusive. 
             Staff found it easier to recommend safe options and customers with allergies felt more confident when ordering.
           </p>
 
@@ -300,11 +472,26 @@
               </tr>
               <tr>
                 <td>Berry Chia Pot</td>
-                <td>Chia seed pudding with almond free berry compote and fresh fruit.</td>
+                <td>Chia seed pudding with berry compote and fresh fruit.</td>
                 <td>Vegan, dairy free, gluten free</td>
               </tr>
             </tbody>
           </table>
+
+          <div class="progress-wrap">
+            <div class="progress-row">
+              <span>Research depth</span>
+              <div class="bar"><div class="bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="progress-row">
+              <span>Customer impact</span>
+              <div class="bar"><div class="bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="progress-row">
+              <span>Menu innovation</span>
+              <div class="bar"><div class="bar-fill" data-width="80"></div></div>
+            </div>
+          </div>
 
           <div class="tag-row">
             <span class="tag">Allergy awareness</span>
@@ -315,17 +502,26 @@
       </div>
 
       <div class="project-image">
-        <img src="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?q=80&w=900&auto=format&fit=crop" 
-             alt="Vegan dessert plate at Roccos Dessert">
+        <img 
+          src="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?q=80&w=900&auto=format&fit=crop" 
+          alt="Vegan dessert plate at Roccos Dessert"
+          class="lightbox-img"
+        >
       </div>
     </div>
   </section>
 
   <!-- Project 2: College App Project -->
-  <section class="card" id="project2">
+  <section class="card reveal" id="project2">
+    <div class="sparkle">📱</div>
     <div class="section-title">
-      <h2 style="margin:0;">Student Wellbeing and Timetable App Prototype</h2>
+      <h2 style="margin:0;">Student wellbeing and timetable app prototype</h2>
       <span class="pill">College digital project</span>
+      <span class="ai-icon">?
+        <span class="ai-tip">
+          This project shows how I combined user research, wireframing and group work to design a digital solution for students.
+        </span>
+      </span>
     </div>
     <div class="project-layout">
       <div>
@@ -351,6 +547,21 @@
             The project strengthened my skills in planning, communication and presenting a digital solution.
           </p>
 
+          <div class="progress-wrap">
+            <div class="progress-row">
+              <span>Teamwork</span>
+              <div class="bar"><div class="bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="progress-row">
+              <span>UX focus</span>
+              <div class="bar"><div class="bar-fill" data-width="92"></div></div>
+            </div>
+            <div class="progress-row">
+              <span>Presentation confidence</span>
+              <div class="bar"><div class="bar-fill" data-width="84"></div></div>
+            </div>
+          </div>
+
           <div class="tag-row">
             <span class="tag">UX research</span>
             <span class="tag">Wireframing</span>
@@ -366,8 +577,11 @@
 
       <div class="project-image">
         <div class="mockup" id="mockupBox">
-          <img src="https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?q=80&w=900&auto=format&fit=crop" 
-               alt="Mobile app design on phone and laptop">
+          <img 
+            src="https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?q=80&w=900&auto=format&fit=crop" 
+            alt="Mobile app design on phone and laptop"
+            class="lightbox-img"
+          >
           <span class="mockup-label">Prototype view</span>
         </div>
       </div>
@@ -375,15 +589,21 @@
   </section>
 
   <!-- Project 3: Problem Solving Page -->
-  <section class="card" id="project3">
+  <section class="card reveal" id="project3">
+    <div class="sparkle">🧠</div>
     <div class="section-title">
-      <h2 style="margin:0;">West Ivy Problem Solving Page</h2>
+      <h2 style="margin:0;">West Ivy problem solving page</h2>
       <span class="pill">Digital transformation for a restaurant</span>
+      <span class="ai-icon">?
+        <span class="ai-tip">
+          This project is directly linked to the West Ivy problem solving page and shows how I applied design and coding choices.
+        </span>
+      </span>
     </div>
     <div class="project-layout">
       <div>
         <p>
-          For my third project I created the Problem Solving page for West Ivy in Bury as part of a restaurant 
+          For my third project I created the problem solving page for West Ivy in Bury as part of a restaurant 
           digital transformation scenario. In this project I treated myself as the chief technology officer 
           and designed a page that would feel realistic for customers who are engaging with the restaurant online.
         </p>
@@ -412,22 +632,66 @@
               <strong>6+</strong><br>Interactive elements
             </div>
             <div class="stat-box">
-              <strong>3</strong><br>Main business goals covered
+              <strong>3</strong><br>Main goals covered
             </div>
             <div class="stat-box">
               <strong>1</strong><br>Consistent design system
             </div>
           </div>
 
+          <div class="progress-wrap">
+            <div class="progress-row">
+              <span>Technical complexity</span>
+              <div class="bar"><div class="bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="progress-row">
+              <span>Business focus</span>
+              <div class="bar"><div class="bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="progress-row">
+              <span>User experience</span>
+              <div class="bar"><div class="bar-fill" data-width="92"></div></div>
+            </div>
+          </div>
+
           <div style="margin-top:10px;">
-            <a href="problem-solving.html" class="btn" style="text-decoration:none;">View live Problem Solving page</a>
+            <a href="problem-solving.html" class="btn" style="text-decoration:none;">View live problem solving page</a>
           </div>
         </div>
       </div>
 
       <div class="project-image">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=900&auto=format&fit=crop" 
-             alt="Team collaborating on a digital project">
+        <img 
+          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=900&auto=format&fit=crop" 
+          alt="Team collaborating on a digital project"
+          class="lightbox-img"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- Project timeline -->
+  <section class="card reveal">
+    <div class="sparkle">📊</div>
+    <h2 class="section-title">
+      Project journey
+      <span class="pill">Timeline</span>
+    </h2>
+    <p class="muted">
+      A simple view of how these projects build on each other from customer facing work to college projects and a full digital prototype.
+    </p>
+    <div class="timeline">
+      <div class="tl-item">
+        <strong>Roccos Dessert menu work</strong><br>
+        Built awareness of customer needs, allergies and how menu design links to the overall experience.
+      </div>
+      <div class="tl-item">
+        <strong>Student app prototype at Holy Cross</strong><br>
+        Strengthened research, teamwork and presentation skills in a digital context.
+      </div>
+      <div class="tl-item">
+        <strong>West Ivy problem solving page</strong><br>
+        Brought together business thinking and coding skills into one practical web solution.
       </div>
     </div>
   </section>
@@ -437,6 +701,12 @@
 <footer>
   © <span id="year"></span> Fidak Abbas Batool • Business Showcase
 </footer>
+
+<!-- Lightbox for images -->
+<div id="lightbox">
+  <span id="lightboxClose">✕</span>
+  <img src="" alt="Expanded project image" id="lightboxImg">
+</div>
 
 <script>
   // Year
@@ -457,11 +727,14 @@
       const targetId = btn.getAttribute('data-target');
       const details = document.getElementById(targetId);
       const isOpen = details.classList.contains('open');
+      // close all
       document.querySelectorAll('.project-details').forEach(d => d.classList.remove('open'));
+      // reset buttons
+      document.querySelectorAll('.read-more').forEach(b => b.textContent = 'Read more');
       if (!isOpen) {
         details.classList.add('open');
+        btn.textContent = 'Hide details';
       }
-      btn.textContent = isOpen ? 'Read more' : 'Hide details';
     });
   });
 
@@ -476,6 +749,47 @@
         : 'Toggle wireframe view';
     });
   }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // animate progress bars in this section
+        const fills = entry.target.querySelectorAll('.bar-fill');
+        fills.forEach(f => {
+          const w = f.getAttribute('data-width');
+          if (w) { f.style.width = w + '%'; }
+        });
+      }
+    });
+  }, {threshold:0.15});
+  reveals.forEach(r => observer.observe(r));
+
+  // Lightbox logic
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  document.querySelectorAll('.lightbox-img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+    }
+  });
 </script>
 </body>
 </html>
