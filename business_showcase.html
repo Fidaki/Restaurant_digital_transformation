@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Showcase • Fidak Abbas Batool</title>
+  <style>
+    :root{
+      --bg:#f5e9d5; --card:#fff8ef; --ink:#4a3f35; --line:#d1bfa5;
+      --accent:#b69377; --accent-2:#8c6f5a; --gold:#d4af37;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+    }
+    header{
+      background:#f2dbc4;
+      border-bottom:1px solid var(--line);
+      text-align:center;
+      padding:18px;
+    }
+    header h1{margin:6px 0 4px}
+    header p{margin:4px 0 0;font-size:14px;opacity:.9}
+    nav a{
+      color:var(--ink);
+      text-decoration:none;
+      font-weight:700;
+      margin:0 12px;
+    }
+    nav a:hover{text-decoration:underline}
+
+    .wrap{
+      max-width:1100px;
+      margin:28px auto;
+      padding:0 16px 32px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px;
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+      margin-bottom:18px;
+      transition:.3s;
+    }
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+    }
+    .section-title{
+      margin:0 0 10px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:10px;
+    }
+    .pill{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      background:#f1e2cf;
+      border:1px solid var(--line);
+      font-size:12px;
+    }
+    .muted{opacity:.85;font-size:14px}
+    .btn{
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      border-radius:10px;
+      padding:8px 12px;
+      cursor:pointer;
+      font-size:14px;
+    }
+    .btn:hover{background:var(--accent-2)}
+    .ghost{
+      background:transparent;
+      color:var(--ink);
+      border:1px solid var(--line);
+    }
+
+    .project-layout{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:14px;
+      align-items:start;
+      margin-top:10px;
+    }
+    .project-image img{
+      width:100%;
+      border-radius:12px;
+      object-fit:cover;
+      max-height:220px;
+    }
+
+    @media (max-width:780px){
+      .project-layout{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .project-details{
+      margin-top:10px;
+      display:none;
+    }
+    .project-details.open{
+      display:block;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:14px;
+    }
+    th,td{
+      border:1px solid var(--line);
+      padding:8px;
+      text-align:left;
+    }
+    th{
+      background:#f1e2cf;
+    }
+    tr:hover{
+      background:#f9f0e1;
+    }
+
+    .tag-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:6px;
+    }
+    .tag{
+      font-size:11px;
+      border-radius:999px;
+      padding:3px 7px;
+      border:1px solid var(--line);
+      background:#f7ebd7;
+    }
+
+    /* Project 2 mockup effect */
+    .mockup{
+      position:relative;
+      overflow:hidden;
+    }
+    .mockup img{
+      transition:.3s;
+    }
+    .mockup.wireframe img{
+      filter:grayscale(1) contrast(1.2);
+    }
+    .mockup-label{
+      position:absolute;
+      bottom:8px;
+      right:8px;
+      background:rgba(0,0,0,.6);
+      color:#fff;
+      font-size:11px;
+      padding:3px 7px;
+      border-radius:999px;
+    }
+
+    /* Project 3 stats */
+    .stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:8px;
+    }
+    .stat-box{
+      flex:1 1 120px;
+      border-radius:10px;
+      border:1px solid var(--line);
+      padding:8px;
+      font-size:13px;
+      background:#f8ecdc;
+      text-align:center;
+      transition:.2s;
+    }
+    .stat-box:hover{
+      transform:translateY(-2px);
+      box-shadow:0 4px 10px rgba(0,0,0,.08);
+    }
+
+    footer{
+      text-align:center;
+      color:#6b5b4b;
+      padding:16px;
+      font-size:13px;
+    }
+
+    /* Dark mode */
+    body.dark{
+      --bg:#222;
+      --card:#333;
+      --ink:#f1f1f1;
+      --line:#4b4b4b;
+      --accent:#7c5f49;
+      --accent-2:#6a503e;
+    }
+    body.dark header{background:#2d2d2d;border-color:#444}
+    body.dark nav a{color:#eee}
+    body.dark table th{background:#3a3a3a}
+    body.dark table td{background:#2b2b2b}
+    body.dark tr:hover{background:#3a3a3a}
+    body.dark .tag{background:#3a3a3a}
+    body.dark .stat-box{background:#3a3a3a}
+
+  </style>
+</head>
+<body>
+<header>
+  <h1>Business Showcase</h1>
+  <p class="muted">Selected projects that highlight my problem solving, research and digital thinking.</p>
+  <nav style="margin-top:10px;">
+    <a href="index.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="showcase.html"><strong>Business Showcase</strong></a>
+    <a href="problem-solving.html">Problem Solving</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div style="margin-top:10px">
+    <button id="darkToggle" class="btn ghost">Enable Dark Mode</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- Intro -->
+  <section class="card">
+    <h2 class="section-title">
+      Project Highlights
+      <span class="pill">3 key projects</span>
+    </h2>
+    <p>
+      This page showcases three projects that relate to digital business and problem solving. 
+      Each project explains my role, the problem that was addressed and the final outcome. 
+      The third project links directly to the design of my Problem Solving page for West Ivy in Bury.
+    </p>
+  </section>
+
+  <!-- Project 1: Roccos Dessert -->
+  <section class="card" id="project1">
+    <div class="section-title">
+      <h2 style="margin:0;">Roccos Dessert Vegan and Allergy Friendly Menu</h2>
+      <span class="pill">Hospitality and customer experience</span>
+    </div>
+    <div class="project-layout">
+      <div>
+        <p>
+          At Roccos Dessert I contributed to a project that focused on designing a new vegan and plant based menu 
+          for customers with allergies and specific dietary preferences. 
+          The main aim was to create desserts that were nut free, dairy free and fully vegan 
+          without losing the indulgent feeling that Roccos is known for.
+        </p>
+
+        <button class="btn ghost read-more" data-target="details1">Read more</button>
+
+        <div id="details1" class="project-details">
+          <p>
+            My role focused on research and feasibility. I gathered informal feedback from regular customers, 
+            reviewed common allergy requests and looked at trends in plant based desserts. 
+            I compared ingredients such as oat based cream, coconut milk, dairy free chocolate and gluten free bases 
+            and discussed with the kitchen which options were realistic for production and storage.
+          </p>
+          <p>
+            Working with the team, I helped refine a small but focused menu that made the choice clear for customers with dietary needs. 
+            The result was a dedicated Vegan and Allergy Friendly section that increased choice and made the menu feel more inclusive. 
+            Staff found it easier to recommend safe options and customers with allergies felt more confident when ordering.
+          </p>
+
+          <h3 style="margin-top:12px;">Example mini menu</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Dessert</th>
+                <th>Description</th>
+                <th>Suitable for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Coconut Cream Brownie</td>
+                <td>Rich dark chocolate brownie served warm with whipped coconut cream.</td>
+                <td>Vegan, dairy free</td>
+              </tr>
+              <tr>
+                <td>Plant Based Lotus Cheesecake</td>
+                <td>Lotus biscuit base with a smooth oat based cheesecake layer.</td>
+                <td>Vegan, egg free</td>
+              </tr>
+              <tr>
+                <td>Nut Free Fudge Sundae</td>
+                <td>Layers of chocolate ice cream, vegan fudge sauce and cookie crumble with no nuts.</td>
+                <td>Nut free, vegetarian</td>
+              </tr>
+              <tr>
+                <td>Berry Chia Pot</td>
+                <td>Chia seed pudding with almond free berry compote and fresh fruit.</td>
+                <td>Vegan, dairy free, gluten free</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="tag-row">
+            <span class="tag">Allergy awareness</span>
+            <span class="tag">Menu design</span>
+            <span class="tag">Customer research</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-image">
+        <img src="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?q=80&w=900&auto=format&fit=crop" 
+             alt="Vegan dessert plate at Roccos Dessert">
+      </div>
+    </div>
+  </section>
+
+  <!-- Project 2: College App Project -->
+  <section class="card" id="project2">
+    <div class="section-title">
+      <h2 style="margin:0;">Student Wellbeing and Timetable App Prototype</h2>
+      <span class="pill">College digital project</span>
+    </div>
+    <div class="project-layout">
+      <div>
+        <p>
+          While studying at Holy Cross College I worked in a small group to design a mobile app prototype 
+          that would help students manage their academic deadlines, part time work and wellbeing habits in one place. 
+          I took on the role of project coordinator and user experience research lead.
+        </p>
+
+        <button class="btn ghost read-more" data-target="details2">Read more</button>
+
+        <div id="details2" class="project-details">
+          <p>
+            I started by creating short surveys and quick interviews with students to understand common issues. 
+            Many mentioned feeling overwhelmed by different systems for homework, shift rotas and personal tasks. 
+            From this, I helped define the core features of the prototype which included a smart timetable, wellbeing check ins 
+            and a reminder system that adjusted to preferred study times.
+          </p>
+          <p>
+            I produced initial sketches on paper and then translated these into low fidelity wireframes 
+            before working with my group to build a click through prototype. 
+            We presented the final version to tutors, explaining the problem, our research and the final design choices. 
+            The project strengthened my skills in planning, communication and presenting a digital solution.
+          </p>
+
+          <div class="tag-row">
+            <span class="tag">UX research</span>
+            <span class="tag">Wireframing</span>
+            <span class="tag">Team coordination</span>
+          </div>
+
+          <button class="btn" id="wireframeToggle" style="margin-top:10px;">Toggle wireframe view</button>
+          <p class="muted" style="margin-top:4px;">
+            This button simulates viewing the app in a simple wireframe style to focus on layout instead of colours.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-image">
+        <div class="mockup" id="mockupBox">
+          <img src="https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?q=80&w=900&auto=format&fit=crop" 
+               alt="Mobile app design on phone and laptop">
+          <span class="mockup-label">Prototype view</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project 3: Problem Solving Page -->
+  <section class="card" id="project3">
+    <div class="section-title">
+      <h2 style="margin:0;">West Ivy Problem Solving Page</h2>
+      <span class="pill">Digital transformation for a restaurant</span>
+    </div>
+    <div class="project-layout">
+      <div>
+        <p>
+          For my third project I created the Problem Solving page for West Ivy in Bury as part of a restaurant 
+          digital transformation scenario. In this project I treated myself as the chief technology officer 
+          and designed a page that would feel realistic for customers who are engaging with the restaurant online.
+        </p>
+
+        <button class="btn ghost read-more" data-target="details3">Read more</button>
+
+        <div id="details3" class="project-details">
+          <p>
+            I used a soft beige theme so that it matches the rest of the site and gives a calm, modern feel. 
+            The page is organised into clear sections such as business context, gallery, map, menu, contact area and booking form 
+            to keep the journey simple for the user.
+          </p>
+          <p>
+            The design includes interactive elements like live opening status, a sliding gallery, 
+            a searchable menu with filters, a simple demo cart and real social media links. 
+            There is also a booking and feedback form that automatically generates an email which allows customers 
+            to contact the restaurant using a structured format without the need for a database.
+          </p>
+          <p>
+            This project shows how user experience design, layout decisions and front end coding can work together 
+            to support a digital transformation goal in a hospitality setting.
+          </p>
+
+          <div class="stats">
+            <div class="stat-box">
+              <strong>6+</strong><br>Interactive elements
+            </div>
+            <div class="stat-box">
+              <strong>3</strong><br>Main business goals covered
+            </div>
+            <div class="stat-box">
+              <strong>1</strong><br>Consistent design system
+            </div>
+          </div>
+
+          <div style="margin-top:10px;">
+            <a href="problem-solving.html" class="btn" style="text-decoration:none;">View live Problem Solving page</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-image">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=900&auto=format&fit=crop" 
+             alt="Team collaborating on a digital project">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Fidak Abbas Batool • Business Showcase
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Dark mode
+  const toggle = document.getElementById('darkToggle');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    toggle.textContent = document.body.classList.contains('dark')
+      ? 'Disable Dark Mode'
+      : 'Enable Dark Mode';
+  });
+
+  // Read more toggles
+  document.querySelectorAll('.read-more').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      const details = document.getElementById(targetId);
+      const isOpen = details.classList.contains('open');
+      document.querySelectorAll('.project-details').forEach(d => d.classList.remove('open'));
+      if (!isOpen) {
+        details.classList.add('open');
+      }
+      btn.textContent = isOpen ? 'Read more' : 'Hide details';
+    });
+  });
+
+  // Project 2 wireframe toggle
+  const mockupBox = document.getElementById('mockupBox');
+  const wireframeToggle = document.getElementById('wireframeToggle');
+  if (wireframeToggle) {
+    wireframeToggle.addEventListener('click', () => {
+      mockupBox.classList.toggle('wireframe');
+      wireframeToggle.textContent = mockupBox.classList.contains('wireframe')
+        ? 'Show full colour view'
+        : 'Toggle wireframe view';
+    });
+  }
+</script>
+</body>
+</html>
