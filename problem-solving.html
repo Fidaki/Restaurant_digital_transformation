@@ -65,11 +65,9 @@
   .cart-item{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
   .cart-total{display:flex;justify-content:space-between;padding-top:10px;font-weight:700}
 
-  /* Social buttons */
-  .sbtn{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:10px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none}
-  .sbtn:hover{filter:brightness(0.96)}
-  
-  /* Dark Mode */
+  footer{text-align:center;color:#6b5b4b;padding:24px}
+
+  /* Dark mode */
   body.dark{ --bg:#222; --card:#333; --ink:#f1f1f1; --line:#4b4b4b; --accent:#7c5f49; --accent-2:#6a503e; }
   body.dark header{ background:#2d2d2d; border-color:#444; }
   body.dark nav a{ color:#eee; }
@@ -96,48 +94,46 @@
 
 <main class="wrap">
 
-  <!-- Business Context -->
+  <!-- BUSINESS CONTEXT -->
   <section class="card" id="context">
     <h2 class="section-title">📌 Business Context <span class="pill">CTO-led Digital Transformation</span></h2>
     <p>
       Acting as CTO for <strong>West Ivy (Bury)</strong>, this prototype focuses on three goals:
-      <strong>customer engagement</strong>, <strong>communication</strong>, and <strong>bookings</strong>.
+      <strong>improve customer engagement</strong>, 
+      <strong>modernise communication</strong>, 
+      and <strong>streamline bookings</strong>.
     </p>
   </section>
 
-  <!-- Gallery & Map -->
+  <!-- ⭐⭐⭐ GALLERY WITH YOUR IMAGES ⭐⭐⭐ -->
   <section class="card" id="place">
     <h2 class="section-title">📍 West Ivy — Gallery & Map <span class="pill">Location-aware</span></h2>
+
     <div class="grid-2">
-      <!-- ⭐ UPDATED GALLERY ⭐ -->
       <div class="gallery">
         <div class="slides" id="slides" style="transform:translateX(0)">
-          <img src="restaurant.jpg" alt="Restaurant interior">
-          <img src="steak.jpg" alt="Steak dish">
-          <img src="wine.jpg" alt="Wine selection">
+          <img src="assets/restaurant.jpg" alt="Restaurant interior">
+          <img src="assets/steak.jpg" alt="Steak dish">
+          <img src="assets/wine.jpg" alt="Wine collection">
         </div>
         <button class="g-ctrl left" onclick="prevSlide()">‹</button>
         <button class="g-ctrl right" onclick="nextSlide()">›</button>
       </div>
 
-      <!-- Map -->
       <div class="map">
-        <iframe
-          title="Map - West Ivy Bury"
+        <iframe title="Map - West Ivy Bury"
           src="https://www.google.com/maps?q=West%20Ivy%20Bury&output=embed"
-          width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
+          width="100%" height="100%" style="border:0;">
+        </iframe>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- CONTACT & SOCIALS -->
   <section class="card" id="contact">
     <h2 class="section-title">📞 Contact & Socials <span class="pill">Modern communication</span></h2>
-    <p>Contact details here...</p>
+    Contact details here...
   </section>
-
-  <!-- Menu / Cart / Form / Design etc... -->
-  <!-- (YOUR ORIGINAL CONTENT REMAINS UNCHANGED BELOW THIS POINT) -->
 
 </main>
 
@@ -151,23 +147,22 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function toggleDark(){
   document.body.classList.toggle('dark');
   const t = document.getElementById('darkToggle');
-  t.textContent = document.body.classList.contains('dark') ? 'Disable Dark Mode' : 'Enable Dark Mode';
+  t.textContent = document.body.classList.contains('dark')
+    ? 'Disable Dark Mode'
+    : 'Enable Dark Mode';
 }
 
-/* ------- SLIDER LOGIC (unchanged) -------- */
+/* ⭐⭐⭐ SLIDER ⭐⭐⭐ */
 let slideIndex = 0;
 const slides = document.getElementById('slides');
-
 function showSlide(i){
-  slideIndex = (i + 3) % 3;
+  slideIndex = (i+3)%3;
   slides.style.transform = `translateX(-${slideIndex * 100}%)`;
 }
-
-function nextSlide(){ showSlide(slideIndex + 1); }
-function prevSlide(){ showSlide(slideIndex - 1); }
-
+function nextSlide(){ showSlide(slideIndex+1); }
+function prevSlide(){ showSlide(slideIndex-1); }
 setInterval(nextSlide, 4500);
-</script>
 
+</script>
 </body>
 </html>
