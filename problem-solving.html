@@ -1,59 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Problem Solving • West Ivy (Bury) • Digital Transformation</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Problem Solving • West Ivy (Bury) • Digital Transformation</title>
+<style>
+  :root{
+    --bg:#f5e9d5; --card:#fff8ef; --ink:#4a3f35; --line:#d1bfa5;
+    --accent:#b69377; --accent-2:#8c6f5a; --gold:#d4af37; --ok:#2e7d32; --warn:#b23b3b;
+  }
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+  header{background:#f2dbc4;border-bottom:1px solid var(--line);text-align:center;padding:18px}
+  header h1{margin:6px 0 4px}
+  header p{margin:4px 0 0;font-size:14px;opacity:.9}
+  nav a{color:var(--ink);text-decoration:none;font-weight:700;margin:0 12px}
+  nav a:hover{text-decoration:underline}
 
-  <style>
-    :root{
-      --bg:#f5e9d5; --card:#fff8ef; --ink:#4a3f35; --line:#d1bfa5;
-      --accent:#b69377; --accent-2:#8c6f5a; --gold:#d4af37; --ok:#2e7d32; --warn:#b23b3b;
-    }
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
-    header{background:#f2dbc4;border-bottom:1px solid var(--line);text-align:center;padding:18px}
-    header h1{margin:6px 0 4px}
-    header p{margin:4px 0 0;font-size:14px;opacity:.9}
-    nav a{color:var(--ink);text-decoration:none;font-weight:700;margin:0 12px}
-    nav a:hover{text-decoration:underline}
+  .wrap{max-width:1100px;margin:28px auto;padding:0 16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 16px rgba(0,0,0,.06);margin-bottom:18px}
+  .section-title{margin:0 0 10px;display:flex;align-items:center;gap:10px}
+  .pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#f1e2cf;border:1px solid var(--line);font-size:12px}
+  .muted{opacity:.85}
+  .flex{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn,.btn:link,.btn:visited{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 12px;cursor:pointer;text-decoration:none;display:inline-block}
+  .btn:hover{background:var(--accent-2)}
+  .ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  input,select,textarea{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;width:100%}
+  label{font-weight:600;font-size:14px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:720px){ .grid-2,.grid-3{grid-template-columns:1fr} }
 
-    .wrap{max-width:1100px;margin:28px auto;padding:0 16px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 16px rgba(0,0,0,.06);margin-bottom:18px}
-    .section-title{margin:0 0 10px;display:flex;align-items:center;gap:10px}
-    .pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#f1e2cf;border:1px solid var(--line);font-size:12px}
-    .muted{opacity:.85}
-    .flex{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-    .btn{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 12px;cursor:pointer}
-    .btn:hover{background:var(--accent-2)}
-    .ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  /* Gallery */
+  .gallery{position:relative;overflow:hidden;border-radius:14px}
+  .slides{display:flex;transition:transform .4s ease}
+  .slides img{width:100%;height:320px;object-fit:cover}
+  .g-ctrl{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer}
+  .g-ctrl.left{left:10px} .g-ctrl.right{right:10px}
 
-    /* — Gallery — */
-    .gallery{position:relative;overflow:hidden;border-radius:14px}
-    .slides{display:flex;transition:transform .4s ease}
-    .slides img{width:100%;height:320px;object-fit:cover}
-    .g-ctrl{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer}
-    .g-ctrl.left{left:10px}
-    .g-ctrl.right{right:10px}
+  /* Map */
+  .map{width:100%;height:320px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
 
-    /* Map */
-    .map{width:100%;height:320px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  /* Opening status */
+  .status{padding:6px 10px;border-radius:999px;font-size:12px}
+  .open{background:rgba(46,125,50,.1);color:var(--ok);border:1px solid rgba(46,125,50,.3)}
+  .closed{background:rgba(178,59,59,.08);color:var(--warn);border:1px solid rgba(178,59,59,.3)}
 
-    /* Contact Grid */
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media(max-width:700px){ .grid-2{grid-template-columns:1fr} }
+  /* Menu */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .chip{border:1px solid var(--line);background:#f1e2cf;padding:6px 10px;border-radius:999px;cursor:pointer}
+  .chip.active{background:#e6d3b9}
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .dish{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .dish:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.07)}
+  .dish img{width:100%;height:150px;object-fit:cover}
+  .dish .meta{padding:12px}
+  .dish h4{margin:0 0 6px}
+  .price{font-weight:700}
+  .tag{font-size:12px;border:1px solid var(--line);padding:2px 6px;border-radius:999px;margin-left:6px}
 
-    footer{text-align:center;color:#6b5b4b;padding:24px}
+  /* Cart */
+  .cart{position:sticky;top:12px}
+  .cart-item{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+  .cart-total{display:flex;justify-content:space-between;padding-top:10px;font-weight:700}
 
-  </style>
+  /* Social buttons + brand colours */
+  .sbtn{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:10px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+  .sbtn:hover{filter:brightness(0.96)}
+  .sbtn svg{width:18px;height:18px}
+  .sbtn.ig{background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);color:#fff;border:none}
+  .sbtn.fb{background:#1877F2;color:#fff;border:none}
+  .sbtn.x{background:#111;color:#fff;border:none}
+
+  footer{text-align:center;color:#6b5b4b;padding:24px}
+
+  /* --------- DARK MODE ---------- */
+  body.dark{ --bg:#222; --card:#333; --ink:#f1f1f1; --line:#4b4b4b; --accent:#7c5f49; --accent-2:#6a503e; }
+  body.dark header{ background:#2d2d2d; border-color:#444; }
+  body.dark nav a{ color:#eee; }
+  body.dark .dish{ background:#2c2c2c; }
+  body.dark .chip{ background:#3a3a3a; color:#eee; border-color:#555; }
+  body.dark .map{ border-color:#555; }
+
+  /* ⭐ ADDED CHEF + STAR WIDGET STYLES ⭐ */
+  @keyframes spinChef {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+  }
+  .star {
+    cursor:pointer;
+    color:#d1bfa5;
+    font-size:26px;
+    transition:.25s;
+  }
+  .star:hover,
+  .star.active {
+    color:var(--gold);
+    transform:scale(1.25);
+  }
+</style>
 </head>
-
 <body>
-
 <header>
   <h1>Problem Solving: CTO Prototype for West Ivy (Bury)</h1>
   <p class="muted">Demonstrating digital transformation: engagement, modern comms, and bookings.</p>
-
   <nav style="margin-top:10px;">
     <a href="index.html">Home</a>
     <a href="skills.html">Skills</a>
@@ -61,80 +112,509 @@
     <a href="problem-solving.html"><strong>Problem Solving</strong></a>
     <a href="contact.html">Contact</a>
   </nav>
+  <div style="margin-top:10px">
+    <button id="darkToggle" class="btn ghost" onclick="toggleDark()">Enable Dark Mode</button>
+  </div>
 </header>
 
-
 <main class="wrap">
-
   <!-- Business Context -->
-  <section class="card">
+  <section class="card" id="context">
     <h2 class="section-title">📌 Business Context <span class="pill">CTO-led Digital Transformation</span></h2>
     <p>
       Acting as CTO for <strong>West Ivy (Bury)</strong>, this prototype focuses on three goals:
-      <strong>customer engagement</strong>, <strong>communication</strong>, and <strong>bookings</strong>.
+      <strong>improve customer engagement</strong> (visual, searchable menu + quick add),
+      <strong>modernise communication</strong> (clear contact + social channels),
+      and <strong>streamline bookings</strong> (form that generates an email — no database).
     </p>
-  </section>
-
-
-  <!-- Gallery + Map -->
-  <section class="card">
-    <h2 class="section-title">📍 West Ivy — Gallery & Map</h2>
-
-    <div class="grid-2">
-
-      <!-- Sliding Gallery -->
-      <div class="gallery">
-        <div class="slides" id="slides">
-
-          <!-- ⭐ UPDATED TO YOUR FILES ⭐ -->
-          <img src="assets/restaurant.jpg" alt="Restaurant interior">
-          <img src="assets/wine.jpg" alt="Wine display">
-          <img src="assets/steak.jpg" alt="Steak dish">
-
-        </div>
-
-        <button class="g-ctrl left" onclick="prevSlide()">‹</button>
-        <button class="g-ctrl right" onclick="nextSlide()">›</button>
+    <div class="flex">
+      <div class="status" id="openStatus">Checking opening status…</div>
+      <button class="btn ghost" onclick="toggleHours()">Show weekly hours</button>
+      <a class="btn" href="https://www.westivy.co.uk/" target="_blank" rel="noopener">Visit West Ivy website</a>
+      <button class="btn ghost" onclick="copyAddress()">Copy address</button>
+      <span class="muted">“Open now” uses the current time on your device.</span>
+    </div>
+    <div id="hoursPanel" class="muted" style="display:none;margin-top:10px;">
+      <div class="flex" style="gap:8px;flex-wrap:wrap;margin-bottom:8px">
+        <select id="dayPick" onchange="showHoursForDay(this.value)">
+          <option value="1">Monday</option><option value="2">Tuesday</option>
+          <option value="3">Wednesday</option><option value="4">Thursday</option>
+          <option value="5">Friday</option><option value="6">Saturday</option>
+          <option value="0">Sunday</option>
+        </select>
+        <span id="hoursText">Mon–Thu 12:00–22:00, Fri–Sat 12:00–23:00, Sun 12:00–21:00</span>
       </div>
-
-      <!-- Map -->
-      <div class="map">
-        <iframe
-          src="https://www.google.com/maps?q=West+Ivy+Bury&output=embed"
-          width="100%" height="100%" style="border:0"></iframe>
-      </div>
-
     </div>
   </section>
 
-
-  <!-- Contact Section -->
-  <section class="card">
-    <h2 class="section-title">📞 Contact & Socials</h2>
-    <p>Contact details here...</p>
+  <!-- Gallery & Map -->
+  <section class="card" id="place">
+    <h2 class="section-title">📍 West Ivy — Gallery & Map <span class="pill">Location-aware</span></h2>
+    <div class="grid-2">
+      <!-- Simple carousel with three images (illustrative) -->
+      <div class="gallery">
+        <div class="slides" id="slides" style="transform:translateX(0)">
+          <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1200&auto=format&fit=crop" alt="Restaurant interior">
+          <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=1200&auto=format&fit=crop" alt="Signature dish">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop" alt="Dessert plate">
+        </div>
+        <button class="g-ctrl left" onclick="prevSlide()" aria-label="Previous">‹</button>
+        <button class="g-ctrl right" onclick="nextSlide()" aria-label="Next">›</button>
+      </div>
+      <!-- Interactive map (embed) -->
+      <div class="map">
+        <iframe
+          title="Map - West Ivy Bury"
+          src="https://www.google.com/maps?q=West%20Ivy%20Bury&output=embed"
+          width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
   </section>
 
+  <!-- Contact + Socials -->
+  <section class="card" id="contact">
+    <h2 class="section-title">📞 Contact & Socials <span class="pill">Modern communication</span></h2>
+    <div class="grid-2">
+      <div class="card" style="margin:0">
+        <p><strong>West Ivy — Bury</strong></p>
+        <p id="address">Market St, Bury, BL9 (Demo address)</p>
+        <p>Phone: <a href="tel:+44161xxxxxxx">+44 161 000 0000</a></p>
+        <p>Email: <a href="mailto:bookings@westivy.example">bookings@westivy.example</a></p>
+        <p><a class="btn ghost" href="https://maps.google.com/?q=West+Ivy+Bury" target="_blank" rel="noopener">Open in Maps</a></p>
+      </div>
+
+      <!-- *** SOCIALS WITH REAL LINKS *** -->
+      <div class="card" style="margin:0">
+        <p><strong>Follow West Ivy</strong></p>
+        <div class="flex">
+          <!-- Instagram -->
+          <a class="sbtn ig" href="https://www.instagram.com/westivyrestaurant/" target="_blank" rel="noopener" title="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+            </svg>
+            Instagram
+          </a>
+
+          <!-- Facebook -->
+          <a class="sbtn fb" href="https://www.facebook.com/westivybury/" target="_blank" rel="noopener" title="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M13 3h4a1 1 0 0 1 1 1v4h-3a2 2 0 0 0-2 2v3h5l-1 4h-4v7h-4v-7H6v-4h3V9a5 5 0 0 1 5-5z"/>
+            </svg>
+            Facebook
+          </a>
+
+          <!-- X -->
+          <a class="sbtn x" href="https://x.com/WestIvyBury" target="_blank" rel="noopener" title="X (Twitter)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M4 3l7.4 9.2L4.6 21H8l5.2-6.7L18.8 21H22l-7.7-9.6L21 3h-3.4l-4.6 6L8 3H4z"/>
+            </svg>
+            X (Twitter)
+          </a>
+        </div>
+        <p class="muted" style="margin-top:6px">Official pages linked above.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu + Cart -->
+  <section class="card" id="menu">
+    <h2 class="section-title">🍽️ Explore Our Menu <span class="pill">Filter • Search • Add to order</span></h2>
+
+    <div class="grid-2">
+      <div>
+        <div class="filters">
+          <span class="chip active" data-cat="all">All</span>
+          <span class="chip" data-cat="starters">Starters</span>
+          <span class="chip" data-cat="mains">Mains</span>
+          <span class="chip" data-cat="desserts">Desserts</span>
+          <span class="chip" data-cat="drinks">Drinks</span>
+          <span class="chip" data-cat="vegan">Vegan</span>
+        </div>
+        <div class="grid-3">
+          <div>
+            <label for="search">Search</label>
+            <input id="search" type="text" placeholder="Try ‘prawns’, ‘paneer’, ‘mango’…">
+          </div>
+          <div>
+            <label for="price">Max price: £<span id="priceVal">20</span></label>
+            <input id="price" type="range" min="5" max="40" step="1" value="20">
+          </div>
+          <div style="display:flex;align-items:flex-end">
+            <button class="btn ghost" onclick="resetFilters()">Reset filters</button>
+          </div>
+        </div>
+
+        <div id="menuGrid" class="menu-grid" style="margin-top:12px;"></div>
+      </div>
+
+      <aside class="cart">
+        <div class="card">
+          <h3 style="margin:0 0 8px">🛒 Your Order (demo)</h3>
+          <div id="cartItems" class="muted">No items yet.</div>
+          <div class="cart-total">
+            <span>Total</span>
+            <span id="cartTotal">£0.00</span>
+          </div>
+          <div class="flex" style="margin-top:10px">
+            <button class="btn ghost" onclick="clearCart()">Clear</button>
+            <button class="btn" onclick="copyCart()">Copy summary</button>
+          </div>
+          <p class="muted" style="margin:8px 0 0">Prototype cart for engagement; checkout isn’t implemented.</p>
+        </div>
+
+        <!-- ⭐⭐⭐ ADDED SPINNING CHEF + STAR RATING WIDGET ⭐⭐⭐ -->
+        <div class="card" style="margin-top:18px;text-align:center">
+          <img 
+            src="https://cdn-icons-png.flaticon.com/512/560/560199.png"
+            alt="chef"
+            style="width:70px;margin-bottom:10px;animation:spinChef 4s linear infinite;opacity:0.85">
+        
+          <h3 style="margin:0 0 6px">Rate Your Experience</h3>
+          <p class="muted" style="margin:0 0 8px">How was this page?</p>
+        
+          <div id="rateStars" style="margin-bottom:8px;">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+        
+          <p id="rateMsg" class="muted" style="min-height:18px;margin:0;font-weight:600;"></p>
+        </div>
+        <!-- ⭐⭐⭐ END WIDGET ⭐⭐⭐ -->
+
+      </aside>
+    </div>
+  </section>
+
+  <!-- Booking / Feedback Form -->
+  <section class="card" id="form">
+    <h2 class="section-title">📝 Bookings & Feedback <span class="pill">Generates email automatically</span></h2>
+    <div class="grid-2">
+      <div>
+        <div class="grid-2">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your full name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-top:8px">
+          <div>
+            <label for="date">Date</label>
+            <input id="date" type="date">
+          </div>
+          <div>
+            <label for="time">Time</label>
+            <input id="time" type="time">
+          </div>
+          <div>
+            <label for="covers">Covers</label>
+            <input id="covers" type="number" min="1" max="20" value="2">
+          </div>
+        </div>
+
+        <div style="margin-top:8px">
+          <label for="message">Message <span class="muted" id="count">(0/300)</span></label>
+          <textarea id="message" rows="4" maxlength="300" placeholder="Any notes, allergies, or feedback…"></textarea>
+        </div>
+
+        <div class="flex" style="margin-top:10px">
+          <button class="btn" onclick="generateEmail()">Generate Email</button>
+          <button class="btn ghost" onclick="clearForm()">Clear form</button>
+        </div>
+
+        <p class="muted" style="margin-top:8px">This opens your mail app with details pre-filled (no database needed).</p>
+      </div>
+
+      <div>
+        <div class="card">
+          <h3 style="margin:0 0 8px">Preview</h3>
+          <pre id="preview" class="muted" style="white-space:pre-wrap;margin:0">Your booking or feedback text will appear here.</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Choices -->
+  <section class="card" id="design">
+    <h2 class="section-title">🧠 Design Choices <span class="pill">Why this structure?</span></h2>
+    <p>
+      <strong>Business Context:</strong> states goals and anchors the page to the CTO brief.  
+      <strong>Menu & Cart:</strong> filters, search, and quick add improve discovery and decision speed.  
+      <strong>Contact & Socials:</strong> real West Ivy pages help modernise communication.  
+      <strong>Interactive Form:</strong> mailto flow captures structured inputs without a database.  
+      <strong>Opening Status & Hours:</strong> real-time “open now” indicator increases trust.  
+      <strong>UX:</strong> beige theme, dark mode, responsive grid, reduced friction.
+    </p>
+  </section>
 
 </main>
 
-<footer>© 2025 Fidak Abbas Batool — West Ivy (Bury) Prototype</footer>
-
+<footer>
+  © <span id="year"></span> Fidak Abbas Batool — Problem-Solving Prototype (West Ivy, Bury)
+</footer>
 
 <script>
-let slideIndex = 0;
-const slides = document.getElementById("slides");
+  // Year stamp
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-function showSlide(i){
-  const total = slides.children.length;
-  slideIndex = (i + total) % total;
-  slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-}
+  // Dark mode
+  function toggleDark(){
+    document.body.classList.toggle('dark');
+    const t = document.getElementById('darkToggle');
+    t.textContent = document.body.classList.contains('dark') ? 'Disable Dark Mode' : 'Enable Dark Mode';
+  }
 
-function nextSlide(){ showSlide(slideIndex + 1); }
-function prevSlide(){ showSlide(slideIndex - 1); }
+  // Opening Status
+  function checkOpen(){
+    const now = new Date();
+    const day = now.getDay();
+    const mins = now.getHours()*60 + now.getMinutes();
+    let openMins = 12*60, closeMins = 22*60;
+    if(day===5 || day===6) closeMins = 23*60;
+    if(day===0) closeMins = 21*60;
+    const open = mins >= openMins && mins <= closeMins;
+    const el = document.getElementById('openStatus');
+    el.textContent = open ? 'Open now' : 'Closed now';
+    el.className = 'status ' + (open ? 'open' : 'closed');
+  }
 
-setInterval(nextSlide, 3500);
+  function toggleHours(){
+    const p = document.getElementById('hoursPanel');
+    p.style.display = (p.style.display==='none'||!p.style.display) ? 'block' : 'none';
+  }
+
+  function showHoursForDay(d){
+    const map = {
+      1:'12:00–22:00', 2:'12:00–22:00', 3:'12:00–22:00',
+      4:'12:00–22:00', 5:'12:00–23:00', 6:'12:00–23:00', 0:'12:00–21:00'
+    };
+    document.getElementById('hoursText').textContent = 'Hours: ' + map[d];
+  }
+
+  checkOpen();
+
+  // Copy address
+  function copyAddress(){
+    const text = document.getElementById('address').textContent.trim();
+    navigator.clipboard.writeText('West Ivy — Bury, ' + text).then(()=>alert('Address copied!'));
+  }
+
+  // Gallery
+  let slideIndex = 0;
+  const slides = document.getElementById('slides');
+  function showSlide(i){ slideIndex = (i+3)%3; slides.style.transform = `translateX(-${slideIndex*100}%)`; }
+  function nextSlide(){ showSlide(slideIndex+1); }
+  function prevSlide(){ showSlide(slideIndex-1); }
+  setInterval(nextSlide, 4500);
+
+  // Menu Data
+  const dishes = [
+    {id:1, name:'Sourdough & Whipped Butter', cat:'starters', price:4.5, img:'https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=900&auto=format&fit=crop', tags:['veg']},
+    {id:2, name:'Chilli Garlic Prawns', cat:'starters', price:8.5, img:'https://images.unsplash.com/photo-1617692855027-6b9e3ed7f0e8?q=80&w=900&auto=format&fit=crop', tags:['seafood']},
+    {id:3, name:'Halloumi Fries & Harissa', cat:'starters', price:7.0, img:'https://images.unsplash.com/photo-1568051243853-8b9a9e9acb61?q=80&w=900&auto=format&fit=crop', tags:['veg']},
+    {id:4, name:'Charred Chicken Skewer Bowl', cat:'mains', price:13.0, img:'https://images.unsplash.com/photo-1514511547117-f2c303df9d95?q=80&w=900&auto=format&fit=crop', tags:['grill']},
+    {id:5, name:'Crispy Halloumi Burger', cat:'mains', price:12.0, img:'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=900&auto=format&fit=crop', tags:['veg']},
+    {id:6, name:'Slow-cooked Beef Ragu', cat:'mains', price:14.5, img:'https://images.unsplash.com/photo-1604908554027-7745c4b6d2f9?q=80&w=900&auto=format&fit=crop', tags:['pasta']},
+    {id:7, name:'Warm Brownie & Ice Cream', cat:'desserts', price:6.5, img:'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=900&auto=format&fit=crop', tags:['chocolate']},
+    {id:8, name:'Lemon Posset, Shortbread', cat:'desserts', price:6.0, img:'https://images.unsplash.com/photo-1507924922827-8a62f3d1a50d?q=80&w=900&auto=format&fit=crop', tags:['citrus']},
+    {id:9, name:'House Lemonade', cat:'drinks', price:3.2, img:'https://images.unsplash.com/photo-1524594227084-6c89d5f0b0d4?q=80&w=900&auto=format&fit=crop', tags:['refresh']},
+    {id:10, name:'Iced Coffee', cat:'drinks', price:3.8, img:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=900&auto=format&fit=crop', tags:['cold']},
+    {id:11, name:'English Breakfast Tea', cat:'drinks', price:2.8, img:'https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=900&auto=format&fit=crop', tags:['hot']},
+    {id:12, name:'Roasted Cauliflower Steak', cat:'mains', price:12.5, img:'https://images.unsplash.com/photo-1605478322018-a18199b3dda5?q=80&w=900&auto=format&fit=crop', tags:['vegan']},
+    {id:13, name:'Spiced Lentil Soup', cat:'starters', price:5.5, img:'https://images.unsplash.com/photo-1476127394009-31d39f0b9a97?q=80&w=900&auto=format&fit=crop', tags:['vegan']}
+  ];
+
+  const menuGrid = document.getElementById('menuGrid');
+  const search = document.getElementById('search');
+  const price = document.getElementById('price');
+  const priceVal = document.getElementById('priceVal');
+  const chips = document.querySelectorAll('.chip');
+  let activeCat = 'all';
+
+  function renderMenu(){
+    const q = search.value.toLowerCase().trim();
+    const maxPrice = Number(price.value);
+    priceVal.textContent = maxPrice;
+
+    const filtered = dishes.filter(d =>
+      (activeCat==='all' || d.cat===activeCat || (activeCat==='vegan' && d.tags.includes('vegan'))) &&
+      d.price <= maxPrice &&
+      (d.name.toLowerCase().includes(q) || d.tags.some(t=>t.includes(q)))
+    );
+
+    menuGrid.innerHTML = filtered.map(d => `
+      <article class="dish">
+        <img src="${d.img}" alt="${d.name}">
+        <div class="meta">
+          <h4>${d.name}</h4>
+          <div class="muted">
+            <span class="price">£${d.price.toFixed(2)}</span>
+            <span class="tag">${d.cat}</span>
+          </div>
+          <div class="flex" style="margin-top:10px">
+            <button class="btn" onclick="addToCart(${d.id})">Add</button>
+            <button class="btn ghost" onclick="quickInfo('${d.name}', ${d.price})">Info</button>
+          </div>
+        </div>
+      </article>
+    `).join('') || `<p class="muted">No dishes match your filters.</p>`;
+  }
+
+  chips.forEach(c => c.addEventListener('click', ()=>{
+    chips.forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+    activeCat = c.dataset.cat;
+    renderMenu();
+  }));
+
+  search.addEventListener('input', renderMenu);
+  price.addEventListener('input', renderMenu);
+
+  function resetFilters(){
+    search.value='';
+    activeCat='all';
+    chips.forEach(x=>x.classList.remove('active'));
+    chips[0].classList.add('active');
+    price.value=20;
+    renderMenu();
+  }
+
+  function quickInfo(name, p){
+    alert(`${name}\n\nApprox prep time: 12–15 minutes.\nPrice: £${p.toFixed(2)}`);
+  }
+
+  // Cart
+  const cart = [];
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
+
+  function addToCart(id){
+    const item = dishes.find(d => d.id===id);
+    const found = cart.find(c => c.id===id);
+    if(found){ found.qty++ } else { cart.push({id:item.id, name:item.name, price:item.price, qty:1}); }
+    renderCart();
+  }
+
+  function removeFromCart(id){
+    const idx = cart.findIndex(c=>c.id===id);
+    if(idx>-1){
+      cart[idx].qty--;
+      if(cart[idx].qty<=0) cart.splice(idx,1);
+    }
+    renderCart();
+  }
+
+  function clearCart(){
+    cart.length=0;
+    renderCart();
+  }
+
+  function renderCart(){
+    if(cart.length===0){
+      cartItems.innerHTML = '<span class="muted">No items yet.</span>';
+      cartTotal.textContent='£0.00';
+      return;
+    }
+    cartItems.innerHTML = cart.map(c => `
+      <div class="cart-item">
+        <span>${c.name} × ${c.qty}</span>
+        <span>£${(c.price*c.qty).toFixed(2)} <button class="btn ghost" style="padding:2px 6px" onclick="removeFromCart(${c.id})">–</button></span>
+      </div>
+    `).join('');
+    const total = cart.reduce((s,c)=>s+c.price*c.qty,0);
+    cartTotal.textContent = '£'+total.toFixed(2);
+  }
+
+  function copyCart(){
+    const text = cart.length
+      ? cart.map(c=>`${c.name} × ${c.qty} = £${(c.price*c.qty).toFixed(2)}`).join('\n') + `\n\nTotal: ${cartTotal.textContent}`
+      : 'Cart is empty.';
+    navigator.clipboard.writeText(text).then(()=>alert('Cart summary copied!'));
+  }
+
+  // ⭐⭐⭐ STAR RATING WIDGET JS ⭐⭐⭐
+  const stars = document.querySelectorAll('.star');
+  const rateMsg = document.getElementById('rateMsg');
+
+  stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+      stars.forEach(s => s.classList.remove('active'));
+      for (let i = 0; i <= index; i++) {
+        stars[i].classList.add('active');
+      }
+
+      const rating = index + 1;
+      const messages = {
+        1: "😢 Sorry! I’ll improve it.",
+        2: "😕 Thanks — noted.",
+        3: "🙂 Glad it’s okay!",
+        4: "😄 Thanks so much!",
+        5: "🔥😍 You’re amazing!"
+      };
+
+      rateMsg.textContent = messages[rating];
+    });
+  });
+
+  // Booking Form
+  const count = document.getElementById('count');
+  document.getElementById('message').addEventListener('input', e=>{
+    count.textContent = `(${e.target.value.length}/300)`;
+  });
+
+  function generateEmail(){
+    const to = 'bookings@westivy.example';
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const covers = document.getElementById('covers').value;
+    const msg = document.getElementById('message').value.trim();
+
+    const cartLines = cart.length
+      ? cart.map(c=>`- ${c.name} × ${c.qty} = £${(c.price*c.qty).toFixed(2)}`).join('%0A')
+      : 'No pre-selected dishes';
+
+    const subject = encodeURIComponent(`West Ivy Bury – Booking/Feedback from ${name}`);
+    const body = encodeURIComponent(
+`Name: ${name}
+Email: ${email}
+Date & time: ${date || '-'} ${time || ''}
+Covers: ${covers}
+
+Pre-selected dishes:
+${decodeURIComponent(cartLines)}
+
+Message:
+${msg || '-'}
+
+Sent from the West Ivy Bury demo site.`);
+
+    document.getElementById('preview').textContent =
+`To: ${to}
+Subject: West Ivy Bury – Booking/Feedback from ${name}
+
+${decodeURIComponent(body)}`;
+
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  }
+
+  function clearForm(){
+    ['name','email','date','time','covers','message'].forEach(id=>document.getElementById(id).value='');
+    count.textContent='(0/300)';
+    document.getElementById('preview').textContent = 'Your booking or feedback text will appear here.';
+  }
+
+  // Init
+  function init(){ renderMenu(); checkOpen(); }
+  init();
 </script>
-
 </body>
 </html>
