@@ -6,21 +6,18 @@
 <title>Fidak Batool | Home</title>
 
 <style>
-/* ------------------------------------------------ */
-/* ROOT THEME */
-/* ------------------------------------------------ */
+/* -------------------- ROOT THEME -------------------- */
 :root {
   --bg: #f5e9d5;
   --card: #fff8ef;
   --ink: #4a3f35;
   --accent: #b69377;
+  --accent-2: #8c6f5a;
   --line: #d1bfa5;
   --gold: #d4af37;
 }
 
-/* ------------------------------------------------ */
-/* GLOBAL */
-/* ------------------------------------------------ */
+/* -------------------- GLOBAL -------------------- */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -44,52 +41,56 @@ nav a {
 }
 nav a:hover { text-decoration: underline; }
 
-/* CONTENT WIDTH */
+/* WIDE LAYOUT */
 main {
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 30px;
+  padding: 20px 40px;
 }
 
-/* ------------------------------------------------ */
-/* HERO (Image Left + About Box Right) */
-/* ------------------------------------------------ */
+/* -------------------- HERO SECTION -------------------- */
+
 .hero {
   display: flex;
   align-items: center;
+  gap: 40px;
   justify-content: center;
-  gap: 50px;
   flex-wrap: wrap;
-  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .hero img {
-  width: 330px;
+  width: 340px;
   height: auto;
-  border-radius: 12px;
 }
 
 .about-box {
   background: var(--card);
-  padding: 25px;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  max-width: 550px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.08);
-  transition: 0.3s;
-}
-.about-box:hover {
-  box-shadow: 0 0 25px rgba(212,175,55,0.4);
+  padding: 25px;
+  border-radius: 14px;
+  max-width: 650px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
 }
 
-/* ------------------------------------------------ */
-/* CIRCLES */
-/* ------------------------------------------------ */
+.about-box h2 {
+  margin-top: 0;
+}
+
+/* -------------------- CIRCLE INFO -------------------- */
+
+.circle-section-title {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
 .circle-container {
   display: flex;
   justify-content: center;
-  gap: 70px;
-  margin: 50px 0;
+  gap: 60px;
+  margin: 25px 0 10px;
   flex-wrap: wrap;
 }
 
@@ -102,30 +103,38 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
   cursor: pointer;
   position: relative;
-  text-align: center;
-  font-size: 20px;
   transition: 0.3s ease;
+  text-align: center;
+  padding: 10px;
+  overflow: hidden;
 }
 
 .circle:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  transform: scale(1.06);
+  box-shadow: 0 0 22px rgba(0,0,0,0.18);
 }
 
-/* The hidden hover info inside the circle */
+.circle-title {
+  font-weight: bold;
+  font-size: 18px;
+  transition: opacity .25s ease;
+}
+
 .circle .info {
   position: absolute;
   opacity: 0;
   visibility: hidden;
-  width: 200px;
   font-size: 14px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: .3s ease;
+  padding: 15px;
+  transition: opacity .25s ease, visibility .25s ease;
+  width: 190px;
+  line-height: 1.3;
+}
+
+.circle:hover .circle-title {
+  opacity: 0;
 }
 
 .circle:hover .info {
@@ -133,66 +142,108 @@ main {
   visibility: visible;
 }
 
-.circle:hover .label {
-  opacity: 0;
-  visibility: hidden;
+.circle .info img {
+  display: block;
+  margin: 8px auto 0;
 }
 
 .hint {
   text-align: center;
-  margin-top: -25px;
+  margin-top: 6px;
   font-style: italic;
 }
 
-/* ------------------------------------------------ */
-/* TIC TAC TOE */
-/* ------------------------------------------------ */
-.ttt-wrapper {
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-}
+/* -------------------- TIC TAC TOE -------------------- */
 
 .ttt-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ttt-inner {
   background: var(--card);
-  padding: 25px;
-  border-radius: 12px;
   border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 25px 25px;
+  max-width: 520px;
+  width: 100%;
   box-shadow: 0 0 12px rgba(0,0,0,0.08);
+}
+
+.ttt-inner h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.ttt-inner p {
+  text-align: center;
+  margin: 4px 0 14px;
+}
+
+.ttt-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.ttt-legend img {
+  vertical-align: middle;
 }
 
 #board {
   display: grid;
-  grid-template-columns: repeat(3, 120px);
+  grid-template-columns: repeat(3, 110px);
   gap: 8px;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 
 .cell {
-  width: 120px;
-  height: 120px;
-  background: #faf2e6;
+  width: 110px;
+  height: 110px;
+  background: var(--card);
   border: 2px solid var(--line);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 60px;
 }
+
 .cell img {
   width: 70px;
 }
 
-/* ------------------------------------------------ */
-/* FUN FACT + CONFETTI */
-/* ------------------------------------------------ */
-#funFact {
+/* -------------------- FUN FACT -------------------- */
+
+.funfact-section {
   text-align: center;
-  font-weight: bold;
-  margin-top: 20px;
-  display: none;
+  margin-top: 35px;
 }
 
+#funFact {
+  font-weight: bold;
+  display: none;
+  margin-top: 10px;
+}
+
+/* -------------------- DARK MODE -------------------- */
+
+.dark-mode {
+  background: #2b2b2b;
+  color: #fff;
+}
+.dark-mode header { background: #3a3a3a; }
+.dark-mode .about-box { background: #4a4a4a; color: #fff; }
+.dark-mode .circle { background: #555; color: white; }
+.dark-mode .ttt-inner { background: #444; }
+.dark-mode .cell { background: #555; }
+.dark-mode #funFact { color: #fff; }
+
+/* Confetti animation */
 .confetti {
   position: fixed;
   width: 10px;
@@ -200,14 +251,14 @@ main {
   background: var(--gold);
   border-radius: 50%;
   animation: fall 2s linear forwards;
-  z-index: 9999;
+  z-index: 999;
 }
-
 @keyframes fall {
   from { transform: translateY(-10%); opacity: 1; }
   to { transform: translateY(120vh); opacity: 0; }
 }
 
+/* Buttons */
 button {
   background: var(--accent);
   color: white;
@@ -215,22 +266,23 @@ button {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
+  font-size: 14px;
 }
-button:hover { background: #8c6f5a; }
+button:hover { background: var(--accent-2); }
 
-/* ------------------------------------------------ */
-/* DARK MODE */
-/* ------------------------------------------------ */
-.dark-mode {
-  background: #2b2b2b;
-  color: white;
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  main {
+    padding: 15px 16px;
+  }
+  #board {
+    grid-template-columns: repeat(3, 90px);
+  }
+  .cell {
+    width: 90px;
+    height: 90px;
+  }
 }
-.dark-mode header { background: #3a3a3a; }
-.dark-mode .about-box { background: #4a4a4a; border-color: #666; }
-.dark-mode .circle { background: #555; }
-.dark-mode .ttt-container { background: #444; color: white; }
-.dark-mode .cell { background: #555; }
 </style>
 </head>
 
@@ -241,95 +293,99 @@ button:hover { background: #8c6f5a; }
   <nav>
     <a href="index.html">Index</a>
     <a href="skills.html">Skills</a>
-    <a href="showcase.html">Business Showcase</a>
-    <a href="problem-solving.html">Problem Solving</a>
-    <a href="contact.html">Contact</a>
+    <a href="showcase.html">Business Showcase Page</a>
+    <a href="problem-solving.html">Problem-Solving Page</a>
+    <a href="contact.html">Contact Page</a>
   </nav>
 </header>
 
-<div style="text-align:center; margin-top:15px;">
+<div style="text-align:center;margin-top:15px;">
   <button onclick="toggleDarkMode()" id="darkToggle">Enable Dark Mode</button>
 </div>
 
 <main>
 
-<!-- ------------------------------------------------ -->
-<!-- HERO SECTION -->
-<!-- ------------------------------------------------ -->
-<div class="hero">
-  <img src="assets/officegirl.png" alt="Fidak Cartoon">
-
-  <div class="about-box">
-    <h2>A Bit About Me</h2>
-    <p>
-      I’m a Business Management with Innovation & Technology student who loves
-      exploring how digital systems make businesses faster, smarter and more
-      efficient. I enjoy turning ideas into real solutions and improving customer
-      experiences through modern tools and creative thinking.
-    </p>
-  </div>
-</div>
-
-<!-- ------------------------------------------------ -->
-<!-- CIRCLES -->
-<!-- ------------------------------------------------ -->
-<div class="circle-container">
-
-  <div class="circle">
-    <span class="label">Interests</span>
-    <div class="info">
-      I love travelling, exploring new cultures, <br>and supporting Manchester United!
-      <br><br><img src="assets/manunitedlogo.jpg" width="55">
+  <!-- -------------------- HERO -------------------- -->
+  <div class="hero">
+    <img src="assets/officegirl.png" alt="Fidak Cartoon">
+    <div class="about-box">
+      <h2>A Bit About Me</h2>
+      <p>
+        I am a Business Management with Innovation and Technology student with a strong interest in
+        digital transformation and improving customer experiences. My background in retail has helped
+        me develop confidence, communication and responsibility, especially when working with families
+        and young children in busy environments.
+      </p>
+      <p>
+        These experiences have made me patient, adaptable and curious about how technology can make
+        business systems more efficient. I enjoy exploring how digital tools support better decision
+        making, reduce stress for staff and create smoother journeys for customers.
+      </p>
     </div>
   </div>
 
-  <div class="circle">
-    <span class="label">Future Goals</span>
-    <div class="info">
-      I want to become a project manager leading digital transformation projects that
-      help businesses grow and improve.
+  <!-- -------------------- CIRCLES -------------------- -->
+  <div class="circle-section-title">Explore My Interests And Goals</div>
+
+  <div class="circle-container">
+
+    <!-- Interests -->
+    <div class="circle">
+      <span class="circle-title">Interests</span>
+      <div class="info">
+        I enjoy travelling, learning about new cultures and using my Spanish after living in Spain
+        for ten years. I am a passionate Manchester United supporter and football has taught me
+        resilience, motivation and teamwork. I also like following new digital trends and creative
+        technology that help businesses grow.
+        <img src="assets/manunitedlogo.jpg" alt="Manchester United Logo" width="60">
+      </div>
+    </div>
+
+    <!-- Future Goals -->
+    <div class="circle">
+      <span class="circle-title">Future Goals</span>
+      <div class="info">
+        I want to become a project manager in the technology sector, leading digital transformation
+        projects that improve business processes and customer experiences. My aim is to build strong
+        leadership and technical skills so I can guide teams, work internationally and contribute to
+        modern, innovative solutions.
+      </div>
+    </div>
+
+  </div>
+
+  <p class="hint">Hover over each circle to reveal more about my interests and goals.</p>
+
+  <!-- -------------------- TIC TAC TOE -------------------- -->
+  <div class="ttt-container">
+    <div class="ttt-inner">
+      <h2>Beat Me At Tic Tac Toe</h2>
+      <p>Try to win against the computer in this simple game.</p>
+
+      <div class="ttt-legend">
+        <span>User</span>
+        <img src="assets/manunitedlogo.jpg" alt="User icon" width="28">
+        <span>Computer</span>
+        <img src="assets/robot.png" alt="Robot icon" width="30">
+      </div>
+
+      <p>Click a square to place your badge. First to get three in a row wins.</p>
+
+      <div id="board"></div>
     </div>
   </div>
 
-</div>
-
-<p class="hint">Hover over a circle to reveal more ✧</p>
-
-<!-- ------------------------------------------------ -->
-<!-- TIC TAC TOE -->
-<!-- ------------------------------------------------ -->
-<div class="ttt-wrapper">
-<div class="ttt-container">
-
-  <h2 style="text-align:center;">Beat Me at Tic Tac Toe!</h2>
-
-  <p><b>How to Play:</b></p>
-  <ul>
-    <li>You are <img src="assets/manunitedlogo.jpg" width="24"> (your moves)</li>
-    <li>I am <img src="assets/robot.png" width="26"> (computer moves)</li>
-    <li>Click any square to begin!</li>
-  </ul>
-
-  <div id="board"></div>
-
-</div>
-</div>
-
-<!-- ------------------------------------------------ -->
-<!-- FUN FACT -->
-<!-- ------------------------------------------------ -->
-<div style="text-align:center; margin-top:40px;">
-  <button onclick="showFunFact()">Reveal Fun Fact</button>
-  <p id="funFact">I lived in Spain for 10 years and speak both English and Spanish!</p>
-</div>
+  <!-- -------------------- FUN FACT -------------------- -->
+  <div class="funfact-section">
+    <button onclick="showFunFact()">Reveal Fun Fact</button>
+    <p id="funFact">I lived in Spain for 10 years and speak both English and Spanish.</p>
+  </div>
 
 </main>
 
 <script>
-/* ------------------------------------------------ */
-/* DARK MODE */
-/* ------------------------------------------------ */
-function toggleDarkMode() {
+// ---------------- DARK MODE ----------------
+function toggleDarkMode(){
   document.body.classList.toggle("dark-mode");
   document.getElementById("darkToggle").textContent =
     document.body.classList.contains("dark-mode")
@@ -337,24 +393,22 @@ function toggleDarkMode() {
     : "Enable Dark Mode";
 }
 
-/* ------------------------------------------------ */
-/* FUN FACT + CONFETTI */
-/* ------------------------------------------------ */
+// ---------------- FUN FACT + CONFETTI ----------------
 function showFunFact() {
-  document.getElementById("funFact").style.display = "block";
+  const fact = document.getElementById("funFact");
+  fact.style.display = "block";
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 30; i++) {
     let c = document.createElement("div");
     c.classList.add("confetti");
     c.style.left = Math.random() * 100 + "vw";
+    c.style.backgroundColor = Math.random() > 0.5 ? "#d4af37" : "#b69377";
     document.body.appendChild(c);
     setTimeout(() => c.remove(), 2000);
   }
 }
 
-/* ------------------------------------------------ */
-/* TIC TAC TOE GAME */
-/* ------------------------------------------------ */
+// ---------------- TIC TAC TOE GAME ----------------
 const board = document.getElementById("board");
 let cells = [];
 let gameOver = false;
@@ -376,21 +430,26 @@ function initBoard() {
 function userMove(i) {
   if (gameOver || cells[i].innerHTML !== "") return;
 
-  cells[i].innerHTML = `<img src="assets/manunitedlogo.jpg">`;
+  cells[i].innerHTML = `<img src="assets/manunitedlogo.jpg" alt="User">`;
 
-  if (checkWin()) return endGame("You won!");
-  if (isBoardFull()) return endGame("Draw!");
+  if (checkWin()) return endGame("You won.");
+  if (isBoardFull()) return endGame("It is a draw.");
 
   computerMove();
 }
 
 function computerMove() {
-  let empty = cells.map((c, i) => c.innerHTML === "" ? i : null).filter(i => i !== null);
-  let choice = empty[Math.floor(Math.random() * empty.length)];
-  cells[choice].innerHTML = `<img src="assets/robot.png" width="60">`;
+  let empty = cells
+    .map((c, i) => (c.innerHTML === "" ? i : null))
+    .filter(v => v !== null);
 
-  if (checkWin()) return endGame("Computer wins!");
-  if (isBoardFull()) return endGame("Draw!");
+  if (empty.length === 0) return;
+
+  let choice = empty[Math.floor(Math.random() * empty.length)];
+  cells[choice].innerHTML = `<img src="assets/robot.png" alt="Computer">`;
+
+  if (checkWin()) return endGame("Computer wins.");
+  if (isBoardFull()) return endGame("It is a draw.");
 }
 
 function isBoardFull() {
@@ -403,6 +462,7 @@ function checkWin() {
     [0,3,6],[1,4,7],[2,5,8],
     [0,4,8],[2,4,6]
   ];
+
   return wins.some(([a,b,c]) =>
     cells[a].innerHTML !== "" &&
     cells[a].innerHTML === cells[b].innerHTML &&
@@ -412,7 +472,7 @@ function checkWin() {
 
 function endGame(msg) {
   gameOver = true;
-  setTimeout(() => alert(msg), 200);
+  setTimeout(() => alert(msg), 120);
 }
 
 initBoard();
@@ -420,3 +480,4 @@ initBoard();
 
 </body>
 </html>
+
