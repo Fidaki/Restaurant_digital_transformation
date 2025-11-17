@@ -1,285 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fidak Batool | Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fidak Abbas Batool | Home</title>
 
-<style>
-/* -------------------- ROOT THEME -------------------- */
-:root {
-  --bg: #f5e9d5;
-  --card: #fff8ef;
-  --ink: #4a3f35;
-  --accent: #b69377;
-  --accent-2: #8c6f5a;
-  --line: #d1bfa5;
-  --gold: #d4af37;
-}
+  <style>
+    :root {
+      --bg:#f5e9d5;
+      --card:#fff8ef;
+      --ink:#4a3f35;
+      --line:#d1bfa5;
+      --accent:#b69377;
+      --accent-2:#8c6f5a;
+      --gold:#d4af37;
+    }
 
-/* -------------------- GLOBAL -------------------- */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  scroll-behavior: smooth;
-}
+    body {
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      scroll-behavior:smooth;
+    }
 
-header {
-  background: #f2dbc4;
-  padding: 18px 0;
-  text-align: center;
-  border-bottom: 1px solid var(--line);
-}
+    header {
+      background:#f2dbc4;
+      padding:16px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      align-items:center;
+    }
 
-nav a {
-  margin: 0 15px;
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: bold;
-}
-nav a:hover { text-decoration: underline; }
+    header h1 { margin:0; }
 
-/* WIDE LAYOUT FIX */
-main {
-  max-width: 1400px;   /* bigger width */
-  margin: 0 auto;
-  padding: 20px 40px;  /* reduced side white space */
-}
+    nav a {
+      margin:0 10px;
+      color:var(--ink);
+      text-decoration:none;
+      font-weight:bold;
+    }
+    nav a:hover { text-decoration:underline; }
 
-/* -------------------- HERO SECTION -------------------- */
+    #darkToggle {
+      padding:7px 14px;
+      border-radius:20px;
+      background:transparent;
+      border:1px solid var(--line);
+      cursor:pointer;
+    }
 
-.hero {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
+    /* Main wrapper */
+    .wrap {
+      max-width:1100px;
+      margin:30px auto;
+      padding:0 20px;
+    }
 
-.hero img {
-  width: 350px;
-  height: auto;
-}
+    /* Hero layout */
+    .hero {
+      display:flex;
+      gap:40px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:40px;
+    }
 
-/* -------------------- ABOUT TEXT -------------------- */
+    .hero-photo {
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      overflow:hidden;
+      border:6px solid #f2dbc4;
+      box-shadow:0 8px 18px rgba(0,0,0,.15);
+    }
+    .hero-photo img { width:100%; height:100%; object-fit:cover; }
 
-.about-box {
-  background: var(--card);
-  border: 1px solid var(--line);
-  padding: 25px;
-  border-radius: 14px;
-  max-width: 600px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.08);
-}
+    .hero-text {
+      max-width:500px;
+    }
+    .hero-text h2 { margin:0 0 6px; font-size:32px; }
+    .hero-text h3 { margin:0 0 12px; font-size:18px; }
+    .hero-text p { margin:0; line-height:1.6; }
 
-/* -------------------- CIRCLE INFO -------------------- */
+    /* Circles */
+    .circle-row {
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      flex-wrap:wrap;
+      margin-bottom:25px;
+    }
 
-.circle-container {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  margin: 35px 0;
-  flex-wrap: wrap;
-}
+    .info-circle {
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:#f9ebd7;
+      border:2px solid var(--line);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      cursor:pointer;
+      transition:0.25s;
+      text-align:center;
+      padding:20px;
+    }
 
-.circle {
-  width: 180px;
-  height: 180px;
-  background: #f1e2cf;
-  border: 3px solid var(--line);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  position: relative;
-  transition: 0.3s ease;
-}
+    .info-circle:hover {
+      transform:translateY(-4px);
+      box-shadow:0 8px 18px rgba(0,0,0,.12);
+    }
 
-.circle:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 20px rgba(0,0,0,0.15);
-}
+    .circle-title {
+      font-size:18px;
+      font-weight:bold;
+      transition:0.2s;
+    }
 
-.circle .info {
-  position: absolute;
-  opacity: 0;
-  visibility: hidden;
-  font-size: 14px;
-  padding: 15px;
-  transition: .3s ease;
-  width: 150px;
-}
+    .circle-info {
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      padding:20px;
+      opacity:0;
+      pointer-events:none;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      font-size:14px;
+      line-height:1.45;
+      transform:scale(0.9);
+      transition:0.25s ease;
+      background:#f9ebd7;
+    }
 
-.circle:hover .info {
-  opacity: 1;
-  visibility: visible;
-}
+    .info-circle:hover .circle-info {
+      opacity:1;
+      pointer-events:auto;
+      transform:scale(1);
+    }
+    .info-circle:hover .circle-title { opacity:0; }
 
-.hint {
-  text-align: center;
-  margin-top: 10px;
-  font-style: italic;
-}
+    /* MU badge animated */
+    .mu-badge {
+      width:48px;
+      margin-top:10px;
+      animation:muPulse 1.5s infinite;
+    }
+    @keyframes muPulse { 50% { transform:scale(1.12); } }
 
-/* -------------------- TIC TAC TOE -------------------- */
+    /* Hint */
+    .hover-hint {
+      text-align:center;
+      font-size:13px;
+      opacity:.75;
+      margin-bottom:40px;
+    }
 
-.ttt-container {
-  text-align: center;
-  margin-top: 45px;
-}
+    /* Game */
+    .game-wrap {
+      display:flex;
+      gap:25px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:flex-start;
+    }
 
-#board {
-  display: grid;
-  grid-template-columns: repeat(3, 120px);
-  gap: 8px;
-  margin: 0 auto;
-}
+    .board {
+      display:grid;
+      grid-template-columns:repeat(3,90px);
+      gap:6px;
+    }
 
-.cell {
-  width: 120px;
-  height: 120px;
-  background: var(--card);
-  border: 2px solid var(--line);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-}
+    .cell {
+      width:90px;
+      height:90px;
+      background:#fcefdc;
+      border-radius:12px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      cursor:pointer;
+      transition:0.2s;
+    }
+    .cell:hover {
+      background:#f4dfc4;
+      transform:translateY(-3px);
+    }
 
-.cell img {
-  width: 70px;
-}
+    .cell img { width:55px; height:55px; }
 
-/* -------------------- FUN FACT -------------------- */
+    .computer-mark { font-size:32px; }
 
-#funFact {
-  text-align: center;
-  font-weight: bold;
-  display: none;
-  margin-top: 10px;
-}
+    .game-info {
+      max-width:260px;
+      font-size:14px;
+    }
 
-/* -------------------- DARK MODE -------------------- */
+    .btn-small {
+      padding:6px 12px;
+      border-radius:20px;
+      background:var(--accent);
+      color:white;
+      border:none;
+      cursor:pointer;
+      margin-top:8px;
+    }
 
-.dark-mode {
-  background: #2b2b2b;
-  color: #fff;
-}
-.dark-mode header { background: #3a3a3a; }
-.dark-mode .about-box { background: #4a4a4a; color: #fff; }
-.dark-mode .circle { background: #555; color: white; }
-.dark-mode .cell { background: #444; }
+    /* Fun fact + confetti */
+    .fun-fact-text { display:none; font-weight:bold; margin-top:8px; }
+    .confetti-piece {
+      position:fixed;
+      top:-10px;
+      width:6px;
+      height:10px;
+      background:var(--gold);
+      opacity:.9;
+      animation:fall 2.4s linear forwards;
+      z-index:50;
+    }
+    @keyframes fall {
+      100% { transform:translateY(110vh) rotate(240deg); }
+    }
 
-/* Confetti animation (simple circles falling) */
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: var(--gold);
-  border-radius: 50%;
-  animation: fall 2s linear forwards;
-}
-@keyframes fall {
-  from { transform: translateY(-10%); opacity: 1; }
-  to { transform: translateY(120vh); opacity: 0; }
-}
+    /* Dark mode */
+    body.dark-mode {
+      --bg:#2b2b2b;
+      --card:#3a3a3a;
+      --ink:#f1f1f1;
+      --line:#555;
+    }
+    body.dark-mode header { background:#333; }
+    body.dark-mode nav a { color:white; }
+    body.dark-mode .cell { background:#444; }
+    body.dark-mode .cell:hover { background:#555; }
 
-button {
-  background: var(--accent);
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-button:hover { background: var(--accent-2); }
-</style>
+  </style>
 </head>
-
 <body>
 
 <header>
   <h1>Fidak Batool</h1>
   <nav>
-    <a href="index.html">Index</a>
+    <a href="index.html"><b>Home</b></a>
     <a href="skills.html">Skills</a>
-    <a href="showcase.html">Business Showcase Page</a>
-    <a href="problem-solving.html">Problem-Solving Page</a>
-    <a href="contact.html">Contact Page</a>
+    <a href="showcase.html">Showcase</a>
+    <a href="problem-solving.html">Problem Solving</a>
+    <a href="contact.html">Contact</a>
   </nav>
+  <button id="darkToggle" onclick="toggleDarkMode()">Enable Dark Mode</button>
 </header>
 
-<div style="text-align:center;margin-top:15px;">
-  <button onclick="toggleDarkMode()" id="darkToggle">Enable Dark Mode</button>
-</div>
+<div class="wrap">
 
-<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-photo">
+      <img src="assets/officegirl.png" alt="Fidak cartoon avatar">
+    </div>
 
-<!-- -------------------- HERO -------------------- -->
-<div class="hero">
-  <img src="assets/officegirl.png" alt="Fidak Cartoon">
-  <div class="about-box">
-    <h2>A Bit About Me</h2>
-    <p>
-      I’m a Business Management with Innovation & Technology student with a passion
-      for digital transformation, modern business systems, and improving customer
-      experiences. I enjoy turning ideas into solutions and exploring how technology
-      supports smarter decision-making and better business processes.
+    <div class="hero-text">
+      <h2>Fidak Batool</h2>
+      <h3>Business Management with Innovation & Technology</h3>
+      <p>
+        I’m a motivated student interested in digital transformation and how
+        modern systems improve business efficiency. My experience working
+        with customers has strengthened my communication, confidence and
+        problem-solving skills. I enjoy blending creativity and technology
+        to make processes easier and more enjoyable for people.
+      </p>
+    </div>
+  </div>
+
+  <!-- CIRCLES -->
+  <div class="circle-row">
+
+    <div class="info-circle">
+      <div class="circle-title">Interests</div>
+      <div class="circle-info">
+        <p>
+          I love travelling, exploring new cultures and learning languages.
+          I lived in Spain for ten years and became fluent in Spanish.
+        </p>
+        <p>
+          I'm also a big Manchester United supporter — football motivates
+          me and teaches teamwork.
+        </p>
+        <img src="assets/manunitedlogo.jpg" class="mu-badge">
+      </div>
+    </div>
+
+    <div class="info-circle">
+      <div class="circle-title">Future Goals</div>
+      <div class="circle-info">
+        <p>
+          I want to become a project manager in the tech sector, helping
+          businesses modernise their systems and improve customer experience.
+        </p>
+        <p>
+          I aim to build strong leadership skills and work on impactful
+          digital transformation projects.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="hover-hint">Hover over the circles to reveal more ✨</p>
+
+  <!-- TIC TAC TOE -->
+  <h2 style="text-align:center;">🎮 Tic Tac Toe Challenge</h2>
+
+  <div class="game-wrap">
+
+    <div class="board" id="board">
+      <div class="cell" data-i="0"></div>
+      <div class="cell" data-i="1"></div>
+      <div class="cell" data-i="2"></div>
+      <div class="cell" data-i="3"></div>
+      <div class="cell" data-i="4"></div>
+      <div class="cell" data-i="5"></div>
+      <div class="cell" data-i="6"></div>
+      <div class="cell" data-i="7"></div>
+      <div class="cell" data-i="8"></div>
+    </div>
+
+    <div class="game-info">
+      <p>
+        Try to beat me! You play as the
+        <strong>Manchester United logo</strong> and I play as <strong>🤖</strong>.
+      </p>
+
+      <p><b id="msg">Your turn!</b></p>
+
+      <button class="btn-small" onclick="resetGame()">Reset Game</button>
+    </div>
+
+  </div>
+
+  <!-- FUN FACT -->
+  <h2 style="text-align:center;margin-top:50px;">🎉 Fun Fact</h2>
+  <div style="text-align:center;">
+    <button class="btn-small" onclick="showFunFact()">Reveal Fun Fact</button>
+    <p id="funFact" class="fun-fact-text">
+      I lived in Spain for 10 years and speak English & Spanish!
     </p>
   </div>
-</div>
-
-<!-- -------------------- CIRCLE INFORMATION -------------------- -->
-<div class="circle-container">
-
-  <!-- Interests -->
-  <div class="circle">
-    Interests
-    <div class="info">
-      I love travelling, exploring new cultures, and supporting Manchester United!  
-      <br><br>
-      <img src="assets/manunitedlogo.jpg" width="60">
-    </div>
-  </div>
-
-  <!-- Future Goals -->
-  <div class="circle">
-    Future Goals
-    <div class="info">
-      I aim to become a project manager in the tech sector, leading digital
-      transformation projects that make businesses better, faster, and smarter.
-    </div>
-  </div>
 
 </div>
 
-<p class="hint">Hover over a circle to reveal more information ✧</p>
-
-<!-- -------------------- FUN FACT -------------------- -->
-<div style="text-align:center;margin-top:40px;">
-  <button onclick="showFunFact()">Reveal Fun Fact</button>
-  <p id="funFact">I lived in Spain for 10 years and speak both English and Spanish!</p>
-</div>
-
-<!-- -------------------- TIC TAC TOE -------------------- -->
-<div class="ttt-container">
-  <h2>Beat Me at Tic Tac Toe!</h2>
-  <p>User = <img src="assets/manunitedlogo.jpg" width="30"> | Computer = 🤖</p>
-
-  <div id="board"></div>
-</div>
-
-</main>
+<footer style="text-align:center; padding:20px; opacity:.7;">
+  © <span id="year"></span> Fidak Abbas Batool
+</footer>
 
 <script>
-// ---------------- DARK MODE ----------------
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* DARK MODE ------------------------------------------------------ */
 function toggleDarkMode(){
   document.body.classList.toggle("dark-mode");
   document.getElementById("darkToggle").textContent =
@@ -288,87 +372,100 @@ function toggleDarkMode(){
     : "Enable Dark Mode";
 }
 
-// ---------------- FUN FACT + CONFETTI ----------------
-function showFunFact() {
-  document.getElementById("funFact").style.display = "block";
+/* TIC TAC TOE ---------------------------------------------------- */
+let board = Array(9).fill(null);
+let over=false;
 
-  for (let i = 0; i < 30; i++) {
-    let c = document.createElement("div");
-    c.classList.add("confetti");
-    c.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(c);
-    setTimeout(() => c.remove(), 2000);
+const msg = document.getElementById("msg");
+const cells = [...document.querySelectorAll(".cell")];
+
+cells.forEach(c=>{
+  c.onclick=()=>playerMove(c.dataset.i);
+});
+
+function playerMove(i){
+  if(over || board[i]) return;
+
+  place(i,"U");
+
+  if(win("U")) return end("You win! 🔴⚽");
+  if(draw()) return end("It's a draw.");
+
+  msg.textContent="My turn…";
+  setTimeout(cpuMove,500);
+}
+
+function cpuMove(){
+  const empty = board.map((v,i)=>v?null:i).filter(v=>v!==null);
+  const choice = empty[Math.floor(Math.random()*empty.length)];
+  place(choice,"C");
+
+  if(win("C")) return end("I win! 🤖");
+  if(draw()) return end("It's a draw.");
+
+  msg.textContent="Your turn!";
+}
+
+function place(i,who){
+  board[i]=who;
+  const cell = cells[i];
+  cell.innerHTML="";
+
+  if(who==="U"){
+    const img=document.createElement("img");
+    img.src="assets/manunitedlogo.jpg";
+    cell.appendChild(img);
+  } else {
+    const s=document.createElement("span");
+    s.className="computer-mark";
+    s.textContent="🤖";
+    cell.appendChild(s);
   }
 }
 
-// ---------------- TIC TAC TOE GAME ----------------
-const board = document.getElementById("board");
-let cells = [];
-let gameOver = false;
-
-function initBoard() {
-  board.innerHTML = "";
-  cells = [];
-  gameOver = false;
-
-  for (let i = 0; i < 9; i++) {
-    let cell = document.createElement("div");
-    cell.className = "cell";
-    cell.addEventListener("click", () => userMove(i));
-    board.appendChild(cell);
-    cells.push(cell);
-  }
-}
-
-function userMove(i) {
-  if (gameOver || cells[i].innerHTML !== "") return;
-
-  cells[i].innerHTML = `<img src="assets/manunitedlogo.jpg">`;
-
-  if (checkWin()) return endGame("You won!");
-  if (isBoardFull()) return endGame("Draw!");
-
-  computerMove();
-}
-
-function computerMove() {
-  let empty = cells
-    .map((c, i) => (c.innerHTML === "" ? i : null))
-    .filter(v => v !== null);
-
-  let choice = empty[Math.floor(Math.random() * empty.length)];
-  cells[choice].innerHTML = "🤖";
-
-  if (checkWin()) return endGame("Computer wins!");
-  if (isBoardFull()) return endGame("Draw!");
-}
-
-function isBoardFull() {
-  return cells.every(c => c.innerHTML !== "");
-}
-
-function checkWin() {
-  const wins = [
+function win(player){
+  const lines=[
     [0,1,2],[3,4,5],[6,7,8],
     [0,3,6],[1,4,7],[2,5,8],
     [0,4,8],[2,4,6]
   ];
-
-  return wins.some(([a,b,c]) =>
-    cells[a].innerHTML !== "" &&
-    cells[a].innerHTML === cells[b].innerHTML &&
-    cells[a].innerHTML === cells[c].innerHTML
-  );
+  return lines.some(l=>l.every(i=>board[i]==player));
 }
 
-function endGame(msg) {
-  gameOver = true;
-  setTimeout(() => alert(msg), 100);
+function draw(){ return board.every(v=>v!=null); }
+
+function end(text){
+  over=true;
+  msg.textContent=text;
 }
 
-initBoard();
+function resetGame(){
+  board=Array(9).fill(null);
+  over=false;
+  msg.textContent="Your turn!";
+  cells.forEach(c=>c.innerHTML="");
+}
+
+/* FUN FACT + CONFETTI -------------------------------------------- */
+function showFunFact(){
+  document.getElementById("funFact").style.display="block";
+  launchConfetti();
+}
+
+function launchConfetti(){
+  for(let i=0;i<70;i++){
+    const p=document.createElement("div");
+    p.className="confetti-piece";
+    p.style.left=Math.random()*100+"vw";
+    p.style.background=["#d4af37","#b69377","#f2dbc4","#fff"][Math.floor(Math.random()*4)];
+    p.style.animationDelay=Math.random()*0.8+"s";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),2600);
+  }
+}
 
 </script>
 
 </body>
 </html>
+
