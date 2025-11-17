@@ -41,44 +41,38 @@ nav a {
 }
 nav a:hover { text-decoration: underline; }
 
+/* WIDE LAYOUT FIX */
 main {
-  max-width: 1400px;
+  max-width: 1400px;   /* bigger width */
   margin: 0 auto;
-  padding: 20px 25px;
+  padding: 20px 40px;  /* reduced side white space */
 }
 
 /* -------------------- HERO SECTION -------------------- */
 
 .hero {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
   gap: 50px;
+  justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
 
 .hero img {
   width: 350px;
-  border-radius: 12px;
+  height: auto;
 }
 
-/* -------------------- ABOUT BOX -------------------- */
+/* -------------------- ABOUT TEXT -------------------- */
 
 .about-box {
   background: var(--card);
   border: 1px solid var(--line);
   padding: 25px;
   border-radius: 14px;
-  max-width: 650px;
-  margin-top: 30px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
-  transition: 0.3s ease;
-}
-
-.about-box:hover {
-  box-shadow: 0 0 20px rgba(212,175,55,0.6);
-  transform: translateY(-4px);
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
 }
 
 /* -------------------- CIRCLE INFO -------------------- */
@@ -86,14 +80,14 @@ main {
 .circle-container {
   display: flex;
   justify-content: center;
-  gap: 70px;
-  margin: 40px 0 10px;
+  gap: 50px;
+  margin: 35px 0;
   flex-wrap: wrap;
 }
 
 .circle {
-  width: 190px;
-  height: 190px;
+  width: 180px;
+  height: 180px;
   background: #f1e2cf;
   border: 3px solid var(--line);
   border-radius: 50%;
@@ -108,7 +102,7 @@ main {
 }
 
 .circle:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
   box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
 
@@ -116,8 +110,9 @@ main {
   position: absolute;
   opacity: 0;
   visibility: hidden;
+  font-size: 14px;
+  padding: 15px;
   transition: .3s ease;
-  font-size: 15px;
   width: 150px;
 }
 
@@ -128,15 +123,15 @@ main {
 
 .hint {
   text-align: center;
+  margin-top: 10px;
   font-style: italic;
-  margin-bottom: 20px;
 }
 
 /* -------------------- TIC TAC TOE -------------------- */
 
 .ttt-container {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 45px;
 }
 
 #board {
@@ -155,6 +150,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 60px;
 }
 
 .cell img {
@@ -170,7 +166,18 @@ main {
   margin-top: 10px;
 }
 
-/* CONFETTI */
+/* -------------------- DARK MODE -------------------- */
+
+.dark-mode {
+  background: #2b2b2b;
+  color: #fff;
+}
+.dark-mode header { background: #3a3a3a; }
+.dark-mode .about-box { background: #4a4a4a; color: #fff; }
+.dark-mode .circle { background: #555; color: white; }
+.dark-mode .cell { background: #444; }
+
+/* Confetti animation (simple circles falling) */
 .confetti {
   position: fixed;
   width: 10px;
@@ -184,18 +191,6 @@ main {
   to { transform: translateY(120vh); opacity: 0; }
 }
 
-/* -------------------- DARK MODE -------------------- */
-
-.dark-mode {
-  background: #2b2b2b;
-  color: white;
-}
-
-.dark-mode header { background: #3a3a3a; }
-.dark-mode .about-box { background: #4a4a4a; color: white; }
-.dark-mode .circle { background: #555; color: white; }
-.dark-mode .cell { background: #444; }
-
 button {
   background: var(--accent);
   color: white;
@@ -205,7 +200,6 @@ button {
   cursor: pointer;
 }
 button:hover { background: var(--accent-2); }
-
 </style>
 </head>
 
@@ -216,9 +210,9 @@ button:hover { background: var(--accent-2); }
   <nav>
     <a href="index.html">Index</a>
     <a href="skills.html">Skills</a>
-    <a href="showcase.html">Business Showcase</a>
-    <a href="problem-solving.html">Problem Solving</a>
-    <a href="contact.html">Contact</a>
+    <a href="showcase.html">Business Showcase Page</a>
+    <a href="problem-solving.html">Problem-Solving Page</a>
+    <a href="contact.html">Contact Page</a>
   </nav>
 </header>
 
@@ -231,26 +225,25 @@ button:hover { background: var(--accent-2); }
 <!-- -------------------- HERO -------------------- -->
 <div class="hero">
   <img src="assets/officegirl.png" alt="Fidak Cartoon">
-
   <div class="about-box">
     <h2>A Bit About Me</h2>
     <p>
-      I’m a Business Management with Innovation & Technology student who loves
-      exploring digital transformation, smarter business systems and how technology
-      improves customer experiences. I enjoy turning ideas into real solutions that
-      make businesses more modern, efficient and creative.
+      I’m a Business Management with Innovation & Technology student with a passion
+      for digital transformation, modern business systems, and improving customer
+      experiences. I enjoy turning ideas into solutions and exploring how technology
+      supports smarter decision-making and better business processes.
     </p>
   </div>
 </div>
 
-<!-- -------------------- CIRCLES -------------------- -->
+<!-- -------------------- CIRCLE INFORMATION -------------------- -->
 <div class="circle-container">
 
   <!-- Interests -->
   <div class="circle">
     Interests
     <div class="info">
-      I love travelling, exploring new cultures, and supporting Manchester United!
+      I love travelling, exploring new cultures, and supporting Manchester United!  
       <br><br>
       <img src="assets/manunitedlogo.jpg" width="60">
     </div>
@@ -260,25 +253,25 @@ button:hover { background: var(--accent-2); }
   <div class="circle">
     Future Goals
     <div class="info">
-      I want to become a project manager in the tech sector, leading digital
-      transformation projects that help businesses innovate and grow.
+      I aim to become a project manager in the tech sector, leading digital
+      transformation projects that make businesses better, faster, and smarter.
     </div>
   </div>
 
 </div>
 
-<p class="hint">Hover over a circle to reveal more ✧</p>
+<p class="hint">Hover over a circle to reveal more information ✧</p>
 
 <!-- -------------------- FUN FACT -------------------- -->
 <div style="text-align:center;margin-top:40px;">
   <button onclick="showFunFact()">Reveal Fun Fact</button>
-  <p id="funFact">I lived in Spain for 10 years and speak English & Spanish!</p>
+  <p id="funFact">I lived in Spain for 10 years and speak both English and Spanish!</p>
 </div>
 
 <!-- -------------------- TIC TAC TOE -------------------- -->
 <div class="ttt-container">
   <h2>Beat Me at Tic Tac Toe!</h2>
-  <p>User = <img src="assets/manunitedlogo.jpg" width="30"> | Computer = <img src="assets/robot.png" width="30"></p>
+  <p>User = <img src="assets/manunitedlogo.jpg" width="30"> | Computer = 🤖</p>
 
   <div id="board"></div>
 </div>
@@ -286,7 +279,7 @@ button:hover { background: var(--accent-2); }
 </main>
 
 <script>
-/* ---------------- DARK MODE ---------------- */
+// ---------------- DARK MODE ----------------
 function toggleDarkMode(){
   document.body.classList.toggle("dark-mode");
   document.getElementById("darkToggle").textContent =
@@ -295,7 +288,7 @@ function toggleDarkMode(){
     : "Enable Dark Mode";
 }
 
-/* ---------------- FUN FACT + CONFETTI ---------------- */
+// ---------------- FUN FACT + CONFETTI ----------------
 function showFunFact() {
   document.getElementById("funFact").style.display = "block";
 
@@ -308,7 +301,7 @@ function showFunFact() {
   }
 }
 
-/* ---------------- TIC TAC TOE ---------------- */
+// ---------------- TIC TAC TOE GAME ----------------
 const board = document.getElementById("board");
 let cells = [];
 let gameOver = false;
@@ -329,6 +322,7 @@ function initBoard() {
 
 function userMove(i) {
   if (gameOver || cells[i].innerHTML !== "") return;
+
   cells[i].innerHTML = `<img src="assets/manunitedlogo.jpg">`;
 
   if (checkWin()) return endGame("You won!");
@@ -343,7 +337,7 @@ function computerMove() {
     .filter(v => v !== null);
 
   let choice = empty[Math.floor(Math.random() * empty.length)];
-  cells[choice].innerHTML = `<img src="assets/robot.png" width="60">`;
+  cells[choice].innerHTML = "🤖";
 
   if (checkWin()) return endGame("Computer wins!");
   if (isBoardFull()) return endGame("Draw!");
@@ -373,6 +367,7 @@ function endGame(msg) {
 }
 
 initBoard();
+
 </script>
 
 </body>
