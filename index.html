@@ -41,36 +41,38 @@ nav a {
 }
 nav a:hover { text-decoration: underline; }
 
-/* WIDE LAYOUT */
+/* WIDE LAYOUT FIX */
 main {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 20px 60px;
 }
 
 /* -------------------- HERO SECTION -------------------- */
 
 .hero {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 40px;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: flex-start;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .hero img {
-  width: 340px;
+  width: 360px;
   height: auto;
 }
+
+/* -------------------- ABOUT TEXT -------------------- */
 
 .about-box {
   background: var(--card);
   border: 1px solid var(--line);
   padding: 25px;
   border-radius: 14px;
-  max-width: 650px;
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  max-width: 650px;
 }
 
 .about-box h2 {
@@ -79,18 +81,11 @@ main {
 
 /* -------------------- CIRCLE INFO -------------------- */
 
-.circle-section-title {
-  text-align: center;
-  margin-top: 25px;
-  font-size: 22px;
-  font-weight: bold;
-}
-
 .circle-container {
   display: flex;
   justify-content: center;
-  gap: 60px;
-  margin: 25px 0 10px;
+  gap: 70px;
+  margin: 50px 0 20px;
   flex-wrap: wrap;
 }
 
@@ -103,38 +98,29 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
+  text-align: center;
   cursor: pointer;
   position: relative;
   transition: 0.3s ease;
-  text-align: center;
-  padding: 10px;
-  overflow: hidden;
+  font-size: 18px;
 }
 
 .circle:hover {
   transform: scale(1.06);
-  box-shadow: 0 0 22px rgba(0,0,0,0.18);
-}
-
-.circle-title {
-  font-weight: bold;
-  font-size: 18px;
-  transition: opacity .25s ease;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
 
 .circle .info {
   position: absolute;
   opacity: 0;
   visibility: hidden;
-  font-size: 14px;
-  padding: 15px;
-  transition: opacity .25s ease, visibility .25s ease;
-  width: 190px;
+  font-size: 15px;
+  padding: 18px;
+  width: 180px;
   line-height: 1.3;
-}
-
-.circle:hover .circle-title {
-  opacity: 0;
+  transition: .3s ease;
+  text-align: center;
 }
 
 .circle:hover .info {
@@ -142,69 +128,30 @@ main {
   visibility: visible;
 }
 
-.circle .info img {
-  display: block;
-  margin: 8px auto 0;
-}
-
+/* -------------------- HINT -------------------- */
 .hint {
   text-align: center;
-  margin-top: 6px;
+  margin-top: 10px;
   font-style: italic;
 }
 
 /* -------------------- TIC TAC TOE -------------------- */
 
 .ttt-container {
+  text-align: center;
   margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.ttt-inner {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 20px 25px 25px;
-  max-width: 520px;
-  width: 100%;
-  box-shadow: 0 0 12px rgba(0,0,0,0.08);
-}
-
-.ttt-inner h2 {
-  text-align: center;
-  margin-top: 0;
-}
-
-.ttt-inner p {
-  text-align: center;
-  margin: 4px 0 14px;
-}
-
-.ttt-legend {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.ttt-legend img {
-  vertical-align: middle;
 }
 
 #board {
   display: grid;
-  grid-template-columns: repeat(3, 110px);
+  grid-template-columns: repeat(3, 120px);
   gap: 8px;
   margin: 0 auto;
 }
 
 .cell {
-  width: 110px;
-  height: 110px;
+  width: 120px;
+  height: 120px;
   background: var(--card);
   border: 2px solid var(--line);
   cursor: pointer;
@@ -219,31 +166,14 @@ main {
 
 /* -------------------- FUN FACT -------------------- */
 
-.funfact-section {
-  text-align: center;
-  margin-top: 35px;
-}
-
 #funFact {
+  text-align: center;
   font-weight: bold;
   display: none;
   margin-top: 10px;
 }
 
-/* -------------------- DARK MODE -------------------- */
-
-.dark-mode {
-  background: #2b2b2b;
-  color: #fff;
-}
-.dark-mode header { background: #3a3a3a; }
-.dark-mode .about-box { background: #4a4a4a; color: #fff; }
-.dark-mode .circle { background: #555; color: white; }
-.dark-mode .ttt-inner { background: #444; }
-.dark-mode .cell { background: #555; }
-.dark-mode #funFact { color: #fff; }
-
-/* Confetti animation */
+/* CONFETTI */
 .confetti {
   position: fixed;
   width: 10px;
@@ -251,38 +181,31 @@ main {
   background: var(--gold);
   border-radius: 50%;
   animation: fall 2s linear forwards;
-  z-index: 999;
 }
 @keyframes fall {
   from { transform: translateY(-10%); opacity: 1; }
   to { transform: translateY(120vh); opacity: 0; }
 }
 
-/* Buttons */
+/* -------------------- DARK MODE -------------------- */
+
+.dark-mode { background: #2b2b2b; color: white; }
+.dark-mode header { background:#3a3a3a; }
+.dark-mode .about-box { background:#444; color:white; }
+.dark-mode .circle { background:#555; color:white; }
+.dark-mode .cell { background:#444; }
+.dark-mode nav a { color:white; }
+
 button {
   background: var(--accent);
   color: white;
-  padding: 10px 18px;
+  padding: 12px 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
+  margin-top: 10px;
 }
 button:hover { background: var(--accent-2); }
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  main {
-    padding: 15px 16px;
-  }
-  #board {
-    grid-template-columns: repeat(3, 90px);
-  }
-  .cell {
-    width: 90px;
-    height: 90px;
-  }
-}
 </style>
 </head>
 
@@ -293,9 +216,9 @@ button:hover { background: var(--accent-2); }
   <nav>
     <a href="index.html">Index</a>
     <a href="skills.html">Skills</a>
-    <a href="showcase.html">Business Showcase Page</a>
-    <a href="problem-solving.html">Problem-Solving Page</a>
-    <a href="contact.html">Contact Page</a>
+    <a href="showcase.html">Business Showcase</a>
+    <a href="problem-solving.html">Problem Solving</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </header>
 
@@ -305,81 +228,70 @@ button:hover { background: var(--accent-2); }
 
 <main>
 
-  <!-- -------------------- HERO -------------------- -->
-  <div class="hero">
-    <img src="assets/officegirl.png" alt="Fidak Cartoon">
-    <div class="about-box">
-      <h2>A Bit About Me</h2>
-      <p>
-        I am a Business Management with Innovation and Technology student with a strong interest in
-        digital transformation and improving customer experiences. My background in retail has helped
-        me develop confidence, communication and responsibility, especially when working with families
-        and young children in busy environments.
-      </p>
-      <p>
-        These experiences have made me patient, adaptable and curious about how technology can make
-        business systems more efficient. I enjoy exploring how digital tools support better decision
-        making, reduce stress for staff and create smoother journeys for customers.
-      </p>
+<!-- -------------------- HERO -------------------- -->
+<div class="hero">
+  <img src="assets/officegirl.png" alt="Fidak Cartoon">
+  <div class="about-box">
+    <h2>A Bit About Me</h2>
+    <p>
+      I am a Business Management with Innovation & Technology student with a strong
+      interest in digital transformation, modern systems and improving customer experiences.
+      My background in roles such as Clarks helped me develop confidence, communication
+      skills and the ability to work under pressure. These experiences inspired my passion
+      for technology and how it supports better customer journeys, smarter decisions and
+      more efficient businesses.
+    </p>
+  </div>
+</div>
+
+<!-- -------------------- CIRCLE INFO -------------------- -->
+<div class="circle-container">
+
+  <!-- Interests -->
+  <div class="circle">
+    Interests
+    <div class="info">
+      I enjoy travelling, exploring new cultures and supporting Manchester United.  
+      <br><br>
+      <img src="assets/manunitedlogo.jpg" width="60">
     </div>
   </div>
 
-  <!-- -------------------- CIRCLES -------------------- -->
-  <div class="circle-section-title">Explore My Interests And Goals</div>
-
-  <div class="circle-container">
-
-    <!-- Interests -->
-    <div class="circle">
-      <span class="circle-title">Interests</span>
-      <div class="info">
-        I enjoy travelling, learning about new cultures and using my Spanish after living in Spain
-        for ten years. I am a passionate Manchester United supporter and football has taught me
-        resilience, motivation and teamwork. I also like following new digital trends and creative
-        technology that help businesses grow.
-        <img src="assets/manunitedlogo.jpg" alt="Manchester United Logo" width="60">
-      </div>
-    </div>
-
-    <!-- Future Goals -->
-    <div class="circle">
-      <span class="circle-title">Future Goals</span>
-      <div class="info">
-        I want to become a project manager in the technology sector, leading digital transformation
-        projects that improve business processes and customer experiences. My aim is to build strong
-        leadership and technical skills so I can guide teams, work internationally and contribute to
-        modern, innovative solutions.
-      </div>
-    </div>
-
-  </div>
-
-  <p class="hint">Hover over each circle to reveal more about my interests and goals.</p>
-
-  <!-- -------------------- TIC TAC TOE -------------------- -->
-  <div class="ttt-container">
-    <div class="ttt-inner">
-      <h2>Beat Me At Tic Tac Toe</h2>
-      <p>Try to win against the computer in this simple game.</p>
-
-      <div class="ttt-legend">
-        <span>User</span>
-        <img src="assets/manunitedlogo.jpg" alt="User icon" width="28">
-        <span>Computer</span>
-        <img src="assets/robot.png" alt="Robot icon" width="30">
-      </div>
-
-      <p>Click a square to place your badge. First to get three in a row wins.</p>
-
-      <div id="board"></div>
+  <!-- Future Goals -->
+  <div class="circle">
+    Future Goals
+    <div class="info">
+      I want to become a project manager in the tech sector, leading digital transformation
+      projects that help businesses improve processes, innovate and communicate better.
     </div>
   </div>
 
-  <!-- -------------------- FUN FACT -------------------- -->
-  <div class="funfact-section">
-    <button onclick="showFunFact()">Reveal Fun Fact</button>
-    <p id="funFact">I lived in Spain for 10 years and speak both English and Spanish.</p>
-  </div>
+</div>
+
+<p class="hint">Hover over a circle to reveal more information ✧</p>
+
+<!-- -------------------- TIC TAC TOE -------------------- -->
+<div class="ttt-container">
+  <h2>Beat Me at Tic Tac Toe!</h2>
+
+  <p style="margin-bottom:8px;">
+    User = <img src="assets/manunitedlogo.jpg" width="26">
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    Computer = <img src="assets/robot.png" width="26">
+  </p>
+
+  <p style="font-style:italic; margin-bottom:20px;">
+    Try to beat the computer — good luck!
+  </p>
+
+  <div id="board"></div>
+</div>
+
+<!-- -------------------- FUN FACT -------------------- -->
+<div style="text-align:center;margin-top:40px;">
+  <button onclick="showFunFact()">Reveal Fun Fact</button>
+  <p id="funFact">I lived in Spain for 10 years and speak both English and Spanish!</p>
+</div>
 
 </main>
 
@@ -395,14 +307,12 @@ function toggleDarkMode(){
 
 // ---------------- FUN FACT + CONFETTI ----------------
 function showFunFact() {
-  const fact = document.getElementById("funFact");
-  fact.style.display = "block";
+  document.getElementById("funFact").style.display = "block";
 
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 35; i++) {
     let c = document.createElement("div");
     c.classList.add("confetti");
     c.style.left = Math.random() * 100 + "vw";
-    c.style.backgroundColor = Math.random() > 0.5 ? "#d4af37" : "#b69377";
     document.body.appendChild(c);
     setTimeout(() => c.remove(), 2000);
   }
@@ -430,10 +340,10 @@ function initBoard() {
 function userMove(i) {
   if (gameOver || cells[i].innerHTML !== "") return;
 
-  cells[i].innerHTML = `<img src="assets/manunitedlogo.jpg" alt="User">`;
+  cells[i].innerHTML = `<img src="assets/manunitedlogo.jpg">`;
 
-  if (checkWin()) return endGame("You won.");
-  if (isBoardFull()) return endGame("It is a draw.");
+  if (checkWin()) return endGame("You won!");
+  if (isBoardFull()) return endGame("Draw!");
 
   computerMove();
 }
@@ -443,13 +353,11 @@ function computerMove() {
     .map((c, i) => (c.innerHTML === "" ? i : null))
     .filter(v => v !== null);
 
-  if (empty.length === 0) return;
-
   let choice = empty[Math.floor(Math.random() * empty.length)];
-  cells[choice].innerHTML = `<img src="assets/robot.png" alt="Computer">`;
+  cells[choice].innerHTML = `<img src="assets/robot.png" width="70">`;
 
-  if (checkWin()) return endGame("Computer wins.");
-  if (isBoardFull()) return endGame("It is a draw.");
+  if (checkWin()) return endGame("Computer wins!");
+  if (isBoardFull()) return endGame("Draw!");
 }
 
 function isBoardFull() {
@@ -472,10 +380,11 @@ function checkWin() {
 
 function endGame(msg) {
   gameOver = true;
-  setTimeout(() => alert(msg), 120);
+  setTimeout(() => alert(msg), 100);
 }
 
 initBoard();
+
 </script>
 
 </body>
