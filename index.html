@@ -17,7 +17,7 @@
   --gold: #d4af37;
 }
 
-/* -------------------- GLOBAL -------------------- */
+/* GLOBAL */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -27,7 +27,7 @@ body {
 
 header {
   background: #f2dbc4;
-  padding: 18px 0;
+  padding: 20px;
   text-align: center;
   border-bottom: 1px solid var(--line);
 }
@@ -41,9 +41,9 @@ nav a {
 nav a:hover { text-decoration: underline; }
 
 main {
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 20px;
 }
 
 /* -------------------- HERO -------------------- */
@@ -51,99 +51,100 @@ main {
 .hero {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
-  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .hero img {
-  width: 350px;
-  height: auto;
+  width: 330px;
+  border-radius: 14px;
 }
 
 .about-box {
   background: var(--card);
-  border: 1px solid var(--line);
-  padding: 25px;
+  padding: 22px;
   border-radius: 14px;
-  max-width: 600px;
+  border: 1px solid var(--line);
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  max-width: 500px;
 }
 
-/* -------------------- CIRCLES -------------------- */
+/* -------------------- CIRCLES FIXED -------------------- */
 
 .circle-container {
   display: flex;
   justify-content: center;
   gap: 60px;
-  margin: 50px 0;
+  margin: 40px 0 10px;
   flex-wrap: wrap;
 }
 
 .circle {
-  width: 330px;
-  height: 330px;
+  width: 260px;
+  height: 260px;
   background: #f1e2cf;
-  border: 3px solid var(--line);
   border-radius: 50%;
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
+  border: 3px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Title of circle */
-.circle-title {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: bold;
-  text-align: center;
-  transition: opacity 0.4s ease;
-  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-/* Hidden info */
-.info {
+.circle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(0,0,0,0.12);
+}
+
+/* inside text */
+.circle .label {
+  opacity: 1;
+  transition: 0.3s ease;
+}
+
+.circle:hover .label {
+  opacity: 0;
+}
+
+.circle .info {
   position: absolute;
-  inset: 0;
-  opacity: 0;
-  visibility: hidden;
-  padding: 25px;
-  font-size: 18px;
+  padding: 20px;
   text-align: center;
-  line-height: 1.4;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-/* Hover behaviour */
-.circle:hover .circle-title {
   opacity: 0;
+  width: 80%;
+  font-size: 15px;
+  transition: 0.3s ease;
+  line-height: 1.4;
 }
 
 .circle:hover .info {
   opacity: 1;
-  visibility: visible;
-}
-
-.hint {
-  text-align: center;
-  margin-top: 5px;
-  font-style: italic;
 }
 
 /* -------------------- TIC TAC TOE -------------------- */
 
 .ttt-container {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 50px;
+}
+
+.instructions {
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 #board {
   display: grid;
   grid-template-columns: repeat(3, 120px);
+  gap: 10px;
   margin: 0 auto;
-  gap: 8px;
 }
 
 .cell {
@@ -154,6 +155,9 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 55px;
+  cursor: pointer;
+  border-radius: 12px;
 }
 
 .cell img {
@@ -163,14 +167,13 @@ main {
 /* -------------------- FUN FACT -------------------- */
 
 #funFact {
-  text-align: center;
-  font-weight: bold;
   display: none;
-  margin-top: 12px;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
 }
 
-/* -------------------- CONFETTI -------------------- */
-
+/* confetti */
 .confetti {
   position: fixed;
   width: 10px;
@@ -184,25 +187,23 @@ main {
   to { transform: translateY(120vh); opacity: 0; }
 }
 
-/* -------------------- DARK MODE -------------------- */
-
-.dark-mode { background:#2b2b2b; color:white; }
-.dark-mode header { background:#3a3a3a; }
-.dark-mode nav a { color:white; }
-.dark-mode .about-box { background:#444; color:white; }
-.dark-mode .circle { background:#555; color:white; }
-.dark-mode .cell { background:#444; }
+/* DARK MODE */
+.dark-mode { background: #2b2b2b; color: #fff; }
+.dark-mode header { background: #3a3a3a; }
+.dark-mode .about-box { background: #3b3b3b; }
+.dark-mode .circle { background: #5a5a5a; color: white; }
+.dark-mode .cell { background: #444; }
 
 button {
-  background: var(--accent);
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 10px 20px;
   border: none;
+  background: var(--accent);
   color: white;
+  border-radius: 8px;
   cursor: pointer;
+  margin-top: 15px;
 }
 button:hover { background: var(--accent-2); }
-
 </style>
 </head>
 
@@ -219,7 +220,7 @@ button:hover { background: var(--accent-2); }
   </nav>
 </header>
 
-<div style="text-align:center;margin-top:15px;">
+<div style="text-align:center;">
   <button onclick="toggleDarkMode()" id="darkToggle">Enable Dark Mode</button>
 </div>
 
@@ -227,16 +228,14 @@ button:hover { background: var(--accent-2); }
 
 <!-- HERO -->
 <div class="hero">
-  <img src="assets/officegirl.png" alt="cartoon fidak">
+  <img src="assets/officegirl.png" alt="Fidak cartoon">
   <div class="about-box">
     <h2>A Bit About Me</h2>
     <p>
-      I am a Business Management with Innovation and Technology student with a strong
-      interest in digital transformation and improving business processes through modern 
-      technology. My experience in customer-facing roles, including Clarks, helped me 
-      develop confidence, communication and teamwork. These experiences shaped my interest 
-      in user experience, problem solving and designing digital solutions that make 
-      businesses run smarter.
+      I’m a Business Management with Innovation & Technology student with a strong interest in
+      digital transformation, modern systems and improving customer experiences.
+      I enjoy solving problems, designing better business processes and exploring
+      how technology helps organisations grow and work smarter.
     </p>
   </div>
 </div>
@@ -244,123 +243,135 @@ button:hover { background: var(--accent-2); }
 <!-- CIRCLES -->
 <div class="circle-container">
 
-  <!-- Interests -->
   <div class="circle">
-    <div class="circle-title">Interests</div>
+    <div class="label">Interests</div>
     <div class="info">
-      I love travelling, exploring different cultures and supporting Manchester United.  
+      I love travelling, exploring different cultures and supporting Manchester United!
       <br><br>
-      <img src="assets/manunitedlogo.jpg" width="70">
+      <img src="assets/manunitedlogo.jpg" width="60">
     </div>
   </div>
 
-  <!-- Future Goals -->
   <div class="circle">
-    <div class="circle-title">Future Goals</div>
+    <div class="label">Future Goals</div>
     <div class="info">
-      My goal is to become a project manager specialising in digital transformation,
-      helping businesses modernise their systems and improve customer experience.
+      I aim to become a project manager in the tech industry, leading innovative digital
+      transformation projects that improve business efficiency.
     </div>
   </div>
 
 </div>
 
-<p class="hint">Hover over a circle to reveal more information ✧</p>
+<p style="text-align:center; font-style:italic; margin-top:5px;">
+  Hover over the circles to reveal more ✧
+</p>
 
 <!-- TIC TAC TOE -->
 <div class="ttt-container">
-  <h2>Beat Me at Tic Tac Toe!</h2>
-
-  <p style="margin-bottom:8px;">
-    User = <img src="assets/manunitedlogo.jpg" width="26">
-    &nbsp; | &nbsp;
-    Computer = <img src="assets/robot.png" width="26">
+  <h2>Beat Me At Tic Tac Toe!</h2>
+  <p class="instructions">
+    You = <img src="assets/manunitedlogo.jpg" width="30">
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    Computer = <img src="assets/robot.png" width="30">
   </p>
 
   <div id="board"></div>
 </div>
 
 <!-- FUN FACT -->
-<div style="text-align:center;margin-top:40px;">
+<div style="text-align:center; margin-top:40px;">
   <button onclick="showFunFact()">Reveal Fun Fact</button>
-  <p id="funFact">I lived in Spain for 10 years and speak both English and Spanish!</p>
+  <p id="funFact">I lived in Spain for 10 years and speak English and Spanish!</p>
 </div>
 
 </main>
 
 <script>
-// DARK MODE
+/* DARK MODE */
 function toggleDarkMode(){
   document.body.classList.toggle("dark-mode");
   document.getElementById("darkToggle").textContent =
-    document.body.classList.contains("dark-mode") ?
-    "Disable Dark Mode" : "Enable Dark Mode";
+    document.body.classList.contains("dark-mode")
+      ? "Disable Dark Mode"
+      : "Enable Dark Mode";
 }
 
-// FUN FACT + CONFETTI
-function showFunFact(){
-  document.getElementById("funFact").style.display="block";
+/* CONFETTI */
+function showFunFact() {
+  document.getElementById("funFact").style.display = "block";
 
-  for(let i=0;i<40;i++){
-    let c=document.createElement("div");
+  for (let i = 0; i < 30; i++) {
+    let c = document.createElement("div");
     c.classList.add("confetti");
-    c.style.left=Math.random()*100+"vw";
+    c.style.left = Math.random() * 100 + "vw";
     document.body.appendChild(c);
-    setTimeout(()=>c.remove(),2000);
+    setTimeout(() => c.remove(), 2000);
   }
 }
 
-// TIC TAC TOE
-const board=document.getElementById("board");
-let cells=[];
-let gameOver=false;
+/* TIC TAC TOE */
+const board = document.getElementById("board");
+let cells = [];
+let gameOver = false;
 
-function initBoard(){
-  board.innerHTML="";
-  cells=[]; gameOver=false;
+function initBoard() {
+  board.innerHTML = "";
+  cells = [];
+  gameOver = false;
 
-  for(let i=0;i<9;i++){
-    let cell=document.createElement("div");
-    cell.className="cell";
-    cell.onclick=()=>userMove(i);
+  for (let i = 0; i < 9; i++) {
+    let cell = document.createElement("div");
+    cell.className = "cell";
+    cell.addEventListener("click", () => userMove(i));
     board.appendChild(cell);
     cells.push(cell);
   }
 }
 
-function userMove(i){
-  if(gameOver || cells[i].innerHTML!=="")return;
-  cells[i].innerHTML=`<img src="assets/manunitedlogo.jpg">`;
+function userMove(i) {
+  if (gameOver || cells[i].innerHTML !== "") return;
 
-  if(checkWin())return end("You win!");
-  if(full())return end("Draw!");
+  cells[i].innerHTML = `<img src="assets/manunitedlogo.jpg">`;
+
+  if (checkWin()) return endGame("You won!");
+  if (isBoardFull()) return endGame("Draw!");
 
   computerMove();
 }
 
-function computerMove(){
-  let empty=cells.map((c,i)=>c.innerHTML===""?i:null).filter(i=>i!==null);
-  let choice=empty[Math.floor(Math.random()*empty.length)];
-  cells[choice].innerHTML=`<img src="assets/robot.png" width="70">`;
+function computerMove() {
+  let empty = cells
+    .map((c, i) => (c.innerHTML === "" ? i : null))
+    .filter(v => v !== null);
 
-  if(checkWin())return end("Computer wins!");
-  if(full())return end("Draw!");
+  let choice = empty[Math.floor(Math.random() * empty.length)];
+  cells[choice].innerHTML = `<img src="assets/robot.png" width="70">`;
+
+  if (checkWin()) return endGame("Computer wins!");
+  if (isBoardFull()) return endGame("Draw!");
 }
 
-function full(){ return cells.every(c=>c.innerHTML!==""); }
+function isBoardFull() {
+  return cells.every(c => c.innerHTML !== "");
+}
 
-function checkWin(){
-  const w=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-  return w.some(([a,b,c]) =>
-    cells[a].innerHTML!=="" &&
-    cells[a].innerHTML===cells[b].innerHTML &&
-    cells[a].innerHTML===cells[c].innerHTML
+function checkWin() {
+  const wins = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
+
+  return wins.some(([a,b,c]) =>
+    cells[a].innerHTML !== "" &&
+    cells[a].innerHTML === cells[b].innerHTML &&
+    cells[a].innerHTML === cells[c].innerHTML
   );
 }
 
-function end(msg){
-  gameOver=true;
-  setTimeout(()=>alert(msg),100);
+function endGame(msg) {
+  gameOver = true;
+  setTimeout(() => alert(msg), 150);
 }
 
 initBoard();
