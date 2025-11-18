@@ -83,10 +83,9 @@ main {
   margin: 40px 0 10px;
   flex-wrap: wrap;
 }
-
 .circle {
-  width: 270px;
-  height: 270px;
+  width: 290px;     /* slightly bigger circle */
+  height: 290px;
   background: #f1e2cf;
   border-radius: 50%;
   border: 3px solid var(--line);
@@ -97,6 +96,19 @@ main {
   cursor: pointer;
   overflow: hidden;
   transition: 0.3s ease;
+}
+
+.circle .info {
+  position: absolute;
+  width: 88%;      /* increased space so text fits */
+  padding: 10px;
+  text-align: center;
+  font-size: 14px; /* slightly cleaner fit */
+  line-height: 1.4;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
 }
 
 .circle:hover {
