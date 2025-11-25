@@ -6,7 +6,6 @@
 <title>Fidak Batool | Home</title>
 
 <style>
-/* —————————— YOUR ORIGINAL STYLES (UNCHANGED) —————————— */
 :root {
   --bg: #f5e9d5;
   --card: #fff8ef;
@@ -17,6 +16,7 @@
   --gold: #d4af37;
 }
 
+/* GLOBAL */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -24,7 +24,6 @@ body {
   color: var(--ink);
 }
 
-/* HEADER */
 header {
   background: #f2dbc4;
   padding: 20px;
@@ -40,14 +39,14 @@ nav a {
 }
 nav a:hover { text-decoration: underline; }
 
-/* LAYOUT */
 main {
   max-width: 1300px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* HERO SECTION */
+/* HERO */
+
 .hero {
   display: flex;
   align-items: center;
@@ -71,7 +70,12 @@ main {
   max-width: 520px;
 }
 
+.about-box p {
+  margin-top: 8px;
+}
+
 /* CIRCLES */
+
 .circle-container {
   display: flex;
   justify-content: center;
@@ -79,7 +83,6 @@ main {
   margin: 40px 0 10px;
   flex-wrap: wrap;
 }
-
 .circle {
   width: 290px;
   height: 290px;
@@ -95,29 +98,40 @@ main {
   transition: 0.3s ease;
 }
 
-.circle:hover { transform: scale(1.05); }
+.circle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(0,0,0,0.12);
+}
 
+/* title */
 .circle .label {
+  position: absolute;
   font-size: 22px;
   font-weight: bold;
   opacity: 1;
   transition: 0.3s ease;
 }
 
+/* info */
 .circle .info {
   position: absolute;
   width: 85%;
-  opacity: 0;
+  padding: 18px;
+  text-align: center;
   font-size: 15px;
   line-height: 1.4;
+  opacity: 0;
   transition: 0.3s ease;
-  text-align: center;
 }
 
-.circle:hover .label { opacity: 0; }
-.circle:hover .info { opacity: 1; }
+.circle:hover .label {
+  opacity: 0;
+}
 
-/* HINT */
+.circle:hover .info {
+  opacity: 1;
+}
+
 .hint {
   text-align: center;
   font-style: italic;
@@ -125,17 +139,29 @@ main {
 }
 
 /* TIC TAC TOE */
+
 .ttt-container {
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+}
+
+.instructions {
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.sub-instructions {
+  margin-bottom: 15px;
+  font-size: 15px;
 }
 
 #board {
   display: grid;
   grid-template-columns: repeat(3, 120px);
   gap: 10px;
-  justify-content: center;
-  margin-top: 10px;
 }
 
 .cell {
@@ -147,11 +173,25 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 55px;
   cursor: pointer;
 }
 
-/* FUN FACT + CONFETTI */
-#funFact { display: none; font-weight: bold; }
+.cell img {
+  width: 70px;
+}
+
+/* FUN FACT */
+
+#funFact {
+  display: none;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* CONFETTI */
+
 .confetti {
   position: fixed;
   width: 10px;
@@ -162,73 +202,105 @@ main {
 }
 @keyframes fall {
   from { transform: translateY(-10%); opacity: 1; }
-  to   { transform: translateY(120vh); opacity: 0; }
+  to { transform: translateY(120vh); opacity: 0; }
 }
 
 /* DARK MODE */
-.dark-mode { background: #2b2b2b; color: white; }
-.dark-mode header { background: #3b3b3b; }
-.dark-mode .about-box { background: #3b3b3b; }
-.dark-mode .circle { background: #555; }
 
-/* BUTTON */
+.dark-mode { background: #2b2b2b; color: #fff; }
+.dark-mode header { background: #3a3a3a; }
+.dark-mode .about-box { background: #3b3b3b; }
+.dark-mode .circle { background: #5a5a5a; color: white; }
+.dark-mode .cell { background: #444; }
+
+/* BUTTONS */
+
 button {
   padding: 10px 20px;
-  background: var(--accent);
   border: none;
+  background: var(--accent);
   color: white;
-  border-radius: 7px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
 }
 button:hover { background: var(--accent-2); }
 
-/* ————————————————————————————
-         COOKIE BANNER STYLES
-———————————————————————————— */
+/* =========================
+   COOKIE BANNER STYLES
+   ========================= */
+
 #cookieOverlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.55);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99999999;
+  z-index: 9999;
 }
 
 #cookieBanner {
   background: var(--card);
   border: 2px solid var(--line);
-  padding: 25px;
+  padding: 22px;
   width: 90%;
-  max-width: 520px;
-  border-radius: 14px;
+  max-width: 540px;
+  border-radius: 16px;
+  box-shadow: 0 0 18px rgba(0,0,0,0.35);
+  text-align: left;
+}
+
+#cookieBanner h2 {
+  margin-top: 0;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.25);
 }
 
 .cookie-btns {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 15px;
 }
 
 .cookie-btns button {
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 10px;
+  flex: 1;
+  margin-top: 0;
 }
 
-/* Manage cookie panel */
 #managePanel {
-  display: none;
   margin-top: 10px;
+  display: none;
   background: #f7e7d3;
-  padding: 10px;
-  border-radius: 10px;
+  border-radius: 12px;
+  padding: 10px 12px;
   border: 1px solid var(--line);
+  font-size: 14px;
 }
 
+#policyFull {
+  display: none;
+  margin-top: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 8px;
+  border-radius: 8px;
+  background: #fff8ef;
+  border: 1px solid var(--line);
+  font-size: 13px;
+}
+
+/* dark mode variant for cookie banner */
+.dark-mode #cookieBanner {
+  background: #3b3b3b;
+  color: #fff;
+}
+.dark-mode #managePanel {
+  background: #494949;
+}
+.dark-mode #policyFull {
+  background: #555;
+}
 </style>
 </head>
 
@@ -251,52 +323,262 @@ button:hover { background: var(--accent-2); }
 
 <main>
 
-<!-- YOUR HERO, CIRCLES, GAME, FUN FACT (UNCHANGED) -->
-<!-- *** I am NOT repeating them here because your message is too long *** -->
-<!-- *** You can keep everything EXACTLY as you posted *** -->
+<!-- HERO -->
+<div class="hero">
+  <img src="assets/officegirl.png" alt="Fidak cartoon">
+  <div class="about-box">
+    <h2>A Bit About Me</h2>
+    <p>
+      I’m a Business Management with Innovation & Technology student who enjoys
+      combining creativity with problem-solving. I’m especially interested in how
+      digital tools, automation and data can make everyday work smoother for both
+      employees and customers.
+    </p>
+    <p>
+      My experience in customer-facing roles has helped me build confidence,
+      communication skills and patience. I like understanding how people think
+      and then designing small improvements that make their journey easier and
+      more enjoyable.
+    </p>
+  </div>
+</div>
+
+<!-- CIRCLES -->
+<div class="circle-container">
+
+  <div class="circle">
+    <div class="label">Interests</div>
+    <div class="info">
+      I enjoy travelling, learning about new cultures and languages, and keeping
+      up with modern technology trends. I’m also a huge Manchester United fan and
+      love the teamwork, passion and loyalty that football brings.
+      <br><br>
+      <img src="assets/manunitedlogo.jpg" width="60" alt="Manchester United logo">
+    </div>
+  </div>
+
+  <div class="circle">
+    <div class="label">Future Goals</div>
+    <div class="info">
+      My goal is to become a project manager in the tech and innovation sector.
+      I want to lead digital transformation projects that improve processes,
+      support staff, and create better experiences for customers in real
+      businesses.
+    </div>
+  </div>
+
+</div>
+
+<p class="hint">Hover over a circle to reveal more information ✧</p>
+
+<!-- TIC TAC TOE -->
+<div class="ttt-container">
+  <h2>Beat Me at Tic Tac Toe!</h2>
+  <p class="instructions">
+    You = <img src="assets/manunitedlogo.jpg" width="30" alt="User icon">
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    Computer = <img src="assets/robot.png" width="30" alt="Robot icon">
+  </p>
+  <p class="sub-instructions">
+    Click any square to place your badge and try to beat the computer — good luck!
+  </p>
+
+  <div id="board"></div>
+</div>
+
+<!-- FUN FACT -->
+<div style="text-align:center; margin-top:40px;">
+  <button onclick="showFunFact()">Reveal Fun Fact</button>
+  <p id="funFact">I lived in Spain for 10 years and speak both English and Spanish!</p>
+</div>
 
 </main>
 
-<!-- ————————————————————————————
-       COOKIE BANNER (THIS IS NEW)
-———————————————————————————— -->
+<!-- =========================
+     COOKIE BANNER OVERLAY
+     ========================= -->
 <div id="cookieOverlay">
   <div id="cookieBanner">
     <h2>We Use Cookies 🍪</h2>
     <p>
-      We use essential and optional cookies to improve your experience.
-      You can accept all, reject, or choose your preferences.
+      We use cookies to run our site, understand how it’s used, and make your
+      experience smoother. You can accept all cookies, reject non-essential
+      cookies, or manage your preferences.
     </p>
 
-    <button onclick="toggleManagePanel()" style="background:var(--accent-2)">Manage Cookies</button>
-    
+    <button style="background:var(--accent-2);" onclick="toggleManagePanel()">
+      Manage cookies &amp; read more
+    </button>
+
     <div id="managePanel">
-      <p><strong>Essential Cookies</strong> – Required for site functionality.</p>
-      <p><strong>Analytics Cookies</strong> – Help us improve the website.</p>
-      <p><strong>Personalisation Cookies</strong> – Tailor content just for you.</p>
-      <button onclick="alert('More cookie info…')">Read More</button>
+      <p><strong>Essential cookies</strong> – needed for security and basic features like navigation and reservations.</p>
+      <p><strong>Analytics cookies</strong> – help us understand which pages are popular so we can improve the menu and customer journey.</p>
+      <p><strong>Preference cookies</strong> – remember things like your selected location or preferred booking time.</p>
+
+      <button style="margin-top:10px;" onclick="togglePolicy()">
+        Read full privacy policy
+      </button>
+
+      <div id="policyFull">
+        <h3 style="margin-top:0;">West Ivy Restaurant – Privacy &amp; Cookies Policy</h3>
+        <p>
+          This privacy policy explains how West Ivy (“we”, “us”, “our”) collects,
+          uses and protects your personal information when you visit our website,
+          view our menu, or make an enquiry or booking online.
+        </p>
+
+        <h4>1. Information We Collect</h4>
+        <ul>
+          <li><strong>Booking details:</strong> name, email address, phone number, booking date, time and party size.</li>
+          <li><strong>Contact form messages:</strong> any information you choose to share when asking a question or giving feedback.</li>
+          <li><strong>Usage data:</strong> pages visited, buttons clicked, approximate location, and device type (via analytics tools).</li>
+          <li><strong>Cookie data:</strong> small text files stored on your device to remember preferences and improve performance.</li>
+        </ul>
+
+        <h4>2. How We Use Your Data</h4>
+        <ul>
+          <li>To confirm, manage and update your restaurant bookings.</li>
+          <li>To respond to your questions and feedback.</li>
+          <li>To monitor website performance and improve our digital menu and booking experience.</li>
+          <li>To keep our website secure and to prevent fraud or abuse.</li>
+        </ul>
+
+        <h4>3. Cookies on This Site</h4>
+        <ul>
+          <li><strong>Essential cookies</strong> – enable navigation, security and basic booking features. These cannot be turned off.</li>
+          <li><strong>Analytics cookies</strong> – help us understand traffic and popular dishes so we can improve our menu and services.</li>
+          <li><strong>Preference cookies</strong> – remember choices such as language, location or recently viewed dishes.</li>
+        </ul>
+        <p>
+          You can control optional cookies using the buttons in this banner or by
+          clearing cookies in your browser settings.
+        </p>
+
+        <h4>4. How Long We Keep Your Data</h4>
+        <p>
+          Booking and enquiry information is usually kept for up to 12 months,
+          unless we need to keep it longer for legal reasons (for example, in the
+          case of a complaint). Analytics data is stored in an anonymised or
+          aggregated format wherever possible.
+        </p>
+
+        <h4>5. Your Rights</h4>
+        <p>You have the right to:</p>
+        <ul>
+          <li>Request a copy of the personal data we hold about you.</li>
+          <li>Ask us to correct inaccurate information.</li>
+          <li>Request that we delete your details, where legally possible.</li>
+          <li>Change your cookie preferences at any time.</li>
+        </ul>
+
+        <h4>6. Contact Us</h4>
+        <p>
+          If you have any questions about this policy or would like to exercise
+          your rights, you can contact our data contact at:<br>
+          <em>privacy@westivy-demo.example</em>
+        </p>
+      </div>
     </div>
 
     <div class="cookie-btns">
-      <button onclick="acceptCookies()">Accept All Cookies</button>
-      <button onclick="rejectCookies()" style="background:#a56a5d">Reject All</button>
+      <button onclick="acceptCookies()">Accept all cookies</button>
+      <button style="background:#a56a5d;" onclick="rejectCookies()">Reject non-essential</button>
     </div>
   </div>
 </div>
 
 <script>
-/* ————————————————————————————
-        DARK MODE
-———————————————————————————— */
-function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
-  document.getElementById('darkToggle').textContent =
-    document.body.classList.contains('dark-mode') ? "Disable Dark Mode" : "Enable Dark Mode";
+function toggleDarkMode(){
+  document.body.classList.toggle("dark-mode");
+  document.getElementById("darkToggle").textContent =
+    document.body.classList.contains("dark-mode")
+      ? "Disable Dark Mode"
+      : "Enable Dark Mode";
 }
 
-/* ————————————————————————————
-        COOKIE BANNER JS
-———————————————————————————— */
+/* FUN FACT + CONFETTI */
+function showFunFact() {
+  document.getElementById("funFact").style.display = "block";
+
+  for (let i = 0; i < 30; i++) {
+    let c = document.createElement("div");
+    c.classList.add("confetti");
+    c.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 2000);
+  }
+}
+
+/* TIC TAC TOE */
+const board = document.getElementById("board");
+let cells = [];
+let gameOver = false;
+
+function initBoard() {
+  board.innerHTML = "";
+  cells = [];
+  gameOver = false;
+
+  for (let i = 0; i < 9; i++) {
+    let cell = document.createElement("div");
+    cell.className = "cell";
+    cell.addEventListener("click", () => userMove(i));
+    board.appendChild(cell);
+    cells.push(cell);
+  }
+}
+
+function userMove(i) {
+  if (gameOver || cells[i].innerHTML !== "") return;
+  cells[i].innerHTML = `<img src="assets/manunitedlogo.jpg" alt="User move">`;
+
+  if (checkWin()) return endGame("You won!");
+  if (isBoardFull()) return endGame("It’s a draw!");
+
+  computerMove();
+}
+
+function computerMove() {
+  let empty = cells
+    .map((c, i) => (c.innerHTML === "" ? i : null))
+    .filter(v => v !== null);
+
+  let choice = empty[Math.floor(Math.random() * empty.length)];
+  cells[choice].innerHTML = `<img src="assets/robot.png" width="70" alt="Computer move">`;
+
+  if (checkWin()) return endGame("Computer wins!");
+  if (isBoardFull()) return endGame("It’s a draw!");
+}
+
+function isBoardFull() {
+  return cells.every(c => c.innerHTML !== "");
+}
+
+function checkWin() {
+  const wins = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
+
+  return wins.some(([a,b,c]) =>
+    cells[a].innerHTML !== "" &&
+    cells[a].innerHTML === cells[b].innerHTML &&
+    cells[a].innerHTML === cells[c].innerHTML
+  );
+}
+
+function endGame(msg) {
+  gameOver = true;
+  setTimeout(() => alert(msg), 150);
+}
+
+initBoard();
+
+/* =========================
+   COOKIE BANNER JS
+   ========================= */
+
 function acceptCookies(){
   localStorage.setItem("cookiesAccepted", "yes");
   document.getElementById("cookieOverlay").style.display = "none";
@@ -308,16 +590,20 @@ function rejectCookies(){
 }
 
 function toggleManagePanel(){
-  let panel = document.getElementById("managePanel");
+  const panel = document.getElementById("managePanel");
   panel.style.display = panel.style.display === "block" ? "none" : "block";
 }
 
-/* If user already accepted cookies, don’t show banner */
-if(localStorage.getItem("cookiesAccepted")){
+function togglePolicy(){
+  const box = document.getElementById("policyFull");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+/* Hide banner if user already made a choice */
+if (localStorage.getItem("cookiesAccepted")) {
   document.getElementById("cookieOverlay").style.display = "none";
 }
 </script>
-
 </body>
 </html>
 
