@@ -27,10 +27,6 @@
         font-weight: bold;
     }
 
-    nav a:hover {
-        color: #000;
-    }
-
     .container {
         max-width: 900px;
         margin: auto;
@@ -46,22 +42,12 @@
         transition: 0.3s ease;
     }
 
-    .card:hover {
-        transform: scale(1.02);
-        box-shadow: 0 0 18px rgba(212, 175, 55, 0.6);
-    }
-
     .details-group p {
         font-size: 18px;
         margin: 12px 0;
     }
 
-    .details-group img {
-        width: 22px;
-        vertical-align: middle;
-        margin-right: 10px;
-    }
-
+    /* Inputs */
     .contact-form input,
     .contact-form textarea {
         width: 100%;
@@ -70,11 +56,21 @@
         border-radius: 8px;
         border: 1px solid #c9b7a3;
         background: #fff;
+        font-size: 16px;
     }
 
-    .contact-form textarea {
-        height: 120px;
-        resize: none;
+    .contact-form input.error,
+    .contact-form textarea.error {
+        border: 2px solid #d9534f;
+        background: #ffe8e8;
+    }
+
+    .error-msg {
+        color: #d9534f;
+        font-size: 14px;
+        margin-top: -5px;
+        margin-bottom: 10px;
+        display: none;
     }
 
     .contact-form button {
@@ -87,73 +83,11 @@
         font-size: 16px;
     }
 
-    .contact-form button:hover {
-        box-shadow: 0 0 14px rgba(212, 175, 55, 0.6);
-    }
-
     /* Dark Mode */
-    body.dark-mode {
-        background-color: #2b2b2b;
-        color: #ffffff;
-    }
-    body.dark-mode header {
-        background-color: #3a3a3a;
-    }
-    body.dark-mode .card {
-        background: #4a4a4a;
-        color: #fff;
-    }
-    body.dark-mode input,
-    body.dark-mode textarea {
-        background: #555;
-        color: #fff;
-        border: 1px solid #777;
-    }
-
-    /* AI Chatbot Button */
-    #chatbot-btn {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        background: #4a3f35;
-        color: white;
-        padding: 12px;
-        border-radius: 50%;
-        font-size: 22px;
-        cursor: pointer;
-        box-shadow: 0 0 10px rgba(0,0,0,0.4);
-        transition: 0.3s;
-    }
-    #chatbot-btn:hover {
-        transform: scale(1.05);
-    }
-
-    /* Chat Window */
-    #chat-window {
-        display: none;
-        position: fixed;
-        bottom: 90px;
-        right: 25px;
-        width: 320px;
-        height: 380px;
-        background: #fff8ef;
-        border-radius: 14px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.4);
-        padding: 15px;
-        overflow-y: auto;
-    }
-
-    #chat-window.dark {
-        background: #333;
-        color: #fff;
-    }
-
-    #chat-input {
-        width: 100%;
-        padding: 8px;
-        border-radius: 8px;
-        border: 1px solid #c9b7a3;
-        margin-top: 10px;
+    body.dark-mode { background-color: #2b2b2b; color:#fff; }
+    body.dark-mode .card { background:#4a4a4a; }
+    body.dark-mode input, body.dark-mode textarea {
+        background:#555; color:white;
     }
 </style>
 </head>
@@ -177,28 +111,35 @@
 
 <div class="container">
 
+    <!-- Contact details -->
     <div class="card">
         <h2>📞 Contact Details</h2>
-        <div class="details-group">
-            <p><img src="https://cdn-icons-png.flaticon.com/512/724/724664.png"> Phone: 07543678654</p>
-            <p><img src="https://cdn-icons-png.flaticon.com/512/542/542638.png"> Email: <strong>f.b@gmail.com</strong></p>
-            <p><img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"> 
-                LinkedIn:
-                <a href="https://www.linkedin.com/in/fidak-batool-1365a8293" target="_blank">
-                    Visit Profile
-                </a>
-            </p>
-        </div>
+        <p><strong>Phone:</strong> 07543678654</p>
+        <p><strong>Email:</strong> f.b@gmail.com</p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/fidak-batool-1365a8293" target="_blank">Visit Profile</a></p>
     </div>
 
+    <!-- Contact Form with validation -->
     <div class="card">
         <h2>📬 Contact Form</h2>
-        <form class="contact-form" onsubmit="generateEmail(event)">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="text" id="address" placeholder="Your Address" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <input type="text" id="phone" placeholder="Your Phone Number" required>
-            <textarea id="enquiry" placeholder="Enter your enquiry here..." required></textarea>
+
+        <form class="contact-form" onsubmit="return validateForm(event)">
+
+            <input type="text" id="name" placeholder="Your Name" />
+            <p class="error-msg" id="name-error">Name must contain letters only (no numbers).</p>
+
+            <input type="text" id="address" placeholder="Your Address" />
+            <p class="error-msg" id="address-error">Address must be at least 5 characters long.</p>
+
+            <input type="email" id="email" placeholder="Your Email" />
+            <p class="error-msg" id="email-error">Enter a valid email (example@gmail.com).</p>
+
+            <input type="text" id="phone" placeholder="Your Phone Number" />
+            <p class="error-msg" id="phone-error">Phone must start with 07 and be 11 digits long.</p>
+
+            <textarea id="enquiry" placeholder="Enter your enquiry here..."></textarea>
+            <p class="error-msg" id="enquiry-error">Enquiry must be at least 10 characters.</p>
+
             <button type="submit">Send Enquiry</button>
         </form>
 
@@ -207,31 +148,86 @@
 
 </div>
 
-<!-- Chatbot -->
-<div id="chatbot-btn" onclick="toggleChat()">💬</div>
-
-<div id="chat-window">
-    <h3>AI Assistant</h3>
-    <div id="chat-log">Hello! How can I assist you today? 😊</div>
-    <input type="text" id="chat-input" placeholder="Type here..." onkeypress="handleChat(event)">
-</div>
-
 <script>
+/* ============= DARK MODE ============= */
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
-    document.getElementById("chat-window").classList.toggle("dark");
 }
 
-function generateEmail(event) {
-    event.preventDefault();
-    let name = document.getElementById("name").value;
-    let address = document.getElementById("address").value;
-    let email = document.getElementById("email").value;
-    let phone = document.getElementById("phone").value;
-    let enquiry = document.getElementById("enquiry").value;
+/* ============= SANITIZE INPUT ============= */
+function clean(input) {
+    return input.replace(/[<>\/{}$]/g, ""); 
+}
 
-    let message = `
-Email preview generated ✅
+/* ============= VALIDATION FUNCTION ============= */
+function validateForm(event) {
+    event.preventDefault();
+
+    let valid = true;
+
+    // Collect fields
+    let name = document.getElementById("name");
+    let address = document.getElementById("address");
+    let email = document.getElementById("email");
+    let phone = document.getElementById("phone");
+    let enquiry = document.getElementById("enquiry");
+
+    // SANITIZE INPUTS
+    name.value = clean(name.value);
+    address.value = clean(address.value);
+    enquiry.value = clean(enquiry.value);
+
+    // NAME VALIDATION
+    if (!/^[A-Za-z\s]+$/.test(name.value)) {
+        showError(name, "name-error");
+        valid = false;
+    } else removeError(name, "name-error");
+
+    // ADDRESS VALIDATION
+    if (address.value.length < 5) {
+        showError(address, "address-error");
+        valid = false;
+    } else removeError(address, "address-error");
+
+    // EMAIL VALIDATION
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        showError(email, "email-error");
+        valid = false;
+    } else removeError(email, "email-error");
+
+    // PHONE VALIDATION (UK 07… format)
+    if (!/^07\d{9}$/.test(phone.value)) {
+        showError(phone, "phone-error");
+        valid = false;
+    } else removeError(phone, "phone-error");
+
+    // ENQUIRY VALIDATION
+    if (enquiry.value.length < 10) {
+        showError(enquiry, "enquiry-error");
+        valid = false;
+    } else removeError(enquiry, "enquiry-error");
+
+    if (!valid) return false;
+
+    // If valid → generate email preview
+    generateEmail(name.value, address.value, email.value, phone.value, enquiry.value);
+}
+
+/* SHOW / HIDE ERRORS */
+function showError(field, msgId) {
+    document.getElementById(msgId).style.display = "block";
+    field.classList.add("error");
+}
+
+function removeError(field, msgId) {
+    document.getElementById(msgId).style.display = "none";
+    field.classList.remove("error");
+}
+
+/* ================== GENERATE EMAIL PREVIEW ================== */
+function generateEmail(name, address, email, phone, enquiry) {
+    let output = `
+Email preview generated:
 
 Name: ${name}
 Address: ${address}
@@ -241,31 +237,8 @@ Phone: ${phone}
 Enquiry:
 ${enquiry}
     `;
-
     alert("Your enquiry has been generated successfully!");
-    document.getElementById("email-output").innerText = message;
-}
-
-function toggleChat() {
-    let chat = document.getElementById("chat-window");
-    chat.style.display = chat.style.display === "block" ? "none" : "block";
-}
-
-function handleChat(event) {
-    if (event.key === "Enter") {
-        let userMsg = event.target.value;
-        if (userMsg.trim() === "") return;
-
-        let log = document.getElementById("chat-log");
-        log.innerHTML += `<br><strong>You:</strong> ${userMsg}`;
-
-        // Simple AI response simulation
-        setTimeout(() => {
-            log.innerHTML += `<br><strong>AI:</strong> I have received: "${userMsg}". How else can I help?`;
-        }, 600);
-
-        event.target.value = "";
-    }
+    document.getElementById("email-output").innerText = output;
 }
 </script>
 
